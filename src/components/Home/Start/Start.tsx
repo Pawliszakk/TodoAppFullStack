@@ -3,6 +3,7 @@ import classes from './Start.module.scss';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import Image from 'next/image';
 const Start = () => {
+	const buttonLinkText = "Let's get started";
 	return (
 		<section className={classes.start}>
 			<div className={classes.content}>
@@ -15,7 +16,7 @@ const Start = () => {
 					</span>
 				</p>
 				<Button link href="/#about">
-					Let{"'"}s get started
+					{buttonLinkText}
 				</Button>
 			</div>
 			<div className={classes.image}>
