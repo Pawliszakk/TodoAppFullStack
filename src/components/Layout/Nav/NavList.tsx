@@ -1,6 +1,5 @@
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
-import { FaRegMoon } from 'react-icons/fa6';
 import Link from 'next/link';
 import Image from 'next/image';
 const NavList = () => {
@@ -15,7 +14,7 @@ const NavList = () => {
 			<li>
 				<Link href="/login">
 					<Image
-						src="/assets/avatars/avatarlogout.jpg"
+						src="/assets/avatars/avatarLogout.jpg"
 						alt="An avatar of a user"
 						width={40}
 						height={40}
