@@ -20,32 +20,23 @@ const HomeSection: React.FC<HomeSectionProps> = ({
 	reverse,
 	alt,
 }) => {
-	const sectionClasses = `${classes.section} ${className ? className : null} ${
-		reverse ? classes.reverse : null
-	} ${darker ? classes.darker : null}`;
+	const sectionClasses = `${classes.section} ${className ? className : null}  ${
+		darker ? classes.darker : null
+	}`;
 
 	return (
 		<section className={sectionClasses}>
-			<div className={classes.content}>
-				<h2>{heading}</h2>
-				<p>{description}</p>
-			</div>
-			<div className={classes.image}>
-				<Image src={image} alt={alt} layout="fill" />{' '}
+			<div className={`${classes.box} ${reverse ? classes.reverse : null}`}>
+				<div className={classes.content}>
+					<h2>{heading}</h2>
+					<p>{description}</p>
+				</div>
+				<div className={classes.image}>
+					<Image src={image} alt={alt} layout="fill" />{' '}
+				</div>
 			</div>
 		</section>
 	);
 };
 
 export default HomeSection;
-
-// .image {
-// 	max-width: 300px;
-// 	margin: 0 auto;
-// 	img {
-// 		width: 100%;
-// 		height: 100%;
-// 		position: relative !important;
-// 		object-fit: cover;
-// 	}
-// }

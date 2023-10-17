@@ -17,4 +17,26 @@ body {
 	--main-purple: #6d21d7;
 	--main-purple-darker: #3c0686;
 	--white: #fff;
+	--white-cream: #f8f3f3;
+}
+html {
+	font-size: 62.5%;
+
+	scroll-behavior: smooth;
+	scroll-padding-top: 7vh;
+	scrollbar-width: thin;
+	scrollbar-color: var(--main-purple-darker), var(--main-purple);
+}
+html::-webkit-scrollbar {
+	width: 0.5vw;
+}
+html::-webkit-scrollbar-thumb {
+	background-color: var(--main-purple);
+	border-radius: 100vw;
+}
+html::-webkit-scrollbar-thumb:hover {
+	background-color: var(--main-purple-darker);
+}
+html::-webkit-scrollbar-track {
+	background: #fff;
 }

@@ -3,9 +3,11 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	background-color: var(--white);
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	height: 6vh;
 	line-height: 6vh;
+	z-index: 2000;
 	nav {
 		max-width: 1200px;
 		margin: 0 auto;
@@ -19,3 +21,7 @@
 		}
 	}
 }
+
+
+
+
