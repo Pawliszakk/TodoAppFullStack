@@ -7,21 +7,20 @@ const NavList = () => {
 	return (
 		<ul className={classes.list}>
 			<li>
-				<Button link href="/login">
+				<Button className={classes.btn} link href="/login">
 					Login
 				</Button>
 			</li>
+
 			<li>
-				<FaRegMoon />
-			</li>
-			<li>
-				<Link href="/profile/id2">
+				<Link href="/login">
 					<Image
 						src="/assets/avatars/avatarlogout.jpg"
 						alt="An avatar of a user"
-						width={30}
-						height={30}
+						width={40}
+						height={40}
 					/>
+					<span>Check Profile</span>
 				</Link>
 			</li>
 		</ul>

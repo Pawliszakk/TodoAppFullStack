@@ -1,16 +1,7 @@
+import { HomeSectionProps } from '@/types/app';
 import HomeSection from '../UI/Sections/Home/HomeSection';
 
-type Section = {
-	image: string;
-	alt: string;
-	heading: string;
-	description: string;
-	darker?: boolean;
-	reverse?: boolean;
-	first?: boolean;
-};
-
-const sectionsData: Section[] = [
+const sectionsData: HomeSectionProps[] = [
 	{
 		image: '/assets/ilustrations/planning.jpg',
 		alt: 'Ilustration of man and woman',

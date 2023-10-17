@@ -1,12 +1,17 @@
 .link {
-	display: inline-block;
 	background-color: var(--main-purple);
 	color: var(--white);
-	padding: 0.5em 1em;
 	border-radius: 15px;
+	padding: 0.5em 1em;
 	text-decoration: none;
 	transition: background-color 0.3s;
+	cursor: pointer;
 	&:hover {
 		background-color: var(--main-purple-darker);
+	}
+}
+@media (min-width: 576px) {
+	.link {
+		padding: 0.5em 2em;
 	}
 }

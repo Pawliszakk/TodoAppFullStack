@@ -8,6 +8,10 @@
 	align-items: center;
 	overflow: hidden;
 
+	.btn {
+		display: inline-block;
+	}
+
 	&.darker {
 		background-color: var(--white-cream);
 	}

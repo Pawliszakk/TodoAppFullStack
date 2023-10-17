@@ -1,14 +1,33 @@
 .list {
+	list-style-type: none;
 	display: flex;
 	align-items: center;
-	list-style-type: none;
+	gap: 1rem;
+	margin-right: 2em;
+	.btn {
+		font-size: 1.5rem;
+	}
 	li {
-		margin: 0 2em;
-		svg {
-			font-size: 2rem;
+		a {
+			position: relative;
+			img {
+				position: absolute;
+				top: -20px;
+				left: 0;
+			}
+			span {
+				position: absolute;
+				visibility: hidden;
+			}
 		}
-		img {
-			width: 30px;
+	}
+}
+
+@media (min-width: 576px) {
+	.list {
+		gap: 2rem;
+		.btn {
+			font-size: 1.8rem;
 		}
 	}
 }
