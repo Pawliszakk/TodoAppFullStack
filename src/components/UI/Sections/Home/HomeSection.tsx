@@ -26,7 +26,6 @@ const HomeSection: React.FC<HomeSectionProps> = ({
 	const sectionClasses = `${classes.section} ${className ? className : null}  ${
 		darker ? classes.darker : null
 	}`;
-	console.log(first);
 	return (
 		<section className={sectionClasses}>
 			<SlideAnimation
