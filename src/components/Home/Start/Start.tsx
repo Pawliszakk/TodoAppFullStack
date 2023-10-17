@@ -15,7 +15,7 @@ const Start = () => {
 					</span>
 				</p>
 				<Button link href="/#about">
-					Let's get started
+					Let{"'"}s get started
 				</Button>
 			</div>
 			<div className={classes.image}>
