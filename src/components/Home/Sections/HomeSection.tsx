@@ -1,29 +1,30 @@
 import Image from 'next/image';
 import classes from './HomeSection.module.scss';
-import SlideAnimation from '../../Animations/SlideAnimation';
-import Button from '../../Buttons/Button';
+import SlideAnimation from '../../UI/Animations/SlideAnimation';
+import Button from '../../UI/Buttons/Button';
 import { HomeSectionProps } from '@/types/app';
 
 const HomeSection: React.FC<HomeSectionProps> = ({
 	image,
-	darker,
 	heading,
 	description,
-	reverse,
 	alt,
-	first,
+	button,
+	index,
 }) => {
+	const isOdd = index! % 2 !== 0;
+
 	return (
-		<section className={`${classes.section} ${darker ? classes.darker : null}`}>
+		<section className={`${classes.section} ${isOdd ? classes.darker : null}`}>
 			<SlideAnimation
-				left={reverse}
-				className={`${classes.box} ${reverse ? classes.reverse : null}`}
+				left={isOdd}
+				className={`${classes.box} ${isOdd ? classes.reverse : null}`}
 			>
 				<div className={classes.content}>
 					<h2>{heading}</h2>
 					<p>{description}</p>
-					{first ? (
-						<Button className={classes.btn} link href="/#about">
+					{button ? (
+						<Button className={classes.btn} link href="/login">
 							{"Let's get started"}
 						</Button>
 					) : null}

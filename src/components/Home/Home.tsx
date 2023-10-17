@@ -1,5 +1,5 @@
 import { HomeSectionProps } from '@/types/app';
-import HomeSection from '../UI/Sections/Home/HomeSection';
+import HomeSection from './Sections/HomeSection';
 
 const sectionsData: HomeSectionProps[] = [
 	{
@@ -8,7 +8,7 @@ const sectionsData: HomeSectionProps[] = [
 		heading: 'Your Journey to Productivity.',
 		description:
 			'Transform Your Dreams into Actionable Tasks and Your Tasks into Achievements, Anytime, Anywhere with Taskify ',
-		first: true,
+		button: true,
 	},
 	{
 		image: '/assets/ilustrations/ideas.jpg',
@@ -16,8 +16,6 @@ const sectionsData: HomeSectionProps[] = [
 		heading: 'But, what is Taskify all about?',
 		description:
 			"Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs.",
-		reverse: true,
-		darker: true,
 	},
 	{
 		image: '/assets/ilustrations/question.jpg',
@@ -32,8 +30,6 @@ const sectionsData: HomeSectionProps[] = [
 		heading: 'First Step - Making account',
 		description:
 			'Create an account so we can assign your tasks, your points, to your account!',
-		reverse: true,
-		darker: true,
 	},
 	{
 		image: '/assets/ilustrations/planning.jpg',
@@ -48,8 +44,7 @@ const sectionsData: HomeSectionProps[] = [
 		heading: 'Third Step - Perform tasks',
 		description:
 			"That's it, create tasks, finish them, collect points! It's that simple!",
-		reverse: true,
-		darker: true,
+		button: true,
 	},
 ];
 
@@ -59,13 +54,12 @@ const Home = () => {
 			{sectionsData.map((data, i) => (
 				<HomeSection
 					key={i}
+					index={i}
 					image={data.image}
 					alt={data.alt}
 					heading={data.heading}
 					description={data.description}
-					darker={data.darker}
-					reverse={data.reverse}
-					first={data.first}
+					button={data.button}
 				/>
 			))}
 		</>
