@@ -1,6 +1,7 @@
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
 import { FaRegMoon } from 'react-icons/fa6';
+import Link from 'next/link';
 
 const NavList = () => {
 	return (
@@ -13,7 +14,15 @@ const NavList = () => {
 			<li>
 				<FaRegMoon />
 			</li>
-			<li>Link1</li>
+			<li>
+				<Link href="/profile/id2">
+					<img
+						style={{ width: '30px' }}
+						src="/assets/avatars/avatarlogout.jpg"
+						alt="An avatar of a user"
+					/>
+				</Link>
+			</li>
 			<li>Link1</li>
 		</ul>
 	);

@@ -1,0 +1,11 @@
+.link {
+	background-color: var(--main-purple);
+	color: var(--white);
+	padding: 0.5em 1em;
+	border-radius: 15px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	&:hover {
+		background-color: var(--main-purple-darker);
+	}
+}
