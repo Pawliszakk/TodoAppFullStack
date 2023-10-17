@@ -1,5 +1,11 @@
+import Start from './Start/Start';
+
 const Home = () => {
-	return <h1>Homepage</h1>;
+	return (
+		<>
+			<Start />
+		</>
+	);
 };
 
 export default Home;

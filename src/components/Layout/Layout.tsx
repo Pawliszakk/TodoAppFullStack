@@ -1,3 +1,4 @@
+import Footer from './Footer/Footer';
 import Nav from './Nav/Nav';
 
 interface LayoutProps {
@@ -9,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 		<>
 			<Nav />
 			<main>{children}</main>
-			<footer>Siema tu footer</footer>
+			<Footer />
 		</>
 	);
 };

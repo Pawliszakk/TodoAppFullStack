@@ -2,7 +2,7 @@ import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
 import { FaRegMoon } from 'react-icons/fa6';
 import Link from 'next/link';
-
+import Image from 'next/image';
 const NavList = () => {
 	return (
 		<ul className={classes.list}>
@@ -16,14 +16,14 @@ const NavList = () => {
 			</li>
 			<li>
 				<Link href="/profile/id2">
-					<img
-						style={{ width: '30px' }}
+					<Image
 						src="/assets/avatars/avatarlogout.jpg"
 						alt="An avatar of a user"
+						width={30}
+						height={30}
 					/>
 				</Link>
 			</li>
-			<li>Link1</li>
 		</ul>
 	);
 };
