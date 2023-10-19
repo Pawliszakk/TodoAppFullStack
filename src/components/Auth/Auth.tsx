@@ -1,16 +1,33 @@
+import Image from 'next/image';
 import classes from './Auth.module.scss';
 import { useState } from 'react';
+import Signup from './Signup/Signup';
+import Login from './Login/Login';
+import Start from './Start/Start';
 
 const Auth = () => {
 	const [currentForm, setCurrentForm] = useState(0);
 
+	const setFormHandler = (number: number) => setCurrentForm(number);
+
 	return (
-		<div className={classes.box}>
-			<div className={classes.form}></div>
-			<div className={classes.image}>
-				<img src="/assets/ilustrations/login.jpg" alt="" />
+		<section className={classes.auth}>
+			{' '}
+			<div className={classes.box}>
+				<div className={classes.form}>
+					{currentForm === 0 && <Start />}
+					{currentForm === 1 && <Signup />}
+					{currentForm === 2 && <Login />}
+				</div>
+				<div className={classes.image}>
+					<Image
+						src="/assets/ilustrations/login.jpg"
+						alt="Ilustration of woman and man probably logging into account on phone form background"
+						layout="fill"
+					/>
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
