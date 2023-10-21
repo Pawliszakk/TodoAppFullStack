@@ -6,9 +6,16 @@ interface ButtonProps {
 	link?: boolean;
 	href?: string;
 	className?: string;
+	onClick: (arg: any) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, link, href, className }) => {
+const Button: React.FC<ButtonProps> = ({
+	children,
+	link,
+	href,
+	className,
+	onClick,
+}) => {
 	const additionalClass = className ? className : null;
 
 	if (link && href) {
@@ -20,7 +27,9 @@ const Button: React.FC<ButtonProps> = ({ children, link, href, className }) => {
 	}
 
 	return (
-		<button className={`${classes.btn} ${additionalClass}`}>{children}</button>
+		<button onClick={onClick} className={`${classes.btn} ${additionalClass}`}>
+			{children}
+		</button>
 	);
 };
 

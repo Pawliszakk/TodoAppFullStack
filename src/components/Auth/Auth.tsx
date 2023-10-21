@@ -15,7 +15,7 @@ const Auth = () => {
 			{' '}
 			<div className={classes.box}>
 				<div className={classes.form}>
-					{currentForm === 0 && <Start />}
+					{currentForm === 0 && <Start onFormChange={setFormHandler} />}
 					{currentForm === 1 && <Signup />}
 					{currentForm === 2 && <Login />}
 				</div>
