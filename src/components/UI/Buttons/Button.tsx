@@ -6,7 +6,7 @@ interface ButtonProps {
 	link?: boolean;
 	href?: string;
 	className?: string;
-	onClick: (arg: any) => void;
+	onClick?: (arg: any) => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
