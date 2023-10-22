@@ -19,7 +19,7 @@ const Auth = () => {
 				{currentForm === 2 && <Login onFormChange={setFormHandler} />}
 				<div className={classes.image}>
 					<Image
-						src="/assets/ilustrations/login.JPG"
+						src="/assets/ilustrations/login.jpg"
 						alt="Ilustration of woman and man probably logging into account on phone form background"
 						layout="fill"
 					/>
