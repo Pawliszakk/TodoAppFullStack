@@ -21,7 +21,7 @@ const Auth = () => {
 				</div>
 				<div className={classes.image}>
 					<Image
-						src="/assets/ilustrations/login.jpg"
+						src="/assets/ilustrations/login.JPG"
 						alt="Ilustration of woman and man probably logging into account on phone form background"
 						layout="fill"
 					/>

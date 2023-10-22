@@ -7,6 +7,7 @@ interface ButtonProps {
 	href?: string;
 	className?: string;
 	onClick?: (arg: any) => void;
+	type?: 'button' | 'reset' | 'submit';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
 	href,
 	className,
 	onClick,
+	type,
 }) => {
 	const additionalClass = className ? className : null;
 
@@ -27,7 +29,11 @@ const Button: React.FC<ButtonProps> = ({
 	}
 
 	return (
-		<button onClick={onClick} className={`${classes.btn} ${additionalClass}`}>
+		<button
+			onClick={onClick}
+			type={type ? type : 'button'}
+			className={`${classes.btn} ${additionalClass}`}
+		>
 			{children}
 		</button>
 	);
