@@ -1,0 +1,26 @@
+.formBox {
+	background-color: var(--white-cream);
+	width: 80%;
+	margin: 0 auto;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 25px;
+	padding: 2em;
+	h2 {
+		font-size: 1.8rem;
+		color: var(--main-purple-darker);
+	}
+	p {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-height: 500px) {
+	.formBox {
+		h2 {
+			font-size: 1.5rem;
+		}
+		p {
+			font-size: 1rem;
+		}
+	}
+}

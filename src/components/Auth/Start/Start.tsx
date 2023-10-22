@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import classes from './Start.module.scss';
 import Button from '@/components/UI/Buttons/Button';
+import FormBox from '@/components/UI/Form/FormBox';
 
 interface StartProps {
 	onFormChange: (number: number) => void;
@@ -8,7 +9,8 @@ interface StartProps {
 
 const Start: React.FC<StartProps> = ({ onFormChange }) => {
 	return (
-		<div className={classes.box}>
+		<FormBox>
+			{' '}
 			<h2>Hello There!</h2>
 			<p>
 				Creating an account or logging in will unlock the full capabilities of
@@ -22,10 +24,14 @@ const Start: React.FC<StartProps> = ({ onFormChange }) => {
 				/>{' '}
 			</div>
 			<div className={classes.buttons}>
-				<Button onClick={() => onFormChange(2)}>Login</Button>
-				<Button onClick={() => onFormChange(1)}>SignUp</Button>
+				<Button className={classes.btn} onClick={() => onFormChange(2)}>
+					Login
+				</Button>
+				<Button className={classes.btn} onClick={() => onFormChange(1)}>
+					SignUp
+				</Button>
 			</div>
-		</div>
+		</FormBox>
 	);
 };
 
