@@ -24,9 +24,6 @@ const Login = () => {
 		onSubmit: (values) => console.log(values),
 	});
 
-	const emailError = formik.errors.email && formik.touched.email;
-	const passwordError = formik.errors.password && formik.touched.password;
-
 	return (
 		<FormBox>
 			<h2>Login</h2>
@@ -37,9 +34,9 @@ const Login = () => {
 					label="E-mail"
 					name="email"
 					type="email"
-					placeholder="Please enter your email"
-					error={emailError}
-					errorMessage={formik.errors.email}
+					placeholder="Please enter your email..."
+					error={formik.errors.email}
+					touched={formik.touched.email}
 					field={formik.getFieldProps('email')}
 				/>
 
@@ -47,9 +44,9 @@ const Login = () => {
 					label="Password"
 					name="password"
 					type="password"
-					placeholder="Please enter your email"
-					error={passwordError}
-					errorMessage={formik.errors.password}
+					placeholder="Please enter your password..."
+					error={formik.errors.password}
+					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
 				/>
 				<Button type="submit"> Login</Button>

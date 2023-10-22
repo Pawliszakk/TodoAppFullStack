@@ -18,6 +18,7 @@ body {
 	--main-purple-darker: #3c0686;
 	--white: #fff;
 	--white-cream: #f8f3f3;
+	--error: #ff6347;
 }
 html {
 	font-size: 62.5%;

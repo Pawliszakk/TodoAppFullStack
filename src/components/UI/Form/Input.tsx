@@ -1,3 +1,5 @@
+import classes from './Input.module.scss';
+import { BiErrorCircle } from 'react-icons/bi';
 import { FieldInputProps } from 'formik';
 
 interface InputProps {
@@ -6,8 +8,8 @@ interface InputProps {
 	placeholder: string;
 	label?: string;
 	type: string;
-	error?: string | boolean;
-	errorMessage?: string;
+	error?: string;
+	touched?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -16,14 +18,20 @@ const Input: React.FC<InputProps> = ({
 	label,
 	type,
 	error,
-	errorMessage,
 	name,
+	touched,
 }) => {
+	const isError = touched && error;
+
 	return (
-		<div>
+		<div className={classes.box}>
 			<label htmlFor={name}>{label}</label>
 			<input id={name} type={type} {...field} placeholder={placeholder} />
-			{error ? <p>{errorMessage}</p> : null}
+			{isError ? (
+				<p>
+					{error} <BiErrorCircle />
+				</p>
+			) : null}
 		</div>
 	);
 };
