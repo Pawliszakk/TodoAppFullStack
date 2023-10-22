@@ -15,6 +15,11 @@
 		font-size: 1.3rem;
 		max-width: 300px;
 		margin: 0 auto;
+		span {
+			cursor: pointer;
+			color: var(--main-purple-darker);
+			text-decoration: underline;
+		}
 	}
 
 	button {

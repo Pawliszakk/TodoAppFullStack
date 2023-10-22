@@ -1,25 +1,21 @@
 import FormBox from '@/components/UI/Form/FormBox';
 import classes from './Login.module.scss';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
+import { LoginSchema } from '../../../utils/validation';
 
-const Login = () => {
+interface LoginProps {
+	onFormChange: (number: number) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 	const formik = useFormik({
 		initialValues: {
 			email: '',
 			password: '',
 		},
-		validationSchema: Yup.object({
-			email: Yup.string()
-				.email('Invalid email address')
-				.required('Please enter your email address'),
-			password: Yup.string()
-				.min(8, 'Incorrect password')
-				.max(20, 'Incorrect password')
-				.required('Please enter your password'),
-		}),
+		validationSchema: LoginSchema,
 
 		onSubmit: (values) => console.log(values),
 	});
@@ -52,7 +48,9 @@ const Login = () => {
 				<Button type="submit"> Login</Button>
 			</form>
 
-			<p>No account? Create one</p>
+			<p>
+				No account? <span onClick={() => onFormChange(1)}>create one</span>
+			</p>
 		</FormBox>
 	);
 };
