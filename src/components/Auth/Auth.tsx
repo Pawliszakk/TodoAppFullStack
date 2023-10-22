@@ -14,11 +14,9 @@ const Auth = () => {
 		<section className={classes.auth}>
 			{' '}
 			<div className={classes.box}>
-				<div className={classes.form}>
-					{currentForm === 0 && <Start onFormChange={setFormHandler} />}
-					{currentForm === 1 && <Signup onFormChange={setFormHandler}/>}
-					{currentForm === 2 && <Login onFormChange={setFormHandler}/>}
-				</div>
+				{currentForm === 0 && <Start onFormChange={setFormHandler} />}
+				{currentForm === 1 && <Signup onFormChange={setFormHandler} />}
+				{currentForm === 2 && <Login onFormChange={setFormHandler} />}
 				<div className={classes.image}>
 					<Image
 						src="/assets/ilustrations/login.JPG"
