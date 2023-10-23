@@ -6,6 +6,7 @@ import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 
 type Avatar = {
 	src: string;
@@ -91,7 +92,9 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 						</button>
 					</div>
 					<div className={classes.avatars}>
-						<p>{isMen ? <p>Men</p> : <p>Women</p>}</p>
+						{avatars.map((a) => (
+							<p key={a.src}>{a.src}</p>
+						))}
 					</div>
 				</div>
 				<Button type="submit">Sign Up</Button>
