@@ -4,12 +4,15 @@ import Button from '@/components/UI/Buttons/Button';
 import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
-
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 interface LoginProps {
 	onFormChange: (number: number) => void;
 }
 
 const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
+	const [isMen, setIsMen] = useState(false);
+
 	const formik = useFormik({
 		initialValues: { name: '', email: '', password: '' },
 		validationSchema: SignupSchema,
@@ -49,7 +52,20 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
 				/>
-
+				<div className={classes.avatar}>
+					<p>Choose your avatar</p>
+					<div className={classes.buttons}>
+						<button type="button" onClick={() => setIsMen(true)}>
+							Men
+						</button>
+						<button type="button" onClick={() => setIsMen(false)}>
+							Women
+						</button>
+					</div>
+					<div className={classes.avatars}>
+						<p>{isMen ? <p>Men</p> : <p>Women</p>}</p>
+					</div>
+				</div>
 				<Button type="submit">Sign Up</Button>
 			</form>
 
