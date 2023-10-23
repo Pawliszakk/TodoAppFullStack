@@ -6,12 +6,40 @@ import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+
+type Avatar = {
+	src: string;
+	gender: 'Woman' | 'Man';
+};
+
+const avatarArray: Avatar[] = [
+	{ src: '/assets/avatars/avatar1', gender: 'Man' },
+	{ src: '/assets/avatars/avatar2', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar3', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar4', gender: 'Man' },
+	{ src: '/assets/avatars/avatar5', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar6', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar7', gender: 'Man' },
+	{ src: '/assets/avatars/avatar8', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar9', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar10', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar11', gender: 'Man' },
+	{ src: '/assets/avatars/avatar12', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar13', gender: 'Man' },
+	{ src: '/assets/avatars/avatar14', gender: 'Man' },
+	{ src: '/assets/avatars/avatar15', gender: 'Man' },
+];
+
 interface LoginProps {
 	onFormChange: (number: number) => void;
 }
 
 const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isMen, setIsMen] = useState(false);
+
+	const avatars = avatarArray.filter(
+		(a) => a.gender === (isMen ? 'Man' : 'Woman')
+	);
 
 	const formik = useFormik({
 		initialValues: { name: '', email: '', password: '' },
