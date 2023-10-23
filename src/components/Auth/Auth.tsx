@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Signup from './Signup/Signup';
 import Login from './Login/Login';
 import Start from './Start/Start';
-
+import SlideAnimation from '../UI/Animations/SlideAnimation';
 const Auth = () => {
 	const [currentForm, setCurrentForm] = useState(0);
 
@@ -14,16 +14,18 @@ const Auth = () => {
 		<section className={classes.auth}>
 			{' '}
 			<div className={classes.box}>
-				{currentForm === 0 && <Start onFormChange={setFormHandler} />}
-				{currentForm === 1 && <Signup onFormChange={setFormHandler} />}
-				{currentForm === 2 && <Login onFormChange={setFormHandler} />}
-				<div className={classes.image}>
+				<SlideAnimation>
+					{currentForm === 0 && <Start onFormChange={setFormHandler} />}
+					{currentForm === 1 && <Signup onFormChange={setFormHandler} />}
+					{currentForm === 2 && <Login onFormChange={setFormHandler} />}
+				</SlideAnimation>
+				<SlideAnimation left className={classes.image}>
 					<Image
 						src="/assets/ilustrations/login.jpg"
 						alt="Ilustration of woman and man probably logging into account on phone form background"
 						layout="fill"
 					/>
-				</div>
+				</SlideAnimation>
 			</div>
 		</section>
 	);
