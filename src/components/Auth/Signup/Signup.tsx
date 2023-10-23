@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 type Avatar = {
@@ -14,21 +14,21 @@ type Avatar = {
 };
 
 const avatarArray: Avatar[] = [
-	{ src: '/assets/avatars/avatar1', gender: 'Man' },
-	{ src: '/assets/avatars/avatar2', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar3', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar4', gender: 'Man' },
-	{ src: '/assets/avatars/avatar5', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar6', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar7', gender: 'Man' },
-	{ src: '/assets/avatars/avatar8', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar9', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar10', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar11', gender: 'Man' },
-	{ src: '/assets/avatars/avatar12', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar13', gender: 'Man' },
-	{ src: '/assets/avatars/avatar14', gender: 'Man' },
-	{ src: '/assets/avatars/avatar15', gender: 'Man' },
+	{ src: '/assets/avatars/avatar1.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar2.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar3.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar4.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar5.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar6.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar7.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar8.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar9.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar10.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar11.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar12.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar13.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar14.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar15.jpg', gender: 'Man' },
 ];
 
 interface LoginProps {
@@ -37,15 +37,33 @@ interface LoginProps {
 
 const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isMen, setIsMen] = useState(false);
+	const [avatar, setAvatar] = useState('/assets/avatars/avatar2.jpg');
+
+	const menAvatarsHandler = () => {
+		setIsMen(true);
+		setAvatar('/assets/avatars/avatar1.jpg');
+	};
+	const womenAvatarsHandler = () => {
+		setIsMen(false);
+		setAvatar('/assets/avatars/avatar2.jpg');
+	};
 
 	const avatars = avatarArray.filter(
 		(a) => a.gender === (isMen ? 'Man' : 'Woman')
 	);
 
 	const formik = useFormik({
-		initialValues: { name: '', email: '', password: '' },
+		initialValues: {
+			name: '',
+			email: '',
+			password: '',
+			avatar: '/assets/avatars/avatar1.jpg',
+		},
 		validationSchema: SignupSchema,
-		onSubmit: (values) => console.log(values),
+		onSubmit: (values) => {
+			values.avatar = avatar;
+			console.log(values);
+		},
 	});
 
 	return (
@@ -86,22 +104,30 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					<div className={classes.buttons}>
 						<button
 							type="button"
-							onClick={() => setIsMen(true)}
+							onClick={menAvatarsHandler}
 							className={isMen ? classes.active : undefined}
 						>
 							Men
 						</button>
 						<button
 							type="button"
-							onClick={() => setIsMen(false)}
+							onClick={womenAvatarsHandler}
 							className={!isMen ? classes.active : undefined}
 						>
 							Women
 						</button>
 					</div>
-					<div className={classes.avatars}>
-						{avatars.map((a) => (
-							<p key={a.src}>{a.src}</p>
+					<div>
+						{avatars.map((a, i) => (
+							<div
+								key={i}
+								className={`${classes.tile} ${
+									a.src === avatar ? classes.active : null
+								}`}
+								onClick={() => setAvatar(a.src)}
+							>
+								<Image src={a.src} alt="Avatar of a user" layout="fill" />
+							</div>
 						))}
 					</div>
 				</div>
