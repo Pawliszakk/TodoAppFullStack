@@ -84,10 +84,18 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				<div className={classes.avatar}>
 					<p>Choose your avatar</p>
 					<div className={classes.buttons}>
-						<button type="button" onClick={() => setIsMen(true)}>
+						<button
+							type="button"
+							onClick={() => setIsMen(true)}
+							className={isMen ? classes.active : undefined}
+						>
 							Men
 						</button>
-						<button type="button" onClick={() => setIsMen(false)}>
+						<button
+							type="button"
+							onClick={() => setIsMen(false)}
+							className={!isMen ? classes.active : undefined}
+						>
 							Women
 						</button>
 					</div>
