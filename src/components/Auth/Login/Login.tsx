@@ -17,7 +17,10 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 		},
 		validationSchema: LoginSchema,
 
-		onSubmit: (values) => console.log(values),
+		onSubmit: (values) => {
+			console.log(values);
+			//SEND DATA TO API
+		},
 	});
 
 	return (

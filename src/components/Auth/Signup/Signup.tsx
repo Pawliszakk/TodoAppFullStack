@@ -61,8 +61,13 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		},
 		validationSchema: SignupSchema,
 		onSubmit: (values) => {
+			if (!avatar) {
+				return;
+			}
 			values.avatar = avatar;
 			console.log(values);
+
+			//SEND DATA TO API
 		},
 	});
 
