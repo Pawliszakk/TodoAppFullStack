@@ -1,5 +1,10 @@
-import Auth from '@/components/Auth/Auth';
+import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
+
+const Auth = dynamic(() => import('@/components/Auth/Auth'), {
+	loading: () => <LoadingSpinner />,
+});
 
 const LoginPage = () => {
 	return (

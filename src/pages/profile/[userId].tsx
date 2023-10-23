@@ -1,5 +1,9 @@
 import Head from 'next/head';
 
+// const Auth = dynamic(() => import('@/components/Auth/Auth'), {
+// 	loading: () => <LoadingSpinner />,
+// });
+
 const ProfilePage = () => {
 	return (
 		<>

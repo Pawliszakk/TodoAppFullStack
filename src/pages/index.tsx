@@ -1,6 +1,10 @@
-import Home from '@/components/Home/Home';
+import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
+const Home = dynamic(() => import('@/components/Home/Home'), {
+	loading: () => <LoadingSpinner />,
+});
 export default function HomePage() {
 	return (
 		<>
