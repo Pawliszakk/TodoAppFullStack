@@ -8,7 +8,10 @@ interface PortalProps {
 const Portal: React.FC<PortalProps> = ({ children }) => {
 	const [mounted, setMounted] = useState(false);
 
-	const portalRoot = document.getElementById('overlay-root');
+	const portalRoot =
+		typeof document !== 'undefined'
+			? document.getElementById('overlay-root')
+			: null;
 
 	useEffect(() => {
 		setMounted(true);

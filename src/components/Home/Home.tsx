@@ -25,7 +25,7 @@ const sectionsData: HomeSectionProps[] = [
 			"Below, you'll find a step-by-step tutorial that guides you on how to use the application and accomplish your goals, much like this.",
 	},
 	{
-		image: '/assets/ilustrations/login.jpg',
+		image: '/assets/ilustrations/loginCream.jpg',
 		alt: 'Ilustration of man and woman on login form in background probably logging into application',
 		heading: 'First Step - Making account',
 		description:
