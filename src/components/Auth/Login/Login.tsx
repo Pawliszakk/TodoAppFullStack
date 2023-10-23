@@ -1,5 +1,4 @@
 import FormBox from '@/components/UI/Form/FormBox';
-import classes from './Login.module.scss';
 import { useFormik } from 'formik';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';

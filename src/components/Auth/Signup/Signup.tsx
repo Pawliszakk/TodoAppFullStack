@@ -4,8 +4,7 @@ import Button from '@/components/UI/Buttons/Button';
 import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 
 type Avatar = {
