@@ -39,10 +39,10 @@ export const getServerSideProps = async ({
 	const userId = params.userId;
 
 	const user: User = {
-		avatar: '/assets/avatars/avatar1.jpg',
+		avatar: '/assets/avatars/avatar11.jpg',
 		name: 'John Doe',
 		date: '2023-10-24',
-		points: 100,
+		points: 123,
 		id: '2',
 	};
 
