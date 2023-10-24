@@ -1,7 +1,28 @@
 .panel {
-	padding: 3rem 0;
+	padding: 5rem 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	background-color: var(--white-cream);
+}
+
+.categories {
+	margin: 2rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	max-width: 500px;
+}
+
+@media (min-width: 576px) {
+	.categories {
+		max-width: 600px;
+	}
+}
+@media (min-width: 1200px) {
+	.categories {
+		max-width: 1200px;
+	}
 }

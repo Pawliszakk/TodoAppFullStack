@@ -1,0 +1,52 @@
+.category {
+	width: 120px;
+	height: 120px;
+	background-color: red;
+	color: var(--white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 1rem;
+	padding: 1em;
+	border-radius: 15px;
+	cursor: pointer;
+	svg {
+		font-size: 8rem;
+	}
+	h3 {
+		font-size: 2rem;
+		font-weight: 200;
+	}
+}
+
+.health {
+	background-color: var(--health-color);
+}
+
+.work {
+	background-color: var(--work-color);
+}
+
+.house {
+	background-color: var(--house-color);
+}
+
+.personal {
+	background-color: var(--personal-color);
+}
+
+.payments {
+	background-color: var(--payments-color);
+}
+
+.ideas {
+	background-color: var(--ideas-color);
+}
+
+
+@media(min-width: 576px) {
+    .category{
+        width: 150px;height: 150px;
+    }
+}

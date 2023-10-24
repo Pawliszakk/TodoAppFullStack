@@ -19,6 +19,12 @@ body {
 	--white: #fff;
 	--white-cream: #f8f3f3;
 	--error: #ff6347;
+	--health-color: #a0230d;
+	--work-color: #f4ce14;
+	--house-color: #7752fe;
+	--personal-color: #190482;
+	--payments-color: #ffb000;
+	--ideas-color: #f99417;
 }
 html {
 	font-size: 62.5%;

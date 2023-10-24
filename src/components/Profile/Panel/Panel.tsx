@@ -1,24 +1,12 @@
 import Button from '@/components/UI/Buttons/Button';
 import classes from './Panel.module.scss';
-import { Category } from '@/types/app';
-
-import { FaHeartbeat } from 'react-icons/fa';
-import { FaBriefcase, FaMoneyCheckDollar } from 'react-icons/fa6';
-import { BsFillHouseFill } from 'react-icons/bs';
-import { AiOutlineUser } from 'react-icons/ai';
-import { PiLightbulbLight } from 'react-icons/pi';
 import CategoryTile from './Category';
-
-const categories: Category[] = [
-	{ category: 'Health', icon: <FaHeartbeat /> },
-	{ category: 'Work', icon: <FaBriefcase /> },
-	{ category: 'House', icon: <BsFillHouseFill /> },
-	{ category: 'Personal', icon: <AiOutlineUser /> },
-	{ category: 'Payments', icon: <FaMoneyCheckDollar /> },
-	{ category: 'Ideas', icon: <PiLightbulbLight /> },
-];
+import { Categories } from '@/data/categories';
 
 const Panel = () => {
+	const allTasksHandler = () => {
+		console.log('All Tasks');
+	};
 	const activeTasksHandler = () => {
 		console.log('Active Tasks');
 	};
@@ -34,10 +22,12 @@ const Panel = () => {
 			</div>
 
 			<div className={classes.categories}>
-				{categories.map((cat, i) => (
+				{Categories.map((cat, i) => (
 					<CategoryTile key={i} icon={cat.icon} category={cat.category} />
 				))}
 			</div>
+			<p>Show Tasks by category or...</p>
+			<Button onClick={allTasksHandler}>Show All Tasks</Button>
 		</section>
 	);
 };
