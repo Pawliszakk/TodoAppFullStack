@@ -17,11 +17,7 @@ const Panel = () => {
 
 	return (
 		<section className={classes.panel}>
-			<SlideAnimation className={classes.buttons}>
-				<Button onClick={activeTasksHandler}>Show active tasks</Button>
-				<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
-			</SlideAnimation>
-
+			<h2>Categories</h2>
 			<div className={classes.categories}>
 				{Categories.map((cat, i) => (
 					<CategoryTile
@@ -32,9 +28,11 @@ const Panel = () => {
 					/>
 				))}
 			</div>
-			<SlideAnimation left>
-				<p>Show Tasks by category or...</p>
+			<p>Show Tasks by category or...</p>
+			<SlideAnimation className={classes.buttons}>
+				<Button onClick={activeTasksHandler}>Show active tasks</Button>
 				<Button onClick={allTasksHandler}>Show All Tasks</Button>
+				<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
 			</SlideAnimation>
 		</section>
 	);
