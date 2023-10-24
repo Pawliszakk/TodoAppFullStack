@@ -3,7 +3,18 @@ import classes from './Category.module.scss';
 import { Category } from '@/types/app';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import SlideFromTop from '@/components/UI/Animations/SlideFromTop';
-const CategoryTile: React.FC<Category> = ({ icon, category, index }) => {
+const CategoryTile: React.FC<Category> = ({
+	icon,
+	category,
+	index,
+	onTasksShow,
+}) => {
+	const handleCategoryClick = () => {
+		if (onTasksShow) {
+			onTasksShow(category);
+		}
+	};
+
 	let categoryClass;
 
 	switch (category) {
@@ -34,7 +45,9 @@ const CategoryTile: React.FC<Category> = ({ icon, category, index }) => {
 		<SlideFromTop index={index}>
 			<motion.div
 				whileHover={{ scale: 0.9 }}
+				whileTap={{ scale: 0.7 }}
 				className={`${classes.category} ${categoryClass}`}
+				onClick={handleCategoryClick}
 			>
 				{icon}
 				<h3>{category}</h3>

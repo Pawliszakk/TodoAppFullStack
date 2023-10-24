@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import classes from './Button.module.scss';
-
+import { motion } from 'framer-motion';
 interface ButtonProps {
 	children: string;
 	link?: boolean;
@@ -22,20 +22,24 @@ const Button: React.FC<ButtonProps> = ({
 
 	if (link && href) {
 		return (
-			<Link href={href} className={`${classes.link} ${additionalClass}`}>
-				{children}
-			</Link>
+			<motion.div whileHover={{ scale: 0.95 }} whileTap={{ scale: 0.7 }}>
+				<Link href={href} className={`${classes.link} ${additionalClass}`}>
+					{children}
+				</Link>
+			</motion.div>
 		);
 	}
 
 	return (
-		<button
+		<motion.button
+			whileHover={{ scale: 0.95 }}
+			whileTap={{ scale: 0.7 }}
 			onClick={onClick}
 			type={type ? type : 'button'}
 			className={`${classes.btn} ${additionalClass}`}
 		>
 			{children}
-		</button>
+		</motion.button>
 	);
 };
 

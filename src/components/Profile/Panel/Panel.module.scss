@@ -58,13 +58,16 @@
 	.buttons {
 		flex-direction: row;
 		gap: 1rem;
+		button {
+			font-size: 2rem;
+		}
 	}
 }
 @media (min-width: 1200px) {
 	.categories {
 		max-width: 1200px;
 	}
-	.buttons{
+	.buttons {
 		gap: 5rem;
 	}
 }

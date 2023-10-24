@@ -3,6 +3,7 @@ import classes from './Panel.module.scss';
 import CategoryTile from './Category';
 import { Categories } from '@/data/categories';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
+import { CategoryType } from '@/types/app';
 
 const Panel = () => {
 	const allTasksHandler = () => {
@@ -13,6 +14,9 @@ const Panel = () => {
 	};
 	const finishedTasksHandler = () => {
 		console.log('Finished Tasks');
+	};
+	const tasksByCategoryHandler = (category: CategoryType) => {
+		console.log('Taski o kategorii ' + category);
 	};
 
 	return (
@@ -25,6 +29,7 @@ const Panel = () => {
 						icon={cat.icon}
 						category={cat.category}
 						index={i}
+						onTasksShow={tasksByCategoryHandler}
 					/>
 				))}
 			</div>

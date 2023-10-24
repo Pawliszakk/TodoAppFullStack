@@ -14,8 +14,18 @@ export type User = {
 	points: number;
 	id?: string;
 };
+
+export type CategoryType =
+	| 'Health'
+	| 'Work'
+	| 'House'
+	| 'Personal'
+	| 'Payments'
+	| 'Ideas';
+
 export type Category = {
 	icon: JSX.Element;
-	category: 'Health' | 'Work' | 'House' | 'Personal' | 'Payments' | 'Ideas';
+	category: CategoryType;
 	index?: number;
+	onTasksShow?: (category: CategoryType) => void;
 };
