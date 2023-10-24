@@ -17,4 +17,5 @@ export type User = {
 export type Category = {
 	icon: JSX.Element;
 	category: 'Health' | 'Work' | 'House' | 'Personal' | 'Payments' | 'Ideas';
+	index?: number;
 };

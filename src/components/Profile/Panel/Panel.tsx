@@ -2,6 +2,7 @@ import Button from '@/components/UI/Buttons/Button';
 import classes from './Panel.module.scss';
 import CategoryTile from './Category';
 import { Categories } from '@/data/categories';
+import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 
 const Panel = () => {
 	const allTasksHandler = () => {
@@ -16,18 +17,25 @@ const Panel = () => {
 
 	return (
 		<section className={classes.panel}>
-			<div className={classes.buttons}>
+			<SlideAnimation className={classes.buttons}>
 				<Button onClick={activeTasksHandler}>Show active tasks</Button>
 				<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
-			</div>
+			</SlideAnimation>
 
 			<div className={classes.categories}>
 				{Categories.map((cat, i) => (
-					<CategoryTile key={i} icon={cat.icon} category={cat.category} />
+					<CategoryTile
+						key={i}
+						icon={cat.icon}
+						category={cat.category}
+						index={i}
+					/>
 				))}
 			</div>
-			<p>Show Tasks by category or...</p>
-			<Button onClick={allTasksHandler}>Show All Tasks</Button>
+			<SlideAnimation left>
+				<p>Show Tasks by category or...</p>
+				<Button onClick={allTasksHandler}>Show All Tasks</Button>
+			</SlideAnimation>
 		</section>
 	);
 };

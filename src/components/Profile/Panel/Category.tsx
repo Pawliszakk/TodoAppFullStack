@@ -1,7 +1,9 @@
+import { motion } from 'framer-motion';
 import classes from './Category.module.scss';
 import { Category } from '@/types/app';
-
-const CategoryTile: React.FC<Category> = ({ icon, category }) => {
+import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
+import SlideFromTop from '@/components/UI/Animations/SlideFromTop';
+const CategoryTile: React.FC<Category> = ({ icon, category, index }) => {
 	let categoryClass;
 
 	switch (category) {
@@ -29,10 +31,15 @@ const CategoryTile: React.FC<Category> = ({ icon, category }) => {
 	}
 
 	return (
-		<div className={`${classes.category} ${categoryClass}`}>
-			{icon}
-			<h3>{category}</h3>
-		</div>
+		<SlideFromTop index={index}>
+			<motion.div
+				whileHover={{ scale: 0.9 }}
+				className={`${classes.category} ${categoryClass}`}
+			>
+				{icon}
+				<h3>{category}</h3>
+			</motion.div>
+		</SlideFromTop>
 	);
 };
 
