@@ -14,3 +14,7 @@ export type User = {
 	points: number;
 	id?: string;
 };
+export type Category = {
+	icon: JSX.Element;
+	category: 'Health' | 'Work' | 'House' | 'Personal' | 'Payments' | 'Ideas';
+};

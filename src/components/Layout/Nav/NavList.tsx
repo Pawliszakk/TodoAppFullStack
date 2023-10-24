@@ -17,7 +17,7 @@ const NavList = () => {
 			</li>
 
 			<li>
-				<Link href="/login">
+				<Link href="/profile/2">
 					<Image
 						src="/assets/avatars/avatarLogout.jpg"
 						alt="An avatar of a user"
