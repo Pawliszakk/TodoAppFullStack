@@ -1,5 +1,5 @@
+import Ranking from '@/components/Ranking/Ranking';
 import Head from 'next/head';
-
 
 // const Auth = dynamic(() => import('@/components/Auth/Auth'), {
 // 	loading: () => <LoadingSpinner />,
@@ -15,7 +15,7 @@ const RankingPage = () => {
 					content="Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs."
 				/>
 			</Head>
-			<h1>Ranking userow</h1>
+			<Ranking />
 		</>
 	);
 };

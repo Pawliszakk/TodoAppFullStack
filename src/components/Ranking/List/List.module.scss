@@ -1,0 +1,24 @@
+.ranking {
+	text-align: center;
+	padding: 3rem 0;
+	h2 {
+		color: var(--main-purple-darker);
+		font-size: 2rem;
+		margin: 2rem 0;
+	}
+	ul {
+		list-style-type: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 768px) {
+	.ranking {
+		h2 {
+			font-size: 3rem;
+		}
+	}
+}

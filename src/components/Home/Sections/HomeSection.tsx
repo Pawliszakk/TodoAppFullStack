@@ -18,7 +18,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({
 		<section className={`${classes.section} ${isOdd ? classes.darker : null}`}>
 			<SlideAnimation
 				left={isOdd}
-				className={`${classes.box} ${isOdd ? classes.reverse : null}`}
+				className={`${classes.box} ${isOdd ? classes.reverse : null} `}
 			>
 				<div className={classes.content}>
 					<h2>{heading}</h2>
