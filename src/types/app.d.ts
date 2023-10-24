@@ -6,3 +6,10 @@ export type HomeSectionProps = {
 	button?: boolean;
 	index?: number;
 };
+
+export type User = {
+	avatar: string;
+	name: string;
+	date: string;
+	points: number;
+};

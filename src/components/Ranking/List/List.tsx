@@ -1,17 +1,26 @@
+import { User } from '@/types/app';
 import classes from './List.module.scss';
-import User from './User';
+import UserTile from './User';
 
-const List = () => {
+interface ListProps {
+	users: User[];
+}
+
+const List: React.FC<ListProps> = ({ users }) => {
 	return (
 		<section className={classes.ranking}>
 			<h2>Top users list</h2>
 
 			<ul>
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
+				{users.map((u, i) => (
+					<UserTile
+						key={i}
+						name={u.name}
+						points={u.points}
+						date={u.date}
+						avatar={u.avatar}
+					/>
+				))}
 			</ul>
 		</section>
 	);
