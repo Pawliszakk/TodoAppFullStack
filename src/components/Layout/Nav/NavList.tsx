@@ -10,6 +10,11 @@ const NavList = () => {
 					Login
 				</Button>
 			</li>
+			<li>
+				<Button className={classes.btn} link href="/ranking">
+					Top
+				</Button>
+			</li>
 
 			<li>
 				<Link href="/login">
