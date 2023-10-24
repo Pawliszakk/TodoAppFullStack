@@ -1,7 +1,7 @@
 import Button from '@/components/UI/Buttons/Button';
 import classes from './Panel.module.scss';
 import CategoryTile from './Category';
-import { Categories } from '@/data/categories';
+import { Categories } from '@/data/data';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { CategoryType } from '@/types/app';
 import { useState } from 'react';

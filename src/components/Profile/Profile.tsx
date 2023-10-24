@@ -1,5 +1,4 @@
 import { User } from '@/types/app';
-import classes from './Profile.module.scss';
 import UserProfile from './UserProfile/UserProfile';
 import Panel from './Panel/Panel';
 
