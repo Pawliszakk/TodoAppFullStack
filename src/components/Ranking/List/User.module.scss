@@ -6,16 +6,22 @@
 	padding: 1em;
 	width: 80%;
 	max-width: 500px;
+	transition: scale 0.3s;
 	h3 {
+		color: var(--main-purple-darker);
 		font-size: 2rem;
 		margin: 1em 0;
 	}
 	p {
-		font-size: 1.6rem;
+		font-size: 1.8rem;
 	}
 	.date {
 		font-size: 1.4rem;
 		font-weight: 200;
+		margin: 1em 0;
+	}
+	&:hover {
+		scale: 0.95;
 	}
 }
 
@@ -32,8 +38,11 @@
 
 @media (min-width: 576px) {
 	.user {
+		max-width: 600px;
 		display: flex;
-
+		p {
+			font-size: 2.2rem;
+		}
 		.image {
 			width: 30%;
 		}
@@ -46,8 +55,11 @@
 		}
 	}
 }
-@media (min-width: 576px) {
+
+@media (min-width: 768px) {
 	.user {
-		max-width: 600px;
+		h3 {
+			font-size: 3rem;
+		}
 	}
 }
