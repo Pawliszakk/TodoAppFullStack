@@ -19,12 +19,41 @@
 }
 
 .image {
-	width: 300px;
-	margin: 0 auto;
+	width: 200px;
+	margin: 2rem auto;
 	img {
 		width: 100%;
 		height: 100%;
 		position: relative !important;
 		object-fit: cover;
+	}
+}
+
+@media(min-width: 576px) {
+	.user{
+		h2{
+			font-size: 2.6rem;
+		}
+
+	}
+	.image{
+		width: 250px;
+	}
+}
+@media(min-width: 768px) {
+	.user{
+		h2{
+			font-size: 3rem;
+		}
+		p{
+			font-size: 2.2rem;
+		}
+		.date{
+			font-size: 2rem;
+		}
+
+	}
+	.image{
+		width: 300px;
 	}
 }
