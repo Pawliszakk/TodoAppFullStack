@@ -1,7 +1,7 @@
-import { HomeSectionProps } from '@/types/app';
-import HomeSection from './Sections/HomeSection';
+import { SectionProps } from '@/types/app';
+import Section from '../UI/Section/Section';
 
-const sectionsData: HomeSectionProps[] = [
+const sectionsData: SectionProps[] = [
 	{
 		image: '/assets/ilustrations/planning.jpg',
 		alt: 'Ilustration of man and woman',
@@ -52,7 +52,7 @@ const Home = () => {
 	return (
 		<>
 			{sectionsData.map((data, i) => (
-				<HomeSection
+				<Section
 					key={i}
 					index={i}
 					image={data.image}

@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
 import { LoginSchema } from '../../../utils/validation';
+import SectionTitle from '@/components/UI/Section/SectionTitle';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -24,7 +25,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 	return (
 		<FormBox>
-			<h2>Login</h2>
+			<SectionTitle>Login</SectionTitle>
 			<p>Welcome back! Login with your credentials</p>
 
 			<form onSubmit={formik.handleSubmit}>

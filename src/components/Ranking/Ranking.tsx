@@ -1,7 +1,6 @@
 import { User } from '@/types/app';
-import HomeSection from '../Home/Sections/HomeSection';
+import Section from '../UI/Section/Section';
 import List from './List/List';
-import classes from './Ranking.module.scss';
 
 interface RankingProps {
 	users: User[];
@@ -10,7 +9,7 @@ interface RankingProps {
 const Ranking: React.FC<RankingProps> = ({ users }) => {
 	return (
 		<>
-			<HomeSection
+			<Section
 				alt="Ilustration of people standing on podium, one is with flag in hand"
 				image="/assets/ilustrations/success.jpg"
 				heading="Compete with others!"

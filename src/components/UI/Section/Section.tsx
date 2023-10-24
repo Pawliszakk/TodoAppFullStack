@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import classes from './HomeSection.module.scss';
-import SlideAnimation from '../../UI/Animations/SlideAnimation';
-import Button from '../../UI/Buttons/Button';
-import { HomeSectionProps } from '@/types/app';
+import SlideAnimation from '../Animations/SlideAnimation';
+import Button from '../Buttons/Button';
+import { SectionProps } from '@/types/app';
+import SectionTitle from '@/components/UI/Section/SectionTitle';
 
-const HomeSection: React.FC<HomeSectionProps> = ({
+const Section: React.FC<SectionProps> = ({
 	image,
 	heading,
 	description,
@@ -21,7 +22,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({
 				className={`${classes.box} ${isOdd ? classes.reverse : null} `}
 			>
 				<div className={classes.content}>
-					<h2>{heading}</h2>
+					<SectionTitle>{heading}</SectionTitle>
 					<p>{description}</p>
 					{button ? (
 						<Button className={classes.btn} link href="/login">
@@ -37,4 +38,4 @@ const HomeSection: React.FC<HomeSectionProps> = ({
 	);
 };
 
-export default HomeSection;
+export default Section;

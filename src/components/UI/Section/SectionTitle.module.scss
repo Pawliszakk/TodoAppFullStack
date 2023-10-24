@@ -1,0 +1,10 @@
+.title {
+	font-size: 2.5rem;
+	color: var(--main-purple-darker);
+}
+
+@media (min-width: 768px) {
+	.title {
+		font-size: 3rem;
+	}
+}

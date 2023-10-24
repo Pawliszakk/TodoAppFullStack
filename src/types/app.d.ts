@@ -1,4 +1,4 @@
-export type HomeSectionProps = {
+export type SectionProps = {
 	image: string;
 	alt: string;
 	heading: string;

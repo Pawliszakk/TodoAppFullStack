@@ -7,10 +7,7 @@
 	border-radius: 25px;
 	padding: 2em;
 	text-align: center;
-	h2 {
-		font-size: 1.8rem;
-		color: var(--main-purple-darker);
-	}
+
 	p {
 		font-size: 1.3rem;
 		max-width: 300px;
@@ -33,9 +30,6 @@
 
 @media (max-height: 500px) {
 	.formBox {
-		h2 {
-			font-size: 1.5rem;
-		}
 		p {
 			font-size: 1rem;
 		}
@@ -44,9 +38,6 @@
 
 @media (min-width: 400px) {
 	.formBox {
-		h2 {
-			font-size: 2rem;
-		}
 		p {
 			font-size: 1.4rem;
 		}

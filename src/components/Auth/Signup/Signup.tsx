@@ -6,6 +6,7 @@ import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
 import { useState } from 'react';
 import Image from 'next/image';
+import SectionTitle from '@/components/UI/Section/SectionTitle';
 
 type Avatar = {
 	src: string;
@@ -72,7 +73,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 	return (
 		<FormBox>
-			<h2>Sign Up</h2>
+			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
 
 			<form onSubmit={formik.handleSubmit}>

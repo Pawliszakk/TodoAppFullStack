@@ -2,6 +2,7 @@ import Image from 'next/image';
 import classes from './Start.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import FormBox from '@/components/UI/Form/FormBox';
+import SectionTitle from '@/components/UI/Section/SectionTitle';
 
 interface StartProps {
 	onFormChange: (number: number) => void;
@@ -11,7 +12,7 @@ const Start: React.FC<StartProps> = ({ onFormChange }) => {
 	return (
 		<FormBox>
 			{' '}
-			<h2>Hello There!</h2>
+			<SectionTitle>Hello There!</SectionTitle>
 			<p>
 				Creating an account or logging in will unlock the full capabilities of
 				this application
