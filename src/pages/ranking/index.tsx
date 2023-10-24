@@ -68,4 +68,10 @@ export const getServerSideProps = async () => {
 			users,
 		},
 	};
+
+	// return {
+	// 	props: {
+	// 		users: [],
+	// 	},
+	// };
 };

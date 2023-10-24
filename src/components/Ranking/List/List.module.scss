@@ -1,6 +1,8 @@
 .ranking {
 	text-align: center;
 	padding: 3rem 0;
+	min-height: 50vh;
+
 	h2 {
 		color: var(--main-purple-darker);
 		font-size: 2rem;
@@ -12,6 +14,11 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+	}
+	.error {
+		font-size: 2rem;
+		margin-top: 5rem;
+			color: var(--error);
 	}
 }
 

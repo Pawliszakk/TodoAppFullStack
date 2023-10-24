@@ -12,15 +12,19 @@ const List: React.FC<ListProps> = ({ users }) => {
 			<h2>Top users list</h2>
 
 			<ul>
-				{users.map((u, i) => (
-					<UserTile
-						key={i}
-						name={u.name}
-						points={u.points}
-						date={u.date}
-						avatar={u.avatar}
-					/>
-				))}
+				{!users || users.length === 0 ? (
+					<p className={classes.error}>Failed to fetch users, please try again later...</p>
+				) : (
+					users.map((u, i) => (
+						<UserTile
+							key={i}
+							name={u.name}
+							points={u.points}
+							date={u.date}
+							avatar={u.avatar}
+						/>
+					))
+				)}
 			</ul>
 		</section>
 	);
