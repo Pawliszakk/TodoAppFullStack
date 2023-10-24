@@ -1,0 +1,30 @@
+.userProfile {
+	padding: 3rem 0;
+}
+
+.user {
+	text-align: center;
+	h2 {
+		font-size: 2rem;
+		color: var(--main-purple-darker);
+	}
+	p {
+		font-size: 2rem;
+		margin: 2rem 0;
+	}
+	.date {
+		font-weight: 200;
+		font-size: 1.8rem;
+	}
+}
+
+.image {
+	width: 300px;
+	margin: 0 auto;
+	img {
+		width: 100%;
+		height: 100%;
+		position: relative !important;
+		object-fit: cover;
+	}
+}

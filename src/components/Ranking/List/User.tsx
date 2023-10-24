@@ -8,11 +8,7 @@ const UserTile: React.FC<User> = ({ name, date, points, avatar }) => {
 		<SlideAnimation className={classes.user} list>
 			{' '}
 			<div className={classes.image}>
-				<Image
-					src={avatar}
-					alt="ZDJECIE USERA O NAZWIE : <NAZWA USERA>"
-					layout="fill"
-				/>
+				<Image src={avatar} alt={`Profile Avatar of ${name}`} layout="fill" />
 			</div>
 			<div className={classes.content}>
 				<h3>{name}</h3>

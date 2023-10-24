@@ -12,4 +12,5 @@ export type User = {
 	name: string;
 	date: string;
 	points: number;
+	id?: string;
 };
