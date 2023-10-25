@@ -30,6 +30,7 @@ const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
 				image="/assets/ilustrations/success.jpg"
 				heading="Compete with others!"
 				description="Taskify collects points for tasks completed, below you will see the ranking of users who have earned the most points over time"
+				ranking
 			/>
 			<List users={users} />
 		</>

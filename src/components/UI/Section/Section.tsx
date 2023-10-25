@@ -12,9 +12,9 @@ const Section: React.FC<SectionProps> = ({
 	alt,
 	button,
 	index,
+	ranking,
 }) => {
 	const isOdd = index! % 2 !== 0;
-
 	return (
 		<section className={`${classes.section} ${isOdd ? classes.darker : null}`}>
 			<SlideAnimation
@@ -31,7 +31,13 @@ const Section: React.FC<SectionProps> = ({
 					) : null}
 				</div>
 				<div className={classes.image}>
-					<Image src={image} alt={alt} layout="fill" />{' '}
+					<Image
+						src={image}
+						alt={alt}
+						priority={image === '/assets/ilustrations/planning.jpg' || ranking}
+						width={500}
+						height={500}
+					/>
 				</div>
 			</SlideAnimation>
 		</section>

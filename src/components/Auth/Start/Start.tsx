@@ -21,7 +21,8 @@ const Start: React.FC<StartProps> = ({ onFormChange }) => {
 				<Image
 					src="/assets/ilustrations/auth.jpg"
 					alt="woman authenticating, on phone background"
-					layout="fill"
+					width={300}
+					height={300}
 				/>{' '}
 			</div>
 			<div className={classes.buttons}>

@@ -36,6 +36,7 @@ const NavList = () => {
 						onClick={openAddTaskHandler}
 					>
 						<BsPlusCircleFill />
+						<span>Add Task</span>
 					</motion.button>
 				</li>
 				<li>

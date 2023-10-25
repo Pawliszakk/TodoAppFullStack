@@ -48,7 +48,7 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 						}`}
 						onClick={() => onAvatarChange(a.src)}
 					>
-						<Image src={a.src} alt="Avatar of a user" layout="fill" />
+						<Image src={a.src} alt="Avatar of a user" width={60} height={60} />
 					</div>
 				))}
 			</div>

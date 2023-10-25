@@ -22,7 +22,12 @@ const UserTile: React.FC<User & { index: number }> = ({
 		<SlideAnimation className={classes.user} list>
 			{' '}
 			<div className={classes.image}>
-				<Image src={avatar} alt={`Profile Avatar of ${name}`} layout="fill" />
+				<Image
+					src={avatar}
+					alt={`Profile Avatar of ${name}`}
+					width={238}
+					height={238}
+				/>
 			</div>
 			<div className={classes.content}>
 				<h3>

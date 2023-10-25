@@ -5,6 +5,7 @@ export type SectionProps = {
 	description: string;
 	button?: boolean;
 	index?: number;
+	ranking?: boolean;
 };
 
 export type Avatar = {

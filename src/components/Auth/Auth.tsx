@@ -23,7 +23,9 @@ const Auth = () => {
 					<Image
 						src="/assets/ilustrations/login.jpg"
 						alt="Ilustration of woman and man probably logging into account on phone form background"
-						layout="fill"
+						width={550}
+						height={550}
+						priority={true}
 					/>
 				</SlideAnimation>
 			</div>

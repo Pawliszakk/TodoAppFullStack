@@ -15,7 +15,13 @@ const UserProfile: React.FC<User> = ({ name, date, points, avatar }) => {
 					Welcome {name}! <PiHandWavingLight />
 				</h2>
 				<div className={classes.image}>
-					<Image src={avatar} alt={`Avatar photo of ${name}`} layout="fill" />
+					<Image
+						src={avatar}
+						alt={`Avatar photo of ${name}`}
+						width={300}
+						height={300}
+						priority
+					/>
 				</div>
 				<p>
 					Task Points: {points} <AiOutlineCheckCircle />
