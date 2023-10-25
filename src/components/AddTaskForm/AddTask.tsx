@@ -7,8 +7,9 @@ interface AddTaskProps {
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
+
 	return (
-		<FormBox>
+		<FormBox className={classes.box} >
 			<h1>Kiedyś tu będzie formularz, jeżeli mi sie zechce</h1>
 		</FormBox>
 	);

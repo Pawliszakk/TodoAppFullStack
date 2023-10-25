@@ -1,3 +1,4 @@
+import React from 'react';
 import Portal from '@/utils/Portal';
 import classes from './Backdrop.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -12,6 +13,8 @@ const Backdrop: React.FC<BackdropProps> = ({
 	onClose,
 	isVisible,
 }) => {
+	const handleChildClick = (e: React.MouseEvent) => e.stopPropagation();
+
 	return (
 		<Portal>
 			<AnimatePresence>
@@ -24,7 +27,11 @@ const Backdrop: React.FC<BackdropProps> = ({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 					>
-						{children}
+						{React.Children.map(children, (child) =>
+							React.cloneElement(child as React.ReactElement, {
+								onClick: handleChildClick,
+							})
+						)}
 					</motion.div>
 				)}
 			</AnimatePresence>
