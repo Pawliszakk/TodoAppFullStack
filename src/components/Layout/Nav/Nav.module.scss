@@ -30,7 +30,7 @@
 	.header {
 		nav {
 			justify-content: space-around;
-			h1{
+			h1 {
 				font-size: 2rem;
 			}
 		}
@@ -49,8 +49,16 @@
 @media (min-width: 1200px) {
 	.header {
 		nav {
-			max-width: 1200px;
+			max-width: 900px;
 			justify-content: space-between;
+		}
+	}
+}
+
+@media (min-width: 1400px) {
+	.header {
+		nav {
+			max-width: 1200px;
 		}
 	}
 }

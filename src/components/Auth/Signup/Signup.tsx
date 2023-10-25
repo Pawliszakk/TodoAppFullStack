@@ -1,35 +1,15 @@
+import { useState } from 'react';
+
+import { useFormik } from 'formik';
+import { SignupSchema } from '../../../utils/validation';
+import { Avatars } from '@/data/data';
+
 import FormBox from '@/components/UI/Form/FormBox';
 import classes from './Signup.module.scss';
 import Button from '@/components/UI/Buttons/Button';
-import { useFormik } from 'formik';
-import { SignupSchema } from '../../../utils/validation';
 import Input from '@/components/UI/Form/Input';
-import { useState } from 'react';
 import Image from 'next/image';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
-
-type Avatar = {
-	src: string;
-	gender: 'Woman' | 'Man';
-};
-
-const avatarArray: Avatar[] = [
-	{ src: '/assets/avatars/avatar1.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar2.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar3.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar4.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar5.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar6.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar7.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar8.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar9.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar10.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar11.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar12.jpg', gender: 'Woman' },
-	{ src: '/assets/avatars/avatar13.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar14.jpg', gender: 'Man' },
-	{ src: '/assets/avatars/avatar15.jpg', gender: 'Man' },
-];
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -48,9 +28,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		setAvatar('/assets/avatars/avatar2.jpg');
 	};
 
-	const avatars = avatarArray.filter(
-		(a) => a.gender === (isMen ? 'Man' : 'Woman')
-	);
+	const avatars = Avatars.filter((a) => a.gender === (isMen ? 'Man' : 'Woman'));
 
 	const formik = useFormik({
 		initialValues: {

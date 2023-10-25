@@ -13,25 +13,26 @@ const Backdrop: React.FC<BackdropProps> = ({
 	onClose,
 	isVisible,
 }) => {
-	const handleChildClick = (e: React.MouseEvent) => e.stopPropagation();
-
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (
+			e.target instanceof HTMLDivElement &&
+			e.target.className === classes.backdrop
+		) {
+			onClose();
+		}
+	};
 	return (
 		<Portal>
 			<AnimatePresence>
 				{isVisible && (
 					<motion.div
-						key="AddTask"
-						onClick={onClose}
+						onClick={handleClick}
 						className={classes.backdrop}
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 					>
-						{React.Children.map(children, (child) =>
-							React.cloneElement(child as React.ReactElement, {
-								onClick: handleChildClick,
-							})
-						)}
+						{children}
 					</motion.div>
 				)}
 			</AnimatePresence>

@@ -3,7 +3,7 @@ import { FaBriefcase, FaMoneyCheckDollar } from 'react-icons/fa6';
 import { BsFillHouseFill } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import { PiLightbulbLight } from 'react-icons/pi';
-import { Category, SectionProps } from '@/types/app';
+import { Avatar, Category, SectionProps } from '@/types/app';
 
 export const Categories: Category[] = [
 	{ category: 'Health', icon: <FaHeartbeat /> },
@@ -59,4 +59,22 @@ export const HomeSectionsData: SectionProps[] = [
 			"That's it, create tasks, finish them, collect points! It's that simple!",
 		button: true,
 	},
+];
+
+export const Avatars: Avatar[] = [
+	{ src: '/assets/avatars/avatar1.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar2.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar3.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar4.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar5.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar6.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar7.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar8.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar9.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar10.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar11.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar12.jpg', gender: 'Woman' },
+	{ src: '/assets/avatars/avatar13.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar14.jpg', gender: 'Man' },
+	{ src: '/assets/avatars/avatar15.jpg', gender: 'Man' },
 ];

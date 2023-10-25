@@ -7,6 +7,11 @@ export type SectionProps = {
 	index?: number;
 };
 
+export type Avatar = {
+	src: string;
+	gender: 'Woman' | 'Man';
+};
+
 export type User = {
 	avatar: string;
 	name: string;
