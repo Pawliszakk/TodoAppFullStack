@@ -15,10 +15,10 @@
 		margin: 0 auto;
 		display: flex;
 		align-items: center;
-		justify-content: space-around;
+		justify-content: space-evenly;
 		height: 100%;
 		h1 {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			a {
 				text-decoration: none;
 			}
@@ -26,6 +26,16 @@
 	}
 }
 
+@media (min-width: 400px) {
+	.header {
+		nav {
+			justify-content: space-around;
+			h1{
+				font-size: 2rem;
+			}
+		}
+	}
+}
 @media (min-width: 576px) {
 	.header {
 		nav {

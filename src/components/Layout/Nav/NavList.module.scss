@@ -2,14 +2,14 @@
 	list-style-type: none;
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 0.5rem;
 	margin-right: 2em;
 	.btn {
 		font-size: 1.2rem;
 	}
 	.icon {
 		border: none;
-		font-size: 4rem;
+		font-size: 3rem;
 		cursor: pointer;
 		background-color: var(--white);
 		display: flex;
@@ -34,9 +34,20 @@
 	}
 }
 
+@media (min-width: 400px) {
+	.list {
+		gap: 1rem;
+		.icon {
+			font-size: 3.5rem;
+		}
+	}
+}
 @media (min-width: 576px) {
 	.list {
 		gap: 2rem;
+		.icon {
+			font-size: 4rem;
+		}
 		.btn {
 			font-size: 1.8rem;
 		}
