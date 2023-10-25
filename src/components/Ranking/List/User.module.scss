@@ -11,6 +11,10 @@
 		color: var(--main-purple-darker);
 		font-size: 2rem;
 		margin: 1em 0;
+		svg {
+			color: goldenrod;
+			font-size: 4rem;
+		}
 	}
 	p {
 		font-size: 1.8rem;
@@ -40,18 +44,23 @@
 	.user {
 		max-width: 600px;
 		display: flex;
+		h3 {
+			svg {
+				font-size: 4rem;
+			}
+		}
 		p {
 			font-size: 2.2rem;
 		}
 		.image {
-			width: 30%;
+			width: 35%;
 		}
 		.content {
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			text-align: center;
-			width: 70%;
+			width: 65%;
 		}
 	}
 }
@@ -60,6 +69,19 @@
 	.user {
 		h3 {
 			font-size: 3rem;
+			svg {
+				font-size: 6rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.user {
+		h3 {
+			svg {
+				font-size: 7rem;
+			}
 		}
 	}
 }

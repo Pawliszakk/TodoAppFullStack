@@ -22,6 +22,7 @@ const List: React.FC<ListProps> = ({ users }) => {
 							points={u.points}
 							date={u.date}
 							avatar={u.avatar}
+							index={i}
 						/>
 					))
 				)}
