@@ -1,13 +1,20 @@
 import { useFormik } from 'formik';
-import Backdrop from '../UI/Backdrop/Backdrop';
+import { motion } from 'framer-motion';
+import { AddingTaskSchema } from '@/utils/validation';
+
 import FormBox from '../UI/Form/FormBox';
 import classes from './AddTask.module.scss';
-import { AddingTaskSchema } from '@/utils/validation';
 import SectionTitle from '../UI/Section/SectionTitle';
 import Input from '../UI/Form/Input';
 import Button from '../UI/Buttons/Button';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import CloseButton from '../UI/Buttons/CloseButton';
 
-const AddTask = () => {
+interface AddTaskProps {
+	onClose: () => void;
+}
+
+const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 	const formik = useFormik({
 		initialValues: {
 			title: '',
@@ -42,6 +49,8 @@ const AddTask = () => {
 
 				<Button type="submit">Add Task</Button>
 			</form>
+
+			<CloseButton onClick={onClose} className={classes.close} />
 		</FormBox>
 	);
 };

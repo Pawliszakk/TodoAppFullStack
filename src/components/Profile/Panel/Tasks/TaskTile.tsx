@@ -5,6 +5,7 @@ import { Task } from '@/types/app';
 import { Categories } from '@/data/data';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import CloseButton from '@/components/UI/Buttons/CloseButton';
 
 const TaskTile: React.FC<Task> = ({
 	title,
@@ -51,14 +52,8 @@ const TaskTile: React.FC<Task> = ({
 					Finish Task
 				</Button>
 			</div>
-			<motion.button
-				whileHover={{ scale: 0.9 }}
-				whileTap={{ scale: 0.6 }}
-				onClick={deleteTaskHandler}
-				className={classes.delete}
-			>
-				<AiFillCloseCircle />
-			</motion.button>
+
+			<CloseButton onClick={deleteTaskHandler} />
 		</SlideAnimation>
 	);
 };
