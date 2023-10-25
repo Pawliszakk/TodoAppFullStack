@@ -38,4 +38,5 @@ export type Task = {
 	id: string;
 	author: string;
 	date: string;
+	active: boolean;
 };

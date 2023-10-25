@@ -26,6 +26,7 @@ const TaskList: React.FC<TaskListProps> = ({
 						author={task.author}
 						date={task.date}
 						importance={task.importance}
+						active={task.active}
 					/>
 				))}
 			</ul>

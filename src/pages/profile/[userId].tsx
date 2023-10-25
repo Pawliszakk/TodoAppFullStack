@@ -57,6 +57,7 @@ export const getServerSideProps = async ({
 			id: '1',
 			author: 'JohnDoe',
 			date: '2023-10-24',
+			active: true,
 		},
 		{
 			title: 'Przygotuj raport roczny',
@@ -67,6 +68,7 @@ export const getServerSideProps = async ({
 			id: '2',
 			author: 'JaneSmith',
 			date: '2023-10-25',
+			active: false,
 		},
 		{
 			title: 'Umyj okna',
@@ -77,6 +79,7 @@ export const getServerSideProps = async ({
 			id: '3',
 			author: 'Homeowner123',
 			date: '2023-10-26',
+			active: true,
 		},
 		{
 			title: 'Znajdź czas na czytanie',
@@ -87,6 +90,7 @@ export const getServerSideProps = async ({
 			id: '4',
 			author: 'YourName',
 			date: '2023-10-27',
+			active: false,
 		},
 		{
 			title: 'Opłać rachunki za prąd i wodę',
@@ -97,6 +101,7 @@ export const getServerSideProps = async ({
 			id: '5',
 			author: 'HouseholdManager',
 			date: '2023-10-28',
+			active: true,
 		},
 		{
 			title: 'Zrób zakupy spożywcze',
@@ -107,6 +112,7 @@ export const getServerSideProps = async ({
 			id: '6',
 			author: 'Homeowner123',
 			date: '2023-10-29',
+			active: false,
 		},
 		{
 			title: 'Przygotuj prezent urodzinowy',
@@ -117,6 +123,7 @@ export const getServerSideProps = async ({
 			id: '7',
 			author: 'YourName',
 			date: '2023-10-30',
+			active: true,
 		},
 		{
 			title: 'Rozlicz podatek dochodowy',
@@ -127,6 +134,7 @@ export const getServerSideProps = async ({
 			id: '8',
 			author: 'FinancialAdvisor',
 			date: '2023-10-31',
+			active: false,
 		},
 		{
 			title: 'Rozważ opcje inwestycyjne',
@@ -137,6 +145,7 @@ export const getServerSideProps = async ({
 			id: '9',
 			author: 'InvestorGuy',
 			date: '2023-11-01',
+			active: true,
 		},
 		{
 			title: 'Zrób ćwiczenia rozciągające',
@@ -147,6 +156,7 @@ export const getServerSideProps = async ({
 			id: '10',
 			author: 'FitnessEnthusiast',
 			date: '2023-11-02',
+			active: false,
 		},
 		{
 			title: 'Odkurz mieszkanie',
@@ -156,6 +166,7 @@ export const getServerSideProps = async ({
 			id: '11',
 			author: 'CleanFreak',
 			date: '2023-11-03',
+			active: true,
 		},
 		{
 			title: 'Zapisz pomysł na biznes',
@@ -166,6 +177,7 @@ export const getServerSideProps = async ({
 			id: '12',
 			author: 'EntrepreneurMind',
 			date: '2023-11-04',
+			active: false,
 		},
 		{
 			title: 'Przygotuj prezent walentynkowy',
@@ -175,6 +187,7 @@ export const getServerSideProps = async ({
 			id: '13',
 			author: 'RomanticSoul',
 			date: '2023-11-05',
+			active: true,
 		},
 		{
 			title: 'Zaplanuj wakacje',
@@ -185,6 +198,7 @@ export const getServerSideProps = async ({
 			id: '14',
 			author: 'TravelEnthusiast',
 			date: '2023-11-06',
+			active: true,
 		},
 		{
 			title: 'Wysyłka paczek świątecznych',
@@ -194,6 +208,7 @@ export const getServerSideProps = async ({
 			id: '15',
 			author: 'HolidayElf',
 			date: '2023-11-07',
+			active: false,
 		},
 		{
 			title: 'Zaplanuj spotkanie z przyjaciółmi',
@@ -204,6 +219,7 @@ export const getServerSideProps = async ({
 			id: '16',
 			author: 'Socializer',
 			date: '2023-11-08',
+			active: true,
 		},
 		{
 			title: 'Przeczytaj artykuł o zdrowym odżywianiu',
@@ -213,6 +229,7 @@ export const getServerSideProps = async ({
 			id: '17',
 			author: 'HealthEnthusiast',
 			date: '2023-11-09',
+			active: true,
 		},
 		{
 			title: 'Sprzątanie w ogrodzie',
@@ -222,6 +239,7 @@ export const getServerSideProps = async ({
 			id: '18',
 			author: 'GardenLover',
 			date: '2023-11-10',
+			active: false,
 		},
 		{
 			title: 'Rozważ zakup samochodu',
@@ -232,6 +250,7 @@ export const getServerSideProps = async ({
 			id: '19',
 			author: 'CarEnthusiast',
 			date: '2023-11-11',
+			active: true,
 		},
 		{
 			title: 'Ustal budżet na remont',
@@ -241,6 +260,7 @@ export const getServerSideProps = async ({
 			id: '20',
 			author: 'HomeImprover',
 			date: '2023-11-12',
+			active: false,
 		},
 	];
 
