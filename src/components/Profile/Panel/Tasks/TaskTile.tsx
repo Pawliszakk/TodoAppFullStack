@@ -21,12 +21,15 @@ const TaskTile: React.FC<Task> = ({
 				<h3>
 					{title} {categoryIcon!.icon}
 				</h3>
+				<hr />
 				<p>{description}</p>
-				<p>Date: {date}</p>
-				<p>Importance: {importance}</p>
+				<p className={classes.date}>Date: {date}</p>
+				<p className={classes.importance}>Importance: {importance}</p>
 			</div>
 			<div className={classes.category}>
-				<p>Category: {category} {categoryIcon!.icon}</p>
+				<p>
+					Category: {category} {categoryIcon!.icon}
+				</p>
 			</div>
 			<div className={classes.buttons}>
 				<Button deleteBtn>Delete Task</Button>
