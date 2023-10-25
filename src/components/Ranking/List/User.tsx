@@ -15,7 +15,7 @@ const UserTile: React.FC<User & { index: number }> = ({
 	const currentIcon = icons[index];
 
 	return (
-		<SlideAnimation className={classes.user} list>
+		<SlideAnimation key={index} className={classes.user} list>
 			{' '}
 			<div className={classes.image}>
 				<Image src={avatar} alt={`Profile Avatar of ${name}`} layout="fill" />
