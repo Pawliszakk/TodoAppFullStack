@@ -2,14 +2,12 @@ import { useState } from 'react';
 
 import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
-import { Avatars } from '@/data/data';
 
 import FormBox from '@/components/UI/Form/FormBox';
-import classes from './Signup.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
-import Image from 'next/image';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
+import AvatarsComponent from '../../UI/Form/AvatarsComponent';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -28,7 +26,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		setAvatar('/assets/avatars/avatar2.jpg');
 	};
 
-	const avatars = Avatars.filter((a) => a.gender === (isMen ? 'Man' : 'Woman'));
+	const avatarChangeHandler = (avatar: string) => setAvatar(avatar);
 
 	const formik = useFormik({
 		initialValues: {
@@ -82,38 +80,14 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
 				/>
-				<div className={classes.avatar}>
-					<p>Choose your avatar</p>
-					<div className={classes.buttons}>
-						<button
-							type="button"
-							onClick={menAvatarsHandler}
-							className={isMen ? classes.active : undefined}
-						>
-							Men
-						</button>
-						<button
-							type="button"
-							onClick={womenAvatarsHandler}
-							className={!isMen ? classes.active : undefined}
-						>
-							Women
-						</button>
-					</div>
-					<div>
-						{avatars.map((a, i) => (
-							<div
-								key={i}
-								className={`${classes.tile} ${
-									a.src === avatar ? classes.active : null
-								}`}
-								onClick={() => setAvatar(a.src)}
-							>
-								<Image src={a.src} alt="Avatar of a user" layout="fill" />
-							</div>
-						))}
-					</div>
-				</div>
+
+				<AvatarsComponent
+					isMen={isMen}
+					onMen={menAvatarsHandler}
+					onWomen={womenAvatarsHandler}
+					onAvatarChange={avatarChangeHandler}
+					currentAvatar={avatar}
+				/>
 				<Button type="submit">Sign Up</Button>
 			</form>
 
