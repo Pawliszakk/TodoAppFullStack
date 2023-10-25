@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import classes from './User.module.scss';
+import classes from './UserTile.module.scss';
 import { User } from '@/types/app';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
