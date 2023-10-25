@@ -1,8 +1,13 @@
 .tasks {
 	padding: 3rem 0;
 	text-align: center;
-	h2 {
-		color: var(--main-purple-darker);
-        font-size: 2rem;
-	}
+}
+
+.list {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+	gap: 2rem;
 }

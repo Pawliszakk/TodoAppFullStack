@@ -8,6 +8,8 @@ interface ButtonProps {
 	className?: string;
 	onClick?: (arg: any) => void;
 	type?: 'button' | 'reset' | 'submit';
+	finishBtn?: boolean;
+	deleteBtn?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +19,8 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	onClick,
 	type,
+	finishBtn,
+	deleteBtn,
 }) => {
 	const additionalClass = className ? className : null;
 
@@ -36,7 +40,9 @@ const Button: React.FC<ButtonProps> = ({
 			whileTap={{ scale: 0.7 }}
 			onClick={onClick}
 			type={type ? type : 'button'}
-			className={`${classes.btn} ${additionalClass}`}
+			className={`${classes.btn} ${additionalClass} ${
+				finishBtn ? classes.finish : null
+			} ${deleteBtn ? classes.delete : null} `}
 		>
 			{children}
 		</motion.button>

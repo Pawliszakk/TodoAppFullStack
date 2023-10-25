@@ -15,7 +15,7 @@ const TaskList: React.FC<TaskListProps> = ({
 	return (
 		<section className={classes.tasks}>
 			<SectionTitle>{currentCategory} Tasks</SectionTitle>
-			<ul className={classes.taskList}>
+			<ul className={classes.list}>
 				{currentTasks.map((task) => (
 					<TaskTile
 						key={task.id}

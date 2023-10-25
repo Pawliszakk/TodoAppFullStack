@@ -13,7 +13,7 @@ const TaskTile: React.FC<Task> = ({
 	date,
 }) => {
 	return (
-		<SlideAnimation list>
+		<SlideAnimation list className={classes.task}>
 			<div className={classes.content}>
 				<h3>{title}</h3>
 				<p>{description}</p>
@@ -24,9 +24,9 @@ const TaskTile: React.FC<Task> = ({
 				<p>{category}</p>
 			</div>
 			<div className={classes.buttons}>
-				<Button>Delete Task</Button>
+				<Button deleteBtn>Delete Task</Button>
 				<Button>Edit Task</Button>
-				<Button>Finish Task</Button>
+				<Button finishBtn>Finish Task</Button>
 			</div>
 		</SlideAnimation>
 	);

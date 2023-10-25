@@ -16,6 +16,13 @@
 	border: none;
 }
 
+.finish {
+	background-color: var(--finish-button);
+}
+.delete {
+	background-color: var(--delete-button);
+}
+
 @media (min-width: 576px) {
 	.link,
 	.btn {

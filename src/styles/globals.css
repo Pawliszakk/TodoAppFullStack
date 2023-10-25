@@ -25,6 +25,8 @@ body {
 	--personal-color: #190482;
 	--payments-color: #ffb000;
 	--ideas-color: #f99417;
+	--finish-button: rgb(94, 142, 22);
+	--delete-button: rgb(174, 39, 15);
 }
 html {
 	font-size: 62.5%;
