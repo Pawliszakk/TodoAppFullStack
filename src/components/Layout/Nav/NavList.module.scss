@@ -7,6 +7,16 @@
 	.btn {
 		font-size: 1.2rem;
 	}
+	.icon {
+		border: none;
+		font-size: 4rem;
+		cursor: pointer;
+		background-color: var(--white);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--main-purple);
+	}
 	li {
 		a {
 			position: relative;
