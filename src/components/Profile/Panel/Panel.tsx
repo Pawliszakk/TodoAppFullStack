@@ -3,11 +3,15 @@ import classes from './Panel.module.scss';
 import CategoryTile from './Category';
 import { Categories } from '@/data/data';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
-import { CategoryType } from '@/types/app';
+import { CategoryType, Task } from '@/types/app';
 import { useState } from 'react';
 import TaskList from './Tasks/TaskList';
 
-const Panel = () => {
+interface PanelProps {
+	tasks: Task[];
+}
+
+const Panel: React.FC<PanelProps> = ({ tasks }) => {
 	const [taskCategory, setTaskCategory] = useState('All');
 
 	const allTasksHandler = () => {
@@ -20,10 +24,14 @@ const Panel = () => {
 		setTaskCategory('Finished');
 	};
 	const tasksByCategoryHandler = (category: CategoryType) => {
-		console.log('Taski o kategorii ' + category);
 		setTaskCategory(category);
 	};
-
+	let currentTasks;
+	if (taskCategory === 'All') {
+		currentTasks = tasks;
+	} else {
+		currentTasks = tasks.filter((task) => task.category === taskCategory);
+	}
 	return (
 		<>
 			{' '}
@@ -47,7 +55,7 @@ const Panel = () => {
 					<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
 				</SlideAnimation>
 			</section>
-			<TaskList currentTasks={taskCategory} />
+			<TaskList currentTasks={currentTasks} currentCategory={taskCategory} />
 		</>
 	);
 };

@@ -29,3 +29,13 @@ export type Category = {
 	index?: number;
 	onTasksShow?: (category: CategoryType) => void;
 };
+
+export type Task = {
+	title: string;
+	description: string;
+	category: CategoryType;
+	importance: 1 | 2 | 3;
+	id: string;
+	author: string;
+	date: string;
+};
