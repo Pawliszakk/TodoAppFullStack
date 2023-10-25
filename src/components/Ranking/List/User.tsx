@@ -11,11 +11,15 @@ const UserTile: React.FC<User & { index: number }> = ({
 	avatar,
 	index,
 }) => {
-	const icons = [<GiPodiumWinner />, <GiPodiumSecond />, <GiPodiumThird />];
+	const icons = [
+		<GiPodiumWinner key="winner" />,
+		<GiPodiumSecond key="Second" />,
+		<GiPodiumThird key="Third" />,
+	];
 	const currentIcon = icons[index];
 
 	return (
-		<SlideAnimation key={index} className={classes.user} list>
+		<SlideAnimation className={classes.user} list>
 			{' '}
 			<div className={classes.image}>
 				<Image src={avatar} alt={`Profile Avatar of ${name}`} layout="fill" />
