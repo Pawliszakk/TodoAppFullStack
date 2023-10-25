@@ -4,7 +4,10 @@ import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-const Ranking = dynamic(() => import('@/components/Ranking/Ranking'), {
+const Section = dynamic(() => import('@/components/UI/Section/Section'), {
+	loading: () => <LoadingSpinner />,
+});
+const List = dynamic(() => import('@/components/Ranking/List/List'), {
 	loading: () => <LoadingSpinner />,
 });
 
@@ -22,7 +25,13 @@ const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
 					content="Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs."
 				/>
 			</Head>
-			<Ranking users={users} />
+			<Section
+				alt="Ilustration of people standing on podium, one is with flag in hand"
+				image="/assets/ilustrations/success.jpg"
+				heading="Compete with others!"
+				description="Taskify collects points for tasks completed, below you will see the ranking of users who have earned the most points over time"
+			/>
+			<List users={users} />
 		</>
 	);
 };
@@ -66,12 +75,6 @@ export const getServerSideProps = async () => {
 	return {
 		props: {
 			users,
-		},
-	};
-
-	return {
-		props: {
-			users: [],
 		},
 	};
 };

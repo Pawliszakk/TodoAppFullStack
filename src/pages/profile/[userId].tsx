@@ -1,13 +1,18 @@
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { Task, User } from '@/types/app';
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-const Profile = dynamic(() => import('@/components/Profile/Profile'), {
+const UserProfile = dynamic(
+	() => import('@/components/Profile/UserProfile/UserProfile'),
+	{
+		loading: () => <LoadingSpinner />,
+	}
+);
+const Panel = dynamic(() => import('@/components/Profile/Panel/Panel'), {
 	loading: () => <LoadingSpinner />,
 });
-
 interface ProfilePageProps {
 	user: User;
 	tasks: Task[];
@@ -23,7 +28,14 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ user, tasks }) => {
 					content="Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs."
 				/>
 			</Head>
-			<Profile user={user} tasks={tasks} />
+
+			<UserProfile
+				avatar={user.avatar}
+				name={user.name}
+				date={user.date}
+				points={user.points}
+			/>
+			<Panel tasks={tasks} />
 		</>
 	);
 };

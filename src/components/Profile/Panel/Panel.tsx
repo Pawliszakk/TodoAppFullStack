@@ -12,11 +12,11 @@ interface PanelProps {
 }
 
 const Panel: React.FC<PanelProps> = ({ tasks }) => {
-	const [taskCategory, setTaskCategory] = useState('Active');
+	const [taskCategory, setTaskCategory] = useState('active');
 
-	const activeTasksHandler = () => setTaskCategory('Active');
+	const activeTasksHandler = () => setTaskCategory('active');
 
-	const finishedTasksHandler = () => setTaskCategory('Finished');
+	const finishedTasksHandler = () => setTaskCategory('finished');
 
 	const tasksByCategoryHandler = (category: CategoryType) => {
 		setTaskCategory(category);
@@ -24,9 +24,9 @@ const Panel: React.FC<PanelProps> = ({ tasks }) => {
 
 	let currentTasks;
 
-	if (taskCategory === 'Active') {
+	if (taskCategory === 'active') {
 		currentTasks = tasks.filter((task) => task.active);
-	} else if (taskCategory === 'Finished') {
+	} else if (taskCategory === 'finished') {
 		currentTasks = tasks.filter((task) => !task.active);
 	} else {
 		currentTasks = tasks.filter((task) => task.category === taskCategory);

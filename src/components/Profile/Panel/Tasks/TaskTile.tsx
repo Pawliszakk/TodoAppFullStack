@@ -21,7 +21,7 @@ const TaskTile: React.FC<Task> = ({
 				<p>Importance: {importance}</p>
 			</div>
 			<div className={classes.category}>
-				<p>{category}</p>
+				<p>Category: {category}</p>
 			</div>
 			<div className={classes.buttons}>
 				<Button deleteBtn>Delete Task</Button>
