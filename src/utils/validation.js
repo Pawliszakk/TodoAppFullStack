@@ -26,8 +26,13 @@ export const SignupSchema = Yup.object({
 export const AddingTaskSchema = Yup.object({
 	title: Yup.string()
 		.min(5, 'Your Task Title must have minimum 5 characters')
-		.max(30, 'Your name must have maximum 30 characters'),
+		.max(30, 'Your name must have maximum 30 characters')
+		.required('Please enter Title'),
 	description: Yup.string()
 		.min(10, 'Your Task description must have minimum 10 characters')
-		.max(50, 'Your name must have maximum 50 characters'),
+		.max(50, 'Your name must have maximum 50 characters')
+		.required('Please enter a description'),
+	category: Yup.string()
+		.required('Choose a category of your new Task')
+		.notOneOf([''], 'Please select a category'),
 });

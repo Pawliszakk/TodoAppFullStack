@@ -1,0 +1,48 @@
+.select {
+	position: relative;
+	margin: 0 auto;
+	min-width: 200px;
+	max-width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	select {
+		border: none;
+		width: 90%;
+		text-align: center;
+		appearance: none;
+		border-radius: 15px;
+		padding: 1em 0.5em;
+		background-color: var(--main-purple);
+		font-size: 1.6rem;
+		color: var(--white);
+		cursor: pointer;
+	}
+	.icon {
+		height: 100%;
+		position: absolute;
+		right: 10%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--white);
+		font-size: 2.2rem;
+		pointer-events: none;
+	}
+}
+
+@media (min-width: 400px) {
+	.select {
+		.icon {
+			font-size: 3rem;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.select {
+		select{
+            font-size: 2rem;
+            padding: 0.8em 0.5em;
+        }
+	}
+}

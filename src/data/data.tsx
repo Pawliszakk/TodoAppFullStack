@@ -6,12 +6,12 @@ import { PiLightbulbLight } from 'react-icons/pi';
 import { Avatar, Category, SectionProps } from '@/types/app';
 
 export const Categories: Category[] = [
-	{ category: 'Health', icon: <FaHeartbeat /> },
-	{ category: 'Work', icon: <FaBriefcase /> },
-	{ category: 'House', icon: <BsFillHouseFill /> },
-	{ category: 'Personal', icon: <AiOutlineUser /> },
-	{ category: 'Payments', icon: <FaMoneyCheckDollar /> },
-	{ category: 'Ideas', icon: <PiLightbulbLight /> },
+	{ category: 'health', icon: <FaHeartbeat /> },
+	{ category: 'work', icon: <FaBriefcase /> },
+	{ category: 'house', icon: <BsFillHouseFill /> },
+	{ category: 'personal', icon: <AiOutlineUser /> },
+	{ category: 'payments', icon: <FaMoneyCheckDollar /> },
+	{ category: 'ideas', icon: <PiLightbulbLight /> },
 ];
 
 export const HomeSectionsData: SectionProps[] = [

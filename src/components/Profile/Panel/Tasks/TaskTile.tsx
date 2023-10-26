@@ -3,8 +3,6 @@ import classes from './TaskTile.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import { Task } from '@/types/app';
 import { Categories } from '@/data/data';
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { motion } from 'framer-motion';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
 
 const TaskTile: React.FC<Task> = ({

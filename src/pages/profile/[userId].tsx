@@ -64,7 +64,7 @@ export const getServerSideProps = async ({
 			title: 'Zapisz się na zajęcia fitness',
 			description:
 				'Znajdź lokalny klub fitness i zapisz się na zajęcia. Regularna aktywność fizyczna korzystnie wpływa na zdrowie.',
-			category: 'Health',
+			category: 'health',
 			importance: 2,
 			id: '1',
 			author: 'JohnDoe',
@@ -75,7 +75,7 @@ export const getServerSideProps = async ({
 			title: 'Przygotuj raport roczny',
 			description:
 				'Zbierz wszystkie potrzebne dane i przygotuj raport roczny dla firmy. To ważne zadanie zawodowe.',
-			category: 'Work',
+			category: 'work',
 			importance: 3,
 			id: '2',
 			author: 'JaneSmith',
@@ -86,7 +86,7 @@ export const getServerSideProps = async ({
 			title: 'Umyj okna',
 			description:
 				'Przetrzyj okna w domu, aby poprawić widoczność i uczynić wnętrze bardziej przyjemnym.',
-			category: 'House',
+			category: 'house',
 			importance: 1,
 			id: '3',
 			author: 'Homeowner123',
@@ -97,7 +97,7 @@ export const getServerSideProps = async ({
 			title: 'Znajdź czas na czytanie',
 			description:
 				'Zarezerwuj sobie czas na codzienne czytanie książek lub artykułów. Rozwijaj swoje zainteresowania.',
-			category: 'Personal',
+			category: 'personal',
 			importance: 2,
 			id: '4',
 			author: 'YourName',
@@ -108,7 +108,7 @@ export const getServerSideProps = async ({
 			title: 'Opłać rachunki za prąd i wodę',
 			description:
 				'Sprawdź terminy opłat i ureguluj rachunki za prąd i wodę, aby uniknąć dodatkowych opłat.',
-			category: 'Payments',
+			category: 'payments',
 			importance: 3,
 			id: '5',
 			author: 'HouseholdManager',
@@ -119,7 +119,7 @@ export const getServerSideProps = async ({
 			title: 'Zrób zakupy spożywcze',
 			description:
 				'Odpowiedz na potrzeby w kuchni i uzupełnij brakujące produkty.',
-			category: 'House',
+			category: 'house',
 			importance: 2,
 			id: '6',
 			author: 'Homeowner123',
@@ -130,7 +130,7 @@ export const getServerSideProps = async ({
 			title: 'Przygotuj prezent urodzinowy',
 			description:
 				'Zorganizuj prezent dla bliskiej osoby obchodzącej urodziny.',
-			category: 'Personal',
+			category: 'personal',
 			importance: 2,
 			id: '7',
 			author: 'YourName',
@@ -141,7 +141,7 @@ export const getServerSideProps = async ({
 			title: 'Rozlicz podatek dochodowy',
 			description:
 				'Przygotuj i złoż wniosek o rozliczenie podatku dochodowego.',
-			category: 'Payments',
+			category: 'payments',
 			importance: 3,
 			id: '8',
 			author: 'FinancialAdvisor',
@@ -152,7 +152,7 @@ export const getServerSideProps = async ({
 			title: 'Rozważ opcje inwestycyjne',
 			description:
 				'Przemyśl swoje opcje inwestycyjne i zdecyduj, jakie kroki podjąć.',
-			category: 'Work',
+			category: 'work',
 			importance: 2,
 			id: '9',
 			author: 'InvestorGuy',
@@ -163,7 +163,7 @@ export const getServerSideProps = async ({
 			title: 'Zrób ćwiczenia rozciągające',
 			description:
 				'Codzienne ćwiczenia rozciągające poprawią twoją elastyczność i samopoczucie.',
-			category: 'Health',
+			category: 'health',
 			importance: 1,
 			id: '10',
 			author: 'FitnessEnthusiast',
@@ -173,7 +173,7 @@ export const getServerSideProps = async ({
 		{
 			title: 'Odkurz mieszkanie',
 			description: 'Uporządkuj swoje mieszkanie i pozbyj się kurzu i brudu.',
-			category: 'House',
+			category: 'house',
 			importance: 1,
 			id: '11',
 			author: 'CleanFreak',
@@ -184,7 +184,7 @@ export const getServerSideProps = async ({
 			title: 'Zapisz pomysł na biznes',
 			description:
 				'Zanotuj swój pomysł na nowy biznes i zastanów się nad jego realizacją.',
-			category: 'Ideas',
+			category: 'ideas',
 			importance: 2,
 			id: '12',
 			author: 'EntrepreneurMind',
@@ -194,7 +194,7 @@ export const getServerSideProps = async ({
 		{
 			title: 'Przygotuj prezent walentynkowy',
 			description: 'Planuj prezent na nadchodzący Dzień Zakochanych.',
-			category: 'Personal',
+			category: 'personal',
 			importance: 1,
 			id: '13',
 			author: 'RomanticSoul',
@@ -205,74 +205,12 @@ export const getServerSideProps = async ({
 			title: 'Zaplanuj wakacje',
 			description:
 				'Zacznij planować wakacje i zastanów się nad destynacją oraz datami podróży.',
-			category: 'Personal',
+			category: 'personal',
 			importance: 3,
 			id: '14',
 			author: 'TravelEnthusiast',
 			date: '2023-11-06',
 			active: true,
-		},
-		{
-			title: 'Wysyłka paczek świątecznych',
-			description: 'Przygotuj paczki świąteczne i wysyłaj je bliskim na czas.',
-			category: 'Personal',
-			importance: 2,
-			id: '15',
-			author: 'HolidayElf',
-			date: '2023-11-07',
-			active: false,
-		},
-		{
-			title: 'Zaplanuj spotkanie z przyjaciółmi',
-			description:
-				'Zorganizuj spotkanie z przyjaciółmi lub rodziną i spędź wspólnie czas.',
-			category: 'Personal',
-			importance: 1,
-			id: '16',
-			author: 'Socializer',
-			date: '2023-11-08',
-			active: true,
-		},
-		{
-			title: 'Przeczytaj artykuł o zdrowym odżywianiu',
-			description: 'Poszerz swoją wiedzę na temat zdrowego odżywiania.',
-			category: 'Health',
-			importance: 1,
-			id: '17',
-			author: 'HealthEnthusiast',
-			date: '2023-11-09',
-			active: true,
-		},
-		{
-			title: 'Sprzątanie w ogrodzie',
-			description: 'Uporządkuj ogród i przygotuj go na nadchodzący sezon.',
-			category: 'House',
-			importance: 2,
-			id: '18',
-			author: 'GardenLover',
-			date: '2023-11-10',
-			active: false,
-		},
-		{
-			title: 'Rozważ zakup samochodu',
-			description:
-				'Przemyśl swoje potrzeby i rozważ zakup nowego lub używanego samochodu.',
-			category: 'Personal',
-			importance: 3,
-			id: '19',
-			author: 'CarEnthusiast',
-			date: '2023-11-11',
-			active: true,
-		},
-		{
-			title: 'Ustal budżet na remont',
-			description: 'Określ, ile możesz przeznaczyć na planowany remont w domu.',
-			category: 'House',
-			importance: 2,
-			id: '20',
-			author: 'HomeImprover',
-			date: '2023-11-12',
-			active: false,
 		},
 	];
 

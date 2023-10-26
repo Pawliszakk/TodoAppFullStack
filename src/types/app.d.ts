@@ -22,12 +22,12 @@ export type User = {
 };
 
 export type CategoryType =
-	| 'Health'
-	| 'Work'
-	| 'House'
-	| 'Personal'
-	| 'Payments'
-	| 'Ideas';
+	| 'health'
+	| 'work'
+	| 'house'
+	| 'personal'
+	| 'payments'
+	| 'ideas';
 
 export type Category = {
 	icon: JSX.Element;

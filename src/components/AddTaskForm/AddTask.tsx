@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import { motion } from 'framer-motion';
 import { AddingTaskSchema } from '@/utils/validation';
 
 import FormBox from '../UI/Form/FormBox';
@@ -7,8 +6,9 @@ import classes from './AddTask.module.scss';
 import SectionTitle from '../UI/Section/SectionTitle';
 import Input from '../UI/Form/Input';
 import Button from '../UI/Buttons/Button';
-import { AiFillCloseCircle } from 'react-icons/ai';
 import CloseButton from '../UI/Buttons/CloseButton';
+import Select from '../UI/Form/Select';
+import { CategoryType } from '@/types/app';
 
 interface AddTaskProps {
 	onClose: () => void;
@@ -19,10 +19,20 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 		initialValues: {
 			title: '',
 			description: '',
+			category: '',
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: (values) => console.log(values),
 	});
+
+	const selectOptions: { text: string; value: CategoryType }[] = [
+		{ value: 'health', text: 'Health' },
+		{ value: 'work', text: 'Work' },
+		{ value: 'house', text: 'House' },
+		{ value: 'personal', text: 'Personal' },
+		{ value: 'payments', text: 'Payments' },
+		{ value: 'ideas', text: 'Ideas' },
+	];
 
 	return (
 		<FormBox className={classes.box}>
@@ -45,6 +55,14 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 					error={formik.errors.description}
 					touched={formik.touched.description}
 					field={formik.getFieldProps('description')}
+				/>
+				<Select
+					id="category"
+					field={formik.getFieldProps('category')}
+					error={formik.errors.category}
+					touched={formik.touched.category}
+					text="Choose Category"
+					options={selectOptions}
 				/>
 
 				<Button type="submit">Add Task</Button>
