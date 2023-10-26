@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import classes from './Category.module.scss';
 import { Category } from '@/types/app';
-import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import SlideFromTop from '@/components/UI/Animations/SlideFromTop';
 const CategoryTile: React.FC<Category> = ({
 	icon,
@@ -18,22 +17,22 @@ const CategoryTile: React.FC<Category> = ({
 	let categoryClass;
 
 	switch (category) {
-		case 'Health':
+		case 'health':
 			categoryClass = classes.health;
 			break;
-		case 'Work':
+		case 'work':
 			categoryClass = classes.work;
 			break;
-		case 'House':
+		case 'house':
 			categoryClass = classes.house;
 			break;
-		case 'Personal':
+		case 'personal':
 			categoryClass = classes.personal;
 			break;
-		case 'Payments':
+		case 'payments':
 			categoryClass = classes.payments;
 			break;
-		case 'Ideas':
+		case 'ideas':
 			categoryClass = classes.ideas;
 			break;
 		default:
