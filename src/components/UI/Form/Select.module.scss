@@ -30,6 +30,13 @@
 		pointer-events: none;
 	}
 }
+.box {
+	p {
+		display: block;
+		color: var(--error);
+		margin: 0.8em auto;
+	}
+}
 
 @media (min-width: 400px) {
 	.select {
@@ -40,9 +47,9 @@
 }
 @media (min-width: 768px) {
 	.select {
-		select{
-            font-size: 2rem;
-            padding: 0.8em 0.5em;
-        }
+		select {
+			font-size: 2rem;
+			padding: 0.8em 0.5em;
+		}
 	}
 }

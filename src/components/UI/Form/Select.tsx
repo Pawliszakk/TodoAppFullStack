@@ -23,7 +23,7 @@ const Select: React.FC<SelectProps> = ({
 	const isError = touched && error;
 
 	return (
-		<div>
+		<div className={classes.box}>
 			<div className={classes.select}>
 				<select id={id} {...field}>
 					<option value="">{text}</option>
