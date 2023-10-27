@@ -34,10 +34,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 				},
 			});
 			const resData = await res.json();
-			console.log(resData);
-			if (res.ok) {
-				setIsLoading(false);
-			}
+			setIsLoading(false);
 		},
 	});
 

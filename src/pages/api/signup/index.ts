@@ -11,6 +11,18 @@ export default async function handler(
 ) {
 	if (req.method === 'POST') {
 		const { name, email, password, avatar } = req.body;
+
+		const nameIsValid = name.length >= 5 && name.length <= 20;
+		const emailIsValid = !email.match(
+			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		);
+		const passwordIsValid = password.length >= 8 && password.length <= 20;
+
+		if (!nameIsValid || !emailIsValid || !passwordIsValid) {
+			return res
+				.status(400)
+				.json({ message: 'Invalid input data. Please try again' });
+		}
 		const createdUser = new User({
 			name,
 			email,

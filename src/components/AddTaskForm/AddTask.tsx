@@ -42,9 +42,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 			});
 			const resData = await res.json();
 			console.log(resData);
-			if (res.ok) {
-				setIsLoading(false);
-			}
+			setIsLoading(false);
 		},
 	});
 

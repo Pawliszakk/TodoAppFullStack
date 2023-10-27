@@ -38,9 +38,32 @@ export default async function handler(
 	}
 
 	if (req.method === 'POST') {
-		const { title, description, category, importance, author } =
-			req.body;
+		const { title, description, category, importance, author } = req.body;
 
+		const isTitleValid = title.length >= 5 && title.length <= 30;
+		const descriptionIsValid =
+			description.length >= 10 && description.length <= 50;
+
+		const isCategoryValid =
+			category === 'health' ||
+			category === 'work' ||
+			category === 'house' ||
+			category === 'personal' ||
+			category === 'payments' ||
+			category === 'ideas';
+		const importanceIsValid =
+			importance === '1' || importance === '2' || importance === '3';
+
+		if (
+			!isTitleValid ||
+			!descriptionIsValid ||
+			!isCategoryValid ||
+			!importanceIsValid
+		) {
+			return res
+				.status(400)
+				.json({ message: 'Invalid data. Please try again' });
+		}
 		const createdTask = new Task({
 			title,
 			description,
@@ -83,7 +106,7 @@ export default async function handler(
 				.status(200)
 				.json({ message: 'Your task has finished, congratulations' });
 		} catch (err) {
-			return HttpError('Could not delete your task', 500);
+			return HttpError('Could not finish your task', 500);
 		}
 	}
 }
