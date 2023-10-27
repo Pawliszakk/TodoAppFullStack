@@ -9,6 +9,7 @@
 	border-radius: 25px;
 	width: 80%;
 	transition: scale 0.3s;
+	min-height: 250px;
 	&:hover {
 		scale: 0.99;
 	}
@@ -62,6 +63,7 @@
 }
 @media (min-width: 576px) {
 	.task {
+		min-height: 450px;
 		h3 {
 			font-size: 2.4rem;
 		}

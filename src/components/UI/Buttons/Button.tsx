@@ -8,6 +8,7 @@ interface ButtonProps {
 	className?: string;
 	onClick?: (arg: any) => void;
 	type?: 'button' | 'reset' | 'submit';
+	disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	onClick,
 	type,
+	disabled,
 }) => {
 	const additionalClass = className ? className : null;
 
@@ -37,6 +39,7 @@ const Button: React.FC<ButtonProps> = ({
 			onClick={onClick}
 			type={type ? type : 'button'}
 			className={`${classes.btn} ${additionalClass}`}
+			disabled={disabled}
 		>
 			{children}
 		</motion.button>
