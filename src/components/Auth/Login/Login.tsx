@@ -14,6 +14,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isLoading, setIsLoading] = useState(false);
+	const [reqMessage, setReqMessage] = useState('');
 
 	const formik = useFormik({
 		initialValues: {
@@ -34,8 +35,8 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 				},
 			});
 			const resData = await res.json();
-			console.log(resData);
 			setIsLoading(false);
+			setReqMessage(resData.message);
 		},
 	});
 
@@ -65,6 +66,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					field={formik.getFieldProps('password')}
 				/>
 				{isLoading ? <Spinner /> : <Button type="submit"> Login</Button>}
+				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 
 			<p>

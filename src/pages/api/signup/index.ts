@@ -35,16 +35,16 @@ export default async function handler(
 		});
 		await connectToDatabase();
 
-		let isUserInDb;
+		let user;
 		try {
-			isUserInDb = await User.find({ email });
+			user = await User.findOne({ email });
 		} catch (err) {
 			return res
 				.status(500)
 				.json({ message: 'Cannot create a user, please try again later' });
 		}
 
-		if (isUserInDb && isUserInDb.length > 0) {
+		if (user) {
 			return res
 				.status(409)
 				.json({ message: `Account for ${email} already exists` });

@@ -1,6 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { User } from '../models/user';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	if (req.method === 'POST') {
 		const { email, password } = req.body;
 
@@ -15,6 +19,21 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 				.status(400)
 				.json({ message: 'Invalid data. Please try again' });
 		}
-		return res.status(200).json({ email, password, message: 'To z api	' });
+
+		let user;
+		try {
+			user = await User.findOne({ email });
+		} catch (err) {
+			return res.status(500).json({
+				message: 'Something went wrong, please try again later',
+			});
+		}
+		if (!user || user.password !== password) {
+			return res.status(409).json({
+				message: `Your email address or password is wrong, please try again`,
+			});
+		} else if (user.password === password) {
+			return res.status(200).json({ message: 'Correct, logged in !' });
+		}
 	}
 }
