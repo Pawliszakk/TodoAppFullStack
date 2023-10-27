@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { User } from '../models/user';
+import { User } from '../utils/models/user';
+import bcrypt from 'bcryptjs';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -28,12 +29,28 @@ export default async function handler(
 				message: 'Something went wrong, please try again later',
 			});
 		}
-		if (!user || user.password !== password) {
+		if (!user) {
 			return res.status(409).json({
 				message: `Your email address or password is wrong, please try again`,
 			});
-		} else if (user.password === password) {
-			return res.status(200).json({ message: 'Correct, logged in !' });
 		}
+
+		let isPasswordValid = false;
+		try {
+			isPasswordValid = await bcrypt.compare(password, user.password);
+		} catch (err) {
+			res.status(422).json({
+				message:
+					'Could not log you in, something went wrong, please try again later',
+			});
+		}
+
+		if (!isPasswordValid) {
+			return res.status(409).json({
+				message: `Your email address or password is wrong, please try again`,
+			});
+		}
+
+		res.status(200).json({ message: 'Correct credentials, you are logged in' });
 	}
 }

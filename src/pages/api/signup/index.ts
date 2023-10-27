@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { User } from '../models/user';
+import { User } from '../utils/models/user';
 import { v4 as uuidv4 } from 'uuid';
-import { connectToDatabase } from '../lib/connectToDatabase';
-import { HttpError } from '../lib/HttpError';
-import { getDate } from '../lib/getDate';
+import { connectToDatabase } from '../utils/lib/connectToDatabase';
+import { getDate } from '../utils/lib/getDate';
+import bcrypt from 'bcryptjs';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -23,16 +23,7 @@ export default async function handler(
 				.status(400)
 				.json({ message: 'Invalid input data. Please try again' });
 		}
-		const createdUser = new User({
-			name,
-			email,
-			password,
-			avatar,
-			points: '0',
-			id: uuidv4(),
-			date: getDate(),
-			tasks: 'Potem sie zateguje',
-		});
+
 		await connectToDatabase();
 
 		let user;
@@ -49,6 +40,25 @@ export default async function handler(
 				.status(409)
 				.json({ message: `Account for ${email} already exists` });
 		}
+
+		let hashedPassword;
+		try {
+			hashedPassword = await bcrypt.hash(password, 12);
+		} catch (err) {
+			res
+				.status(500)
+				.json({ message: 'Cannot create a user, please try again later' });
+		}
+		const createdUser = new User({
+			name,
+			email,
+			password: hashedPassword,
+			avatar,
+			points: '0',
+			id: uuidv4(),
+			date: getDate(),
+			tasks: 'Potem sie zateguje',
+		});
 
 		try {
 			const result = await createdUser.save();

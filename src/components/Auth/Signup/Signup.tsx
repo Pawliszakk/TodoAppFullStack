@@ -19,6 +19,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isMen, setIsMen] = useState(false);
 	const [avatar, setAvatar] = useState('/assets/avatars/avatar2.jpg');
 	const [isLoading, setIsLoading] = useState(false);
+	const [reqMessage, setReqMessage] = useState('');
 
 	const menAvatarsHandler = () => {
 		setIsMen(true);
@@ -55,7 +56,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				},
 			});
 			const resData = await res.json();
-			console.log(resData);
+			setReqMessage(resData.message);
 			setIsLoading(false);
 		},
 	});
@@ -101,6 +102,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					currentAvatar={avatar}
 				/>
 				{isLoading ? <Spinner /> : <Button type="submit">Sign Up</Button>}
+				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 
 			<p>

@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { connectToDatabase } from '../lib/connectToDatabase';
+import { connectToDatabase } from '../utils/lib/connectToDatabase';
 import { v4 as uuidv4 } from 'uuid';
-import { HttpError } from '../lib/HttpError';
-import { Task } from '../models/task';
-import { getDate } from '../lib/getDate';
+import { HttpError } from '../utils/lib/HttpError';
+import { Task } from '../utils/models/task';
+import { getDate } from '../utils/lib/getDate';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -64,6 +64,7 @@ export default async function handler(
 				.status(400)
 				.json({ message: 'Invalid data. Please try again' });
 		}
+
 		const createdTask = new Task({
 			title,
 			description,
