@@ -1,9 +1,7 @@
-import { useState } from 'react';
-
+import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
 
-import classes from './Signup.module.scss';
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
