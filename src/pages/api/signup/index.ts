@@ -13,7 +13,7 @@ export default async function handler(
 		const { name, email, password, avatar } = req.body;
 
 		const nameIsValid = name.length >= 5 && name.length <= 20;
-		const emailIsValid = !email.match(
+		const emailIsValid = email.match(
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
 		const passwordIsValid = password.length >= 8 && password.length <= 20;
@@ -34,11 +34,29 @@ export default async function handler(
 			tasks: 'Potem sie zateguje',
 		});
 		await connectToDatabase();
+
+		let isUserInDb;
+		try {
+			isUserInDb = await User.find({ email });
+		} catch (err) {
+			return res
+				.status(500)
+				.json({ message: 'Cannot create a user, please try again later' });
+		}
+
+		if (isUserInDb && isUserInDb.length > 0) {
+			return res
+				.status(409)
+				.json({ message: `Account for ${email} already exists` });
+		}
+
 		try {
 			const result = await createdUser.save();
 			return res.status(201).json({ message: 'User Created Successfully' });
 		} catch (err) {
-			return HttpError('Could not create a user', 500);
+			return res
+				.status(500)
+				.json({ message: 'Cannot create a user, please try again later' });
 		}
 	}
 }
