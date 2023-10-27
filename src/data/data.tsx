@@ -86,8 +86,11 @@ export const selectCategoryOptions: { text: string; value: CategoryType }[] = [
 	{ value: 'payments', text: 'Payments' },
 	{ value: 'ideas', text: 'Ideas' },
 ];
-export const selectImportanceOptions: { text: string; value: 1 | 2 | 3 }[] = [
-	{ value: 1, text: 'Less Important' },
-	{ value: 2, text: 'Important' },
-	{ value: 3, text: 'Very Important' },
+export const selectImportanceOptions: {
+	text: string;
+	value: '1' | '2' | '3';
+}[] = [
+	{ value: '1', text: 'Less Important' },
+	{ value: '2', text: 'Important' },
+	{ value: '3', text: 'Very Important' },
 ];

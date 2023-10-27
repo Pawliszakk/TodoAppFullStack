@@ -16,8 +16,16 @@ const TaskTile: React.FC<Task> = ({
 }) => {
 	const categoryIcon = Categories.find((cat) => cat.category === category);
 
-	const deleteTaskHandler = () => {
-		console.log(`usuwam taska o id ${id}`);
+	const deleteTaskHandler = async () => {
+		const res = await fetch('/api/task', {
+			method: 'DELETE',
+			body: JSON.stringify(id),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		const resData = await res.json();
+		console.log(resData);
 	};
 
 	const editTaskHandler = () => {
