@@ -20,18 +20,24 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 			title: '',
 			description: '',
 			category: '',
+			importance: '',
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: (values) => console.log(values),
 	});
 
-	const selectOptions: { text: string; value: CategoryType }[] = [
+	const selectCategoryOptions: { text: string; value: CategoryType }[] = [
 		{ value: 'health', text: 'Health' },
 		{ value: 'work', text: 'Work' },
 		{ value: 'house', text: 'House' },
 		{ value: 'personal', text: 'Personal' },
 		{ value: 'payments', text: 'Payments' },
 		{ value: 'ideas', text: 'Ideas' },
+	];
+	const selectImportanceOptions: { text: string; value: 1 | 2 | 3 }[] = [
+		{ value: 1, text: 'Less Important' },
+		{ value: 2, text: 'Important' },
+		{ value: 3, text: 'Very Important' },
 	];
 
 	return (
@@ -62,7 +68,15 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 					error={formik.errors.category}
 					touched={formik.touched.category}
 					text="Choose Category"
-					options={selectOptions}
+					options={selectCategoryOptions}
+				/>
+				<Select
+					id="importance"
+					field={formik.getFieldProps('importance')}
+					error={formik.errors.importance}
+					touched={formik.touched.importance}
+					text="Choose Importance"
+					options={selectImportanceOptions}
 				/>
 
 				<Button type="submit">Add Task</Button>

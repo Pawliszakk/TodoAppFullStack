@@ -35,4 +35,7 @@ export const AddingTaskSchema = Yup.object({
 	category: Yup.string()
 		.required('Choose a category of your new Task')
 		.notOneOf([''], 'Please select a category'),
+	importance: Yup.string()
+		.required('Choose importance of your new Task')
+		.notOneOf([''], 'Please select level of importance'),
 });
