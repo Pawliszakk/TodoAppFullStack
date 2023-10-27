@@ -9,6 +9,7 @@ import Button from '../UI/Buttons/Button';
 import CloseButton from '../UI/Buttons/CloseButton';
 import Select from '../UI/Form/Select';
 import { CategoryType } from '@/types/app';
+import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 
 interface AddTaskProps {
 	onClose: () => void;
@@ -23,22 +24,23 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 			importance: '',
 		},
 		validationSchema: AddingTaskSchema,
-		onSubmit: (values) => console.log(values),
-	});
+		onSubmit: async (values) => {
+			const task = {
+				...values,
+				author: '0591205971 (id Usera)',
+			};
 
-	const selectCategoryOptions: { text: string; value: CategoryType }[] = [
-		{ value: 'health', text: 'Health' },
-		{ value: 'work', text: 'Work' },
-		{ value: 'house', text: 'House' },
-		{ value: 'personal', text: 'Personal' },
-		{ value: 'payments', text: 'Payments' },
-		{ value: 'ideas', text: 'Ideas' },
-	];
-	const selectImportanceOptions: { text: string; value: 1 | 2 | 3 }[] = [
-		{ value: 1, text: 'Less Important' },
-		{ value: 2, text: 'Important' },
-		{ value: 3, text: 'Very Important' },
-	];
+			const res = await fetch('/api/task', {
+				method: 'POST',
+				body: JSON.stringify(task),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			const resData = await res.json();
+			console.log(resData);
+		},
+	});
 
 	return (
 		<FormBox className={classes.box}>

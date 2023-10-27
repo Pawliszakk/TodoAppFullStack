@@ -3,7 +3,7 @@ import { FaBriefcase, FaMoneyCheckDollar } from 'react-icons/fa6';
 import { BsFillHouseFill } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import { PiLightbulbLight } from 'react-icons/pi';
-import { Avatar, Category, SectionProps } from '@/types/app';
+import { Avatar, Category, CategoryType, SectionProps } from '@/types/app';
 
 export const Categories: Category[] = [
 	{ category: 'health', icon: <FaHeartbeat /> },
@@ -77,4 +77,17 @@ export const Avatars: Avatar[] = [
 	{ src: '/assets/avatars/avatar13.jpg', gender: 'Man' },
 	{ src: '/assets/avatars/avatar14.jpg', gender: 'Man' },
 	{ src: '/assets/avatars/avatar15.jpg', gender: 'Man' },
+];
+export const selectCategoryOptions: { text: string; value: CategoryType }[] = [
+	{ value: 'health', text: 'Health' },
+	{ value: 'work', text: 'Work' },
+	{ value: 'house', text: 'House' },
+	{ value: 'personal', text: 'Personal' },
+	{ value: 'payments', text: 'Payments' },
+	{ value: 'ideas', text: 'Ideas' },
+];
+export const selectImportanceOptions: { text: string; value: 1 | 2 | 3 }[] = [
+	{ value: 1, text: 'Less Important' },
+	{ value: 2, text: 'Important' },
+	{ value: 3, text: 'Very Important' },
 ];
