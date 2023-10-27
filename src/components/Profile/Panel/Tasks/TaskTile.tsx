@@ -23,14 +23,16 @@ const TaskTile: React.FC<
 	const deleteTaskHandler = async () => {
 		const res = await fetch('/api/task', {
 			method: 'DELETE',
-			body: JSON.stringify(id),
+			body: JSON.stringify({ id }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		});
 		const resData = await res.json();
 		console.log(resData);
-		onDelete(id);
+		if (res.ok) {
+			onDelete(id);
+		}
 	};
 
 	const editTaskHandler = async () => {
@@ -38,16 +40,18 @@ const TaskTile: React.FC<
 	};
 
 	const finishTaskHandler = async () => {
-		// const res = await fetch('/api/task', {
-		// 	method: 'PATCH',
-		// 	body: JSON.stringify(id),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// });
-		// const resData = await res.json();
-		// console.log(resData);
-		onFinish(id);
+		const res = await fetch('/api/task', {
+			method: 'PATCH',
+			body: JSON.stringify({ id }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		const resData = await res.json();
+		console.log(resData);
+		if (res.ok) {
+			onFinish(id);
+		}
 	};
 
 	return (

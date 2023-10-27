@@ -35,8 +35,6 @@ export default async function handler(
 		} catch (err) {
 			return HttpError('Failed to fetch tasks', 500);
 		}
-
-		mongoose.connection.close();
 	}
 
 	if (req.method === 'POST') {
@@ -57,18 +55,15 @@ export default async function handler(
 
 		try {
 			const result = await createdTask.save();
-			mongoose.connection.close();
 			return res.status(200).json({
 				message: 'Successfully created Your Task',
-				task: result,
 			});
 		} catch (err) {
-			mongoose.connection.close();
 			return HttpError('Could not create your task', 500);
 		}
 	}
 	if (req.method === 'DELETE') {
-		const id = req.body;
+		const { id } = req.body;
 		const db = connectToDatabase();
 
 		try {
@@ -79,7 +74,7 @@ export default async function handler(
 		}
 	}
 	if (req.method === 'PATCH') {
-		const id = req.body;
+		const { id } = req.body;
 		const db = connectToDatabase();
 
 		try {
