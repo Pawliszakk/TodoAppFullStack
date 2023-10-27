@@ -6,11 +6,15 @@ import TaskTile from './TaskTile';
 interface TaskListProps {
 	currentTasks: Task[];
 	currentCategory: string;
+	onDelete: (id: string) => void;
+	onFinish: (id: string) => void;
 }
 
 const TaskList: React.FC<TaskListProps> = ({
 	currentTasks,
 	currentCategory,
+	onDelete,
+	onFinish,
 }) => {
 	const isTasks = currentTasks && currentTasks.length > 0;
 
@@ -30,6 +34,8 @@ const TaskList: React.FC<TaskListProps> = ({
 							date={task.date}
 							importance={task.importance}
 							active={task.active}
+							onDelete={onDelete}
+							onFinish={onFinish}
 						/>
 					))
 				) : (

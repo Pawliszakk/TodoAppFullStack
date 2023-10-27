@@ -5,7 +5,9 @@ import { Task } from '@/types/app';
 import { Categories } from '@/data/data';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
 
-const TaskTile: React.FC<Task> = ({
+const TaskTile: React.FC<
+	Task & { onDelete: (id: string) => void; onFinish: (id: string) => void }
+> = ({
 	title,
 	description,
 	category,
@@ -13,6 +15,8 @@ const TaskTile: React.FC<Task> = ({
 	id,
 	author,
 	date,
+	onDelete,
+	onFinish,
 }) => {
 	const categoryIcon = Categories.find((cat) => cat.category === category);
 
@@ -26,14 +30,24 @@ const TaskTile: React.FC<Task> = ({
 		});
 		const resData = await res.json();
 		console.log(resData);
+		onDelete(id);
 	};
 
-	const editTaskHandler = () => {
+	const editTaskHandler = async () => {
 		console.log(`Edytuje taska o id ${id}`);
 	};
 
-	const finishTaskHandler = () => {
-		console.log(`Finishuje taska o id ${id}`);
+	const finishTaskHandler = async () => {
+		// const res = await fetch('/api/task', {
+		// 	method: 'PATCH',
+		// 	body: JSON.stringify(id),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// });
+		// const resData = await res.json();
+		// console.log(resData);
+		onFinish(id);
 	};
 
 	return (

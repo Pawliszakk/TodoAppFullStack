@@ -25,9 +25,18 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: async (values) => {
+			const today = new Date();
+			const day = today.getDate();
+			const month = today.getMonth() + 1;
+			const year = today.getFullYear();
+
+			const formattedDate = `${day}-${month}-${year}`;
+
 			const task = {
 				...values,
 				author: '0591205971 (id Usera)',
+				date: formattedDate,
+				active: true,
 			};
 
 			const res = await fetch('/api/task', {

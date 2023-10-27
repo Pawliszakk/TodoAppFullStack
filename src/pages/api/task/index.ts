@@ -40,27 +40,21 @@ export default async function handler(
 	}
 
 	if (req.method === 'POST') {
-		const { title, description, category, importance, author } = req.body;
+		const { title, description, category, importance, author, date, active } =
+			req.body;
 
-		const today = new Date();
-		const day = today.getDate();
-		const month = today.getMonth() + 1;
-		const year = today.getFullYear();
-
-		const formattedDate = `${day}-${month}-${year}`;
 		const createdTask = new Task({
 			title,
 			description,
 			category,
 			importance,
 			author,
-			date: formattedDate,
 			id: uuidv4(),
-			active: true,
+			date,
+			active,
 		});
 		await connectToDatabase();
 
-		let result;
 		try {
 			const result = await createdTask.save();
 			mongoose.connection.close();
@@ -80,6 +74,19 @@ export default async function handler(
 		try {
 			const result = await Task.findOneAndDelete({ id });
 			return res.status(200).json({ message: 'Your task has been deleted' });
+		} catch (err) {
+			return HttpError('Could not delete your task', 500);
+		}
+	}
+	if (req.method === 'PATCH') {
+		const id = req.body;
+		const db = connectToDatabase();
+
+		try {
+			const result = await Task.findOneAndUpdate({ id }, { active: false });
+			return res
+				.status(200)
+				.json({ message: 'Your task has finished, congratulations' });
 		} catch (err) {
 			return HttpError('Could not delete your task', 500);
 		}

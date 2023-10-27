@@ -11,8 +11,9 @@ interface PanelProps {
 	tasks: Task[];
 }
 
-const Panel: React.FC<PanelProps> = ({ tasks }) => {
+const Panel: React.FC<PanelProps> = (props) => {
 	const [taskCategory, setTaskCategory] = useState('active');
+	const [tasks, setTasks] = useState(props.tasks);
 
 	const activeTasksHandler = () => setTaskCategory('active');
 
@@ -31,6 +32,22 @@ const Panel: React.FC<PanelProps> = ({ tasks }) => {
 	} else {
 		currentTasks = tasks.filter((task) => task.category === taskCategory);
 	}
+
+	const deleteTaskHandler = (id: string) => {
+		const filteredTasks = tasks.filter((task) => task.id !== id);
+		setTasks(filteredTasks);
+	};
+	const finishTaskHandler = (id: string) => {
+		const updatedTasks = tasks.map((task) => {
+			if (task.id === id) {
+				return { ...task, active: false };
+			}
+			return task;
+		});
+
+		setTasks(updatedTasks);
+	};
+
 	return (
 		<>
 			{' '}
@@ -53,7 +70,12 @@ const Panel: React.FC<PanelProps> = ({ tasks }) => {
 					<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
 				</SlideAnimation>
 			</section>
-			<TaskList currentTasks={currentTasks} currentCategory={taskCategory} />
+			<TaskList
+				currentTasks={currentTasks}
+				currentCategory={taskCategory}
+				onDelete={deleteTaskHandler}
+				onFinish={finishTaskHandler}
+			/>
 		</>
 	);
 };
