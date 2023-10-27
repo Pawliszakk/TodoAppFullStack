@@ -1,12 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
-	name: string;
-};
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+	if (req.method === 'POST') {
+		const { email, password } = req.body;
 
-export default function handler(
-	req: NextApiRequest,
-	res: NextApiResponse<Data>
-) {
-	res.status(200).json({ name: 'Login Api Endpoint' });
+		res.status(200).json({ email, password, message: 'To z api	' });
+	}
 }

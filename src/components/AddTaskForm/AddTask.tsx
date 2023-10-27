@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import { AddingTaskSchema } from '@/utils/validation';
 
@@ -8,14 +9,15 @@ import Input from '../UI/Form/Input';
 import Button from '../UI/Buttons/Button';
 import CloseButton from '../UI/Buttons/CloseButton';
 import Select from '../UI/Form/Select';
-import { CategoryType } from '@/types/app';
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
-
+import Spinner from '../UI/LoadingSpinner/Spinner';
 interface AddTaskProps {
 	onClose: () => void;
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
+	const [isLoading, setIsLoading] = useState(false);
+
 	const formik = useFormik({
 		initialValues: {
 			title: '',
@@ -25,18 +27,10 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: async (values) => {
-			const today = new Date();
-			const day = today.getDate();
-			const month = today.getMonth() + 1;
-			const year = today.getFullYear();
-
-			const formattedDate = `${day}-${month}-${year}`;
-
+			setIsLoading(true);
 			const task = {
 				...values,
 				author: '0591205971 (id Usera)',
-				date: formattedDate,
-				active: true,
 			};
 
 			const res = await fetch('/api/task', {
@@ -48,6 +42,9 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 			});
 			const resData = await res.json();
 			console.log(resData);
+			if (res.ok) {
+				setIsLoading(false);
+			}
 		},
 	});
 
@@ -90,7 +87,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 					options={selectImportanceOptions}
 				/>
 
-				<Button type="submit">Add Task</Button>
+				{isLoading ? <Spinner /> : <Button type="submit">Add Task</Button>}
 			</form>
 
 			<CloseButton onClick={onClose} className={classes.close} />

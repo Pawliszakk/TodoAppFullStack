@@ -1,5 +1,6 @@
 .formBox {
 	background-color: var(--white-cream);
+
 	width: 80%;
 	max-width: 400px;
 	margin: 0 auto;
@@ -7,6 +8,7 @@
 	border-radius: 25px;
 	padding: 2em;
 	text-align: center;
+	min-height: 400px;
 
 	p {
 		font-size: 1.3rem;
@@ -25,7 +27,6 @@
 		width: 60%;
 		max-width: 250px;
 		font-size: 1.6rem;
-		
 	}
 }
 
@@ -51,5 +52,6 @@
 @media (min-width: 992px) {
 	.formBox {
 		width: 400px;
+		min-height: 500px;
 	}
 }

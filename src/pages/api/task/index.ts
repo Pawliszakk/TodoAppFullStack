@@ -3,7 +3,7 @@ import { connectToDatabase } from '../lib/connectToDatabase';
 import { v4 as uuidv4 } from 'uuid';
 import { HttpError } from '../lib/HttpError';
 import { Task } from '../models/task';
-import mongoose from 'mongoose';
+import { getDate } from '../lib/getDate';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -38,7 +38,7 @@ export default async function handler(
 	}
 
 	if (req.method === 'POST') {
-		const { title, description, category, importance, author, date, active } =
+		const { title, description, category, importance, author } =
 			req.body;
 
 		const createdTask = new Task({
@@ -48,8 +48,8 @@ export default async function handler(
 			importance,
 			author,
 			id: uuidv4(),
-			date,
-			active,
+			date: getDate(),
+			active: true,
 		});
 		await connectToDatabase();
 

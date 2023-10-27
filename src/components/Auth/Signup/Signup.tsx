@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { SignupSchema } from '../../../utils/validation';
 
+import classes from './Signup.module.scss';
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import AvatarsComponent from '../../UI/Form/AvatarsComponent';
+import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -16,6 +18,7 @@ interface LoginProps {
 const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isMen, setIsMen] = useState(false);
 	const [avatar, setAvatar] = useState('/assets/avatars/avatar2.jpg');
+	const [isLoading, setIsLoading] = useState(false);
 
 	const menAvatarsHandler = () => {
 		setIsMen(true);
@@ -36,14 +39,26 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 			avatar: '/assets/avatars/avatar1.jpg',
 		},
 		validationSchema: SignupSchema,
-		onSubmit: (values) => {
+		onSubmit: async (values) => {
+			setIsLoading(true);
 			if (!avatar) {
 				return;
 			}
 			values.avatar = avatar;
-			console.log(values);
 
-			//SEND DATA TO API
+			const signupBody = values;
+			const res = await fetch('/api/signup', {
+				method: 'POST',
+				body: JSON.stringify(signupBody),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			const resData = await res.json();
+			console.log(resData);
+			if (res.ok) {
+				setIsLoading(false);
+			}
 		},
 	});
 
@@ -51,7 +66,6 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		<FormBox>
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
-
 			<form onSubmit={formik.handleSubmit}>
 				<Input
 					label="Username"
@@ -88,7 +102,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					onAvatarChange={avatarChangeHandler}
 					currentAvatar={avatar}
 				/>
-				<Button type="submit">Sign Up</Button>
+				{isLoading ? <Spinner /> : <Button type="submit">Sign Up</Button>}
 			</form>
 
 			<p>

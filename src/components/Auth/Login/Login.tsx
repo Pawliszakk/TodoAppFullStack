@@ -1,15 +1,20 @@
-import FormBox from '@/components/UI/Form/FormBox';
+import { useState } from 'react';
 import { useFormik } from 'formik';
+import { LoginSchema } from '../../../utils/validation';
+
+import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
-import { LoginSchema } from '../../../utils/validation';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
+import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
 }
 
 const Login: React.FC<LoginProps> = ({ onFormChange }) => {
+	const [isLoading, setIsLoading] = useState(false);
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -17,9 +22,22 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 		},
 		validationSchema: LoginSchema,
 
-		onSubmit: (values) => {
-			console.log(values);
-			//SEND DATA TO API
+		onSubmit: async (values) => {
+			setIsLoading(true);
+
+			const loginBody = values;
+			const res = await fetch('/api/login', {
+				method: 'POST',
+				body: JSON.stringify(loginBody),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			const resData = await res.json();
+			console.log(resData);
+			if (res.ok) {
+				setIsLoading(false);
+			}
 		},
 	});
 
@@ -48,7 +66,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
 				/>
-				<Button type="submit"> Login</Button>
+				{isLoading ? <Spinner /> : <Button type="submit"> Login</Button>}
 			</form>
 
 			<p>
