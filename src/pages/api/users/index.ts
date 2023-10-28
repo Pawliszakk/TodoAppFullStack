@@ -17,17 +17,18 @@ export default async function handler(
 		await connectToDatabase();
 
 		try {
-			const users = await User.find({}).sort({ points: -1 }).limit(10);
-
+			const users = await User.find({});
 			const usersToSend: UserToSend[] = [];
 			users.map((u) => {
 				usersToSend.push({
 					avatar: u.avatar,
 					name: u.name,
 					date: u.date,
-					points: u.points,
+					points: +u.points,
 				});
 			});
+			usersToSend.sort((a, b) => b.points - a.points);
+			usersToSend.splice(10);
 
 			res.status(200).json({
 				message: 'Successfully fetched best users',

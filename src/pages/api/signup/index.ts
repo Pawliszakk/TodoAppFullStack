@@ -55,7 +55,7 @@ export default async function handler(
 			email,
 			password: hashedPassword,
 			avatar,
-			points: '0',
+			points: 0,
 			id: uuidv4(),
 			date: getDate(),
 			tasks: 'Potem sie zateguje',
