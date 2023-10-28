@@ -83,6 +83,7 @@ export default async function handler(
 		return res.status(201).json({
 			message: 'User has been created successfully',
 			userId: createdUser.id,
+			userAvatar: user.avatar,
 			email: createdUser.email,
 			token,
 		});

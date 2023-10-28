@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { LoginSchema } from '../../../utils/validation';
 
@@ -7,6 +7,8 @@ import Button from '@/components/UI/Buttons/Button';
 import Input from '@/components/UI/Form/Input';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
+import { AuthContext } from '@/context/auth-context';
+import { useRouter } from 'next/router';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -15,6 +17,10 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
+
+	const authCtx = useContext(AuthContext);
+
+	const router = useRouter();
 
 	const formik = useFormik({
 		initialValues: {
@@ -25,8 +31,8 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 		onSubmit: async (values) => {
 			setIsLoading(true);
-
 			const loginBody = values;
+
 			const res = await fetch('/api/login', {
 				method: 'POST',
 				body: JSON.stringify(loginBody),
@@ -35,8 +41,18 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 				},
 			});
 			const resData = await res.json();
+
+			if (!res.ok) {
+				setIsLoading(false);
+				setReqMessage(
+					resData.message || 'Cannot log you in, please try again later'
+				);
+			} else {
+			}
 			setIsLoading(false);
 			setReqMessage(resData.message);
+			authCtx.login(resData.userId, resData.token, resData.userAvatar);
+			router.push('/');
 		},
 	});
 

@@ -67,10 +67,11 @@ export default async function handler(
 			});
 		}
 
-		return res.status(201).json({
+		return res.status(200).json({
 			message: 'Correct Credentials, you are logged in',
 			userId: user.id,
 			email: user.email,
+			userAvatar: user.avatar,
 			token,
 		});
 	}
