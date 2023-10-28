@@ -68,7 +68,7 @@ export default async function handler(
 		}
 
 		return res.status(201).json({
-			message: 'User has been created successfully',
+			message: 'Correct Credentials, you are logged in',
 			userId: user.id,
 			email: user.email,
 			token,
