@@ -12,9 +12,8 @@ export default async function handler(
 
 		let user;
 		try {
-			user = await User.findById(userId).populate('tasks');
+			user = await User.findById(userId).select('-password').populate('tasks');
 		} catch (err) {
-			console.log(err.message);
 			return res.status(500).json({
 				message: 'Could not find user, please try again later',
 			});
