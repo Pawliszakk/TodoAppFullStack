@@ -49,8 +49,6 @@ export const getServerSideProps = async ({
 		userId: string;
 	};
 }) => {
-	const userId = params.userId;
-
 	const user: User = {
 		avatar: '/assets/avatars/avatar11.jpg',
 		name: 'John Doe',
@@ -58,13 +56,23 @@ export const getServerSideProps = async ({
 		points: 123,
 		id: '2',
 	};
-	const res = await fetch(`${process.env.DOMAIN_URL}/api/task`);
-	const resData = await res.json();
+
+	const userId = params.userId;
+
+	const res = await fetch(`${process.env.DOMAIN_URL}/api/profile/${userId}`);
+	// const resData = await res.json();
 
 	return {
 		props: {
 			user,
-			tasks: resData.tasks,
+			tasks: [],
 		},
 	};
+
+	// return {
+	// 	props: {
+	// 		user,
+	// 		tasks: resData.tasks,
+	// 	},
+	// };
 };

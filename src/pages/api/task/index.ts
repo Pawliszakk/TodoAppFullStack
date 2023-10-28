@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
-import { v4 as uuidv4 } from 'uuid';
 import { HttpError } from '../utils/lib/HttpError';
 import { Task } from '../utils/models/task';
 import { getDate } from '../utils/lib/getDate';
+import { User } from '../utils/models/user';
+import mongoose from 'mongoose';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -71,7 +72,6 @@ export default async function handler(
 			category,
 			importance,
 			author,
-			id: uuidv4(),
 			date: getDate(),
 			active: true,
 		});
@@ -85,17 +85,39 @@ export default async function handler(
 		} catch (err) {
 			return HttpError('Could not create your task', 500);
 		}
+
+		res.status(201).json({ message: 'Successfully created Task' });
 	}
 	if (req.method === 'DELETE') {
-		const { id } = req.body;
+		const { id, author } = req.body;
 		await connectToDatabase();
+		let task;
+		try {
+			task = await Task.findById(id).populate('author');
+		} catch (err) {
+			return res.status(500).json({ message: 'Could not delete your task' });
+		}
+
+		if (!task) {
+			return res
+				.status(404)
+				.json({ message: 'Could not find your task in database' });
+		}
+		if (task.author.id !== author) {
+			return res.status(403).json({ message: 'Could not delete task' });
+		}
 
 		try {
-			const result = await Task.findOneAndDelete({ id });
-			return res.status(200).json({ message: 'Your task has been deleted' });
+			const sess = await mongoose.startSession();
+			sess.startTransaction();
+			await task.deleteOne({ session: sess });
+			task.author.tasks.pull(task);
+			await task.author.save({ session: sess });
+			await sess.commitTransaction();
 		} catch (err) {
-			return HttpError('Could not delete your task', 500);
+			return res.status(500).json({ message: 'Could not delete task' });
 		}
+		return res.status(200).json({ message: 'Successfully deleted your task' });
 	}
 	if (req.method === 'PATCH') {
 		const { id } = req.body;

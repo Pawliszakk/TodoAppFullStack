@@ -29,7 +29,7 @@ const TaskTile: React.FC<
 		setIsLoading(true);
 		const res = await fetch('/api/task', {
 			method: 'DELETE',
-			body: JSON.stringify({ id }),
+			body: JSON.stringify({ id, author }),
 			headers: {
 				'Content-Type': 'application/json',
 			},

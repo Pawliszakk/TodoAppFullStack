@@ -66,11 +66,11 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					resData.message || 'Cannot sign you in, please try again later'
 				);
 			} else {
+				setIsLoading(false);
+				setReqMessage(resData.message);
+				authCtx.login(resData.userId, resData.token, resData.userAvatar);
+				router.push('/');
 			}
-			setIsLoading(false);
-			setReqMessage(resData.message);
-			authCtx.login(resData.userId, resData.token, resData.userAvatar);
-			router.push('/');
 		},
 	});
 

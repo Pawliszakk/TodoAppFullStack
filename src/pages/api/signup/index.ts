@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '../utils/models/user';
-import { v4 as uuidv4 } from 'uuid';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
 import { getDate } from '../utils/lib/getDate';
 import bcrypt from 'bcryptjs';
@@ -56,9 +55,8 @@ export default async function handler(
 			password: hashedPassword,
 			avatar,
 			points: 0,
-			id: uuidv4(),
 			date: getDate(),
-			tasks: 'Potem sie zateguje',
+			tasks: [],
 		});
 
 		try {

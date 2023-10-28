@@ -48,11 +48,11 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					resData.message || 'Cannot log you in, please try again later'
 				);
 			} else {
+				setIsLoading(false);
+				setReqMessage(resData.message);
+				authCtx.login(resData.userId, resData.token, resData.userAvatar);
+				router.push('/');
 			}
-			setIsLoading(false);
-			setReqMessage(resData.message);
-			authCtx.login(resData.userId, resData.token, resData.userAvatar);
-			router.push('/');
 		},
 	});
 

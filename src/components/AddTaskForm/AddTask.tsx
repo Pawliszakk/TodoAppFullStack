@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { AddingTaskSchema } from '@/utils/validation';
 
@@ -11,12 +11,17 @@ import CloseButton from '../UI/Buttons/CloseButton';
 import Select from '../UI/Form/Select';
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 import Spinner from '../UI/LoadingSpinner/Spinner';
+import { AuthContext } from '@/context/auth-context';
+import { useRouter } from 'next/router';
 interface AddTaskProps {
 	onClose: () => void;
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 	const [isLoading, setIsLoading] = useState(false);
+
+	const { isLoggedIn, userId } = useContext(AuthContext);
+	const router = useRouter();
 
 	const formik = useFormik({
 		initialValues: {
@@ -27,22 +32,26 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: async (values) => {
-			setIsLoading(true);
-			const task = {
-				...values,
-				author: '0591205971 (id Usera)',
-			};
+			if (isLoggedIn) {
+				setIsLoading(true);
+				const task = {
+					...values,
+					author: userId,
+				};
 
-			const res = await fetch('/api/task', {
-				method: 'POST',
-				body: JSON.stringify(task),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			const resData = await res.json();
-			console.log(resData);
-			setIsLoading(false);
+				const res = await fetch('/api/task', {
+					method: 'POST',
+					body: JSON.stringify(task),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+				const resData = await res.json();
+				console.log(resData);
+				setIsLoading(false);
+			} else {
+				router.push('/');
+			}
 		},
 	});
 

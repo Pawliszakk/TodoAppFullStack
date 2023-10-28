@@ -6,9 +6,8 @@ const UserSchema = new mongoose.Schema({
 	password: { type: String, required: true },
 	avatar: { type: String, required: true },
 	points: { type: Number, required: true },
-	id: { type: String, required: true },
 	date: { type: String, required: true },
-	tasks: { type: String, required: true },
+	tasks: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Task' }],
 });
 
 export const User = mongoose.models.User || mongoose.model('User', UserSchema);
