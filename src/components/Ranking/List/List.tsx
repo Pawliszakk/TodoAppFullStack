@@ -9,11 +9,13 @@ interface ListProps {
 const List: React.FC<ListProps> = ({ users }) => {
 	return (
 		<section className={classes.ranking}>
-			<h2>Top users list</h2>
+			<h2>Top 10 users list</h2>
 
 			<ul>
 				{!users || users.length === 0 ? (
-					<p className={classes.error}>Failed to fetch users, please try again later...</p>
+					<p className={classes.error}>
+						Failed to fetch users, please try again later...
+					</p>
 				) : (
 					users.map((u, i) => (
 						<UserTile

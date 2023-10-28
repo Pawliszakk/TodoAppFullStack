@@ -43,7 +43,7 @@ const NavList = () => {
 				</li>
 				<li>
 					<Button className={classes.btn} link href="/ranking">
-						Top
+						Top 10
 					</Button>
 				</li>
 				{isLoggedIn && (
