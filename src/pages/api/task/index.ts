@@ -66,6 +66,18 @@ export default async function handler(
 				.json({ message: 'Invalid data. Please try again' });
 		}
 
+		await connectToDatabase();
+
+		let user;
+		try {
+			user = await User.findById(author);
+		} catch (err) {
+			return res.status(500).json({ message: 'Cannot create your task' });
+		}
+		if (!user) {
+			return res.status(500).json({ message: 'Cannot create your task' });
+		}
+
 		const createdTask = new Task({
 			title,
 			description,
@@ -75,18 +87,18 @@ export default async function handler(
 			date: getDate(),
 			active: true,
 		});
-		await connectToDatabase();
 
 		try {
-			const result = await createdTask.save();
-			return res.status(200).json({
-				message: 'Successfully created Your Task',
-			});
+			const sess = await mongoose.startSession();
+			sess.startTransaction();
+			await createdTask.save({ session: sess });
+			user.tasks.push(createdTask.id);
+			await user.save({ session: sess });
+			await sess.commitTransaction();
 		} catch (err) {
-			return HttpError('Could not create your task', 500);
+			return res.status(500).json({ message: 'Cannot create your task' });
 		}
-
-		res.status(201).json({ message: 'Successfully created Task' });
+		res.status(201).json({ message: 'Successfully created your task' });
 	}
 	if (req.method === 'DELETE') {
 		const { id, author } = req.body;

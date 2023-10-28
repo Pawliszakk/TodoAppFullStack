@@ -15,11 +15,10 @@ export default async function handler(
 		try {
 			user = await User.findById(userId).populate('tasks');
 		} catch (err) {
-			return res
-				.status(500)
-				.json({ message: 'Could not find user, please try again later' });
+			return res.status(500).json({
+				message: 'Could not find user, please try again later',
+			});
 		}
-		console.log(user);
-		res.status(200).json({ message: 'czesc' });
+		res.status(200).json({ message: 'czesc', user, tasks: user.tasks });
 	}
 }
