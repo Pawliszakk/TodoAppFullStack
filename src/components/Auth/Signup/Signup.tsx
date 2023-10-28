@@ -8,6 +8,8 @@ import Input from '@/components/UI/Form/Input';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import AvatarsComponent from '../../UI/Form/AvatarsComponent';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
+import { AuthContext } from '@/context/auth-context';
+import { useRouter } from 'next/router';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -18,6 +20,9 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [avatar, setAvatar] = useState('/assets/avatars/avatar2.jpg');
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
+
+	const router = useRouter();
+	const authCtx = useContext(AuthContext);
 
 	const menAvatarsHandler = () => {
 		setIsMen(true);
@@ -44,8 +49,8 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				return;
 			}
 			values.avatar = avatar;
-
 			const signupBody = values;
+
 			const res = await fetch('/api/signup', {
 				method: 'POST',
 				body: JSON.stringify(signupBody),
@@ -54,8 +59,18 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				},
 			});
 			const resData = await res.json();
-			setReqMessage(resData.message);
+
+			if (!res.ok) {
+				setIsLoading(false);
+				setReqMessage(
+					resData.message || 'Cannot sign you in, please try again later'
+				);
+			} else {
+			}
 			setIsLoading(false);
+			setReqMessage(resData.message);
+			authCtx.login(resData.userId, resData.token, resData.userAvatar);
+			router.push('/');
 		},
 	});
 
