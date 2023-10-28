@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '../utils/models/user';
-import bcrypt from 'bcryptjs';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -42,7 +43,7 @@ export default async function handler(
 		} catch (err) {
 			res.status(422).json({
 				message:
-					'Could not log you in, something went wrong, please try again later',
+					'Cannot log you in, something went wrong, please try again later',
 			});
 		}
 
@@ -52,6 +53,25 @@ export default async function handler(
 			});
 		}
 
-		res.status(200).json({ message: 'Correct credentials, you are logged in' });
+		let token;
+		try {
+			token = jwt.sign(
+				{ userId: user.id, email: user.email },
+				`${process.env.JWT_KEY}`,
+				{ expiresIn: '1h' }
+			);
+		} catch (err) {
+			return res.status(500).json({
+				message:
+					'Cannot log you in, something went wrong, please try again later',
+			});
+		}
+
+		return res.status(201).json({
+			message: 'User has been created successfully',
+			userId: user.id,
+			email: user.email,
+			token,
+		});
 	}
 }

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
 import { getDate } from '../utils/lib/getDate';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -62,11 +63,28 @@ export default async function handler(
 
 		try {
 			const result = await createdUser.save();
-			return res.status(201).json({ message: 'User Created Successfully' });
 		} catch (err) {
 			return res
 				.status(500)
 				.json({ message: 'Cannot create a user, please try again later' });
 		}
+		let token;
+		try {
+			token = jwt.sign(
+				{ userId: createdUser.id, email: createdUser.email },
+				`${process.env.JWT_KEY}`,
+				{ expiresIn: '1h' }
+			);
+		} catch (err) {
+			return res
+				.status(500)
+				.json({ message: 'Cannot create a user, please try again later' });
+		}
+		return res.status(201).json({
+			message: 'User has been created successfully',
+			userId: createdUser.id,
+			email: createdUser.email,
+			token,
+		});
 	}
 }
