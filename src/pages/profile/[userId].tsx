@@ -58,7 +58,7 @@ export const getServerSideProps = async ({
 		points: 123,
 		id: '2',
 	};
-	const res = await fetch('http://localhost:3000/api/task');
+	const res = await fetch(`${process.env.DOMAIN_URL}/api/task`);
 	const resData = await res.json();
 
 	return {
