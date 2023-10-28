@@ -1,6 +1,7 @@
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { Task, User } from '@/types/app';
 import { NextPage } from 'next';
+import { redirect } from 'next/dist/server/api-utils';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
@@ -54,8 +55,19 @@ export const getServerSideProps = async ({
 	let tasks;
 	const res = await fetch(`${process.env.DOMAIN_URL}/api/profile/${userId}`);
 	const resData = await res.json();
+	console.log(resData);
+	console.log(userId);
+
+	if (!res.ok) {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		};
+	}
 	user = resData.user;
-	tasks = resData.tasks;
+	tasks = resData.user.tasks;
 
 	return {
 		props: {

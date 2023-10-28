@@ -92,7 +92,7 @@ export default async function handler(
 			const sess = await mongoose.startSession();
 			sess.startTransaction();
 			await createdTask.save({ session: sess });
-			user.tasks.push(createdTask.id);
+			user.tasks.push(createdTask._id);
 			await user.save({ session: sess });
 			await sess.commitTransaction();
 		} catch (err) {
