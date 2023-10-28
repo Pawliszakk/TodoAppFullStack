@@ -40,38 +40,15 @@ const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
 export default RankingPage;
 
 export const getServerSideProps = async () => {
-	const users = [
-		{
-			avatar: '/assets/avatars/avatar1.jpg',
-			name: 'John Doe',
-			date: '2023-10-24',
-			points: 100,
-		},
-		{
-			avatar: '/assets/avatars/avatar2.jpg',
-			name: 'Alice Smith',
-			date: '2023-10-22',
-			points: 75,
-		},
-		{
-			avatar: '/assets/avatars/avatar3.jpg',
-			name: 'Bob Johnson',
-			date: '2023-10-20',
-			points: 120,
-		},
-		{
-			avatar: '/assets/avatars/avatar4.jpg',
-			name: 'Eva Williams',
-			date: '2023-10-18',
-			points: 90,
-		},
-		{
-			avatar: '/assets/avatars/avatar5.jpg',
-			name: 'Grace Wilson',
-			date: '2023-10-15',
-			points: 80,
-		},
-	];
+	let users;
+
+	try {
+		const res = await fetch(`${process.env.DOMAIN_URL}/api/users`);
+		const resData = await res.json();
+		users = resData.users;
+	} catch (err) {
+		users = [];
+	}
 
 	return {
 		props: {
