@@ -10,7 +10,7 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	if (req.method === 'GET') {
-		const db = connectToDatabase();
+		await connectToDatabase();
 
 		let result;
 		try {
@@ -88,7 +88,7 @@ export default async function handler(
 	}
 	if (req.method === 'DELETE') {
 		const { id } = req.body;
-		const db = connectToDatabase();
+		await connectToDatabase();
 
 		try {
 			const result = await Task.findOneAndDelete({ id });
@@ -99,7 +99,7 @@ export default async function handler(
 	}
 	if (req.method === 'PATCH') {
 		const { id } = req.body;
-		const db = connectToDatabase();
+		await connectToDatabase();
 
 		try {
 			const result = await Task.findOneAndUpdate({ id }, { active: false });
