@@ -14,7 +14,6 @@ interface PanelProps {
 const Panel: React.FC<PanelProps> = (props) => {
 	const [taskCategory, setTaskCategory] = useState('active');
 	const [tasks, setTasks] = useState(props.tasks);
-
 	const activeTasksHandler = () => setTaskCategory('active');
 
 	const finishedTasksHandler = () => setTaskCategory('finished');

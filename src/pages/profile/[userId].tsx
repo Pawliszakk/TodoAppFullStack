@@ -55,8 +55,6 @@ export const getServerSideProps = async ({
 	let tasks;
 	const res = await fetch(`${process.env.DOMAIN_URL}/api/profile/${userId}`);
 	const resData = await res.json();
-	console.log(resData);
-	console.log(userId);
 
 	if (!res.ok) {
 		return {
@@ -67,7 +65,7 @@ export const getServerSideProps = async ({
 		};
 	}
 	user = resData.user;
-	tasks = resData.user.tasks;
+	tasks = resData.tasks;
 
 	return {
 		props: {
@@ -75,11 +73,4 @@ export const getServerSideProps = async ({
 			tasks,
 		},
 	};
-
-	// return {
-	// 	props: {
-	// 		user,
-	// 		tasks: resData.tasks,
-	// 	},
-	// };
 };

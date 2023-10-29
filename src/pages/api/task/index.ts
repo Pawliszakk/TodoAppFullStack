@@ -110,11 +110,6 @@ export default async function handler(
 			return res.status(500).json({ message: 'Could not delete your task' });
 		}
 
-		if (!task) {
-			return res
-				.status(404)
-				.json({ message: 'Could not find your task in database' });
-		}
 		if (task.author.id !== author) {
 			return res.status(403).json({ message: 'Could not delete task' });
 		}
