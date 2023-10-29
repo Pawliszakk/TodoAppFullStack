@@ -20,11 +20,11 @@ const TaskTile: React.FC<
 	date,
 	onDelete,
 	onFinish,
+	active,
 }) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const categoryIcon = Categories.find((cat) => cat.category === category);
-
 	const deleteTaskHandler = async () => {
 		setIsLoading(true);
 		const res = await fetch('/api/task', {
@@ -86,19 +86,23 @@ const TaskTile: React.FC<
 							Category: {category} {categoryIcon!.icon}
 						</p>
 					</div>
-					<div className={classes.buttons}>
-						<Button disabled={isLoading} onClick={editTaskHandler}>
-							Edit Task
-						</Button>
-						<Button
-							disabled={isLoading}
-							onClick={finishTaskHandler}
-							className={classes.finish}
-						>
-							Finish Task
-						</Button>
-					</div>
-					<CloseButton onClick={deleteTaskHandler} />
+					{active ? (
+						<>
+							<div className={classes.buttons}>
+								<Button onClick={editTaskHandler}>Edit Task</Button>
+								<Button onClick={finishTaskHandler} className={classes.finish}>
+									Finish Task
+								</Button>
+							</div>
+							<CloseButton onClick={deleteTaskHandler} />
+						</>
+					) : (
+						<div className={classes.buttons}>
+							<Button onClick={deleteTaskHandler} className={classes.delete}>
+								Delete Task
+							</Button>
+						</div>
+					)}
 				</>
 			)}
 		</SlideAnimation>

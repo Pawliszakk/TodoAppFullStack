@@ -51,6 +51,10 @@
 .finish {
 	background-color: var(--finish-button);
 }
+.delete {
+	background-color: rgb(191, 11, 11);
+	padding: 1em;
+}
 
 @media (min-width: 400px) {
 	.task {
