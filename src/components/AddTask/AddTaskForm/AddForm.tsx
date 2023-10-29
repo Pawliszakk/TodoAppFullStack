@@ -12,6 +12,7 @@ import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 import Spinner from '../../UI/LoadingSpinner/Spinner';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const AddForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -99,7 +100,14 @@ const AddForm = () => {
 				/>
 
 				{isLoading ? <Spinner /> : <Button type="submit">Add Task</Button>}
-				{reqMessage && <p>{reqMessage}</p>}
+				{reqMessage && !isLoading && (
+					<>
+						<p>{reqMessage}</p>
+						<Link href={`/profile/${userId}`}>
+							Go to your profile to see new task!
+						</Link>
+					</>
+				)}
 			</form>
 		</FormBox>
 	);
