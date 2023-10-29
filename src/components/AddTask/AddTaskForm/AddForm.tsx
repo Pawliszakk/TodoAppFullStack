@@ -2,23 +2,20 @@ import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { AddingTaskSchema } from '@/utils/validation';
 
-import FormBox from '../UI/Form/FormBox';
-import classes from './AddTask.module.scss';
-import SectionTitle from '../UI/Section/SectionTitle';
-import Input from '../UI/Form/Input';
-import Button from '../UI/Buttons/Button';
-import CloseButton from '../UI/Buttons/CloseButton';
-import Select from '../UI/Form/Select';
+import FormBox from '../../UI/Form/FormBox';
+import classes from './AddForm.module.scss';
+import SectionTitle from '../../UI/Section/SectionTitle';
+import Input from '../../UI/Form/Input';
+import Button from '../../UI/Buttons/Button';
+import Select from '../../UI/Form/Select';
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
-import Spinner from '../UI/LoadingSpinner/Spinner';
+import Spinner from '../../UI/LoadingSpinner/Spinner';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/router';
-interface AddTaskProps {
-	onClose: () => void;
-}
 
-const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
+const AddForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
+	const [reqMessage, setReqMessage] = useState('');
 
 	const { isLoggedIn, userId } = useContext(AuthContext);
 	const router = useRouter();
@@ -32,26 +29,33 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: async (values) => {
-			if (isLoggedIn) {
-				setIsLoading(true);
-				const task = {
-					...values,
-					author: userId,
-				};
-
-				const res = await fetch('/api/task', {
-					method: 'POST',
-					body: JSON.stringify(task),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				});
-				const resData = await res.json();
-				console.log(resData);
-				setIsLoading(false);
-			} else {
+			if (!isLoggedIn) {
 				router.push('/');
 			}
+
+			setIsLoading(true);
+			const task = {
+				...values,
+				author: userId,
+			};
+
+			const res = await fetch('/api/task', {
+				method: 'POST',
+				body: JSON.stringify(task),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			const resData = await res.json();
+
+			if (!res.ok) {
+				setReqMessage(
+					resData.message || 'Cannot create a task, please try again later'
+				);
+			} else {
+				setReqMessage(resData.message);
+			}
+			setIsLoading(false);
 		},
 	});
 
@@ -95,11 +99,10 @@ const AddTask: React.FC<AddTaskProps> = ({ onClose }) => {
 				/>
 
 				{isLoading ? <Spinner /> : <Button type="submit">Add Task</Button>}
+				{reqMessage && <p>{reqMessage}</p>}
 			</form>
-
-			<CloseButton onClick={onClose} className={classes.close} />
 		</FormBox>
 	);
 };
 
-export default AddTask;
+export default AddForm;

@@ -7,15 +7,15 @@ import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import AddTask from '@/components/AddTaskForm/AddTask';
+import AddTask from '@/components/AddTask/AddTaskForm/AddForm';
 import Backdrop from '@/components/UI/Backdrop/Backdrop';
 import { useRouter } from 'next/router';
 
 const NavList = () => {
-	const [isAddTask, setIsAddTask] = useState(false);
+	// const [isAddTask, setIsAddTask] = useState(false);
 
-	const openAddTaskHandler = () => setIsAddTask(true);
-	const closeAddTaskHandler = () => setIsAddTask(false);
+	// const openAddTaskHandler = () => setIsAddTask(true);
+	// const closeAddTaskHandler = () => setIsAddTask(false);
 
 	const authCtx = useContext(AuthContext);
 	const { userAvatar, userId, isLoggedIn, logout } = authCtx;
@@ -48,7 +48,7 @@ const NavList = () => {
 				</li>
 				{isLoggedIn && (
 					<li>
-						<motion.button
+						{/* <motion.button
 							whileHover={{ scale: 0.85 }}
 							whileTap={{ scale: 0.7 }}
 							className={classes.icon}
@@ -56,7 +56,11 @@ const NavList = () => {
 						>
 							<BsPlusCircleFill />
 							<span>Add Task</span>
-						</motion.button>
+						</motion.button> */}
+						<Link href="/add" className={classes.icon}>
+							<BsPlusCircleFill />
+							<span>Add Task</span>
+						</Link>
 					</li>
 				)}
 				<li>
@@ -71,11 +75,6 @@ const NavList = () => {
 					</Link>
 				</li>
 			</ul>
-			{isAddTask && (
-				<Backdrop isVisible={isAddTask} onClose={closeAddTaskHandler}>
-					<AddTask onClose={closeAddTaskHandler} />
-				</Backdrop>
-			)}
 		</>
 	);
 };
