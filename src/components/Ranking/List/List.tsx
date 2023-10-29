@@ -7,9 +7,11 @@ interface ListProps {
 }
 
 const List: React.FC<ListProps> = ({ users }) => {
+	const headingContent = users.length >= 10 ? '10' : '';
+
 	return (
 		<section className={classes.ranking}>
-			<h2>Top 10 users list</h2>
+			<h2>Top {headingContent} users list</h2>
 
 			<ul>
 				{!users || users.length === 0 ? (
