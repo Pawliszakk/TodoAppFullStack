@@ -127,16 +127,44 @@ export default async function handler(
 		return res.status(200).json({ message: 'Successfully deleted your task' });
 	}
 	if (req.method === 'PATCH') {
-		const { id } = req.body;
+		const { id, author } = req.body;
 		await connectToDatabase();
 
+		let user;
 		try {
-			const result = await Task.findOneAndUpdate({ id }, { active: false });
-			return res
-				.status(200)
-				.json({ message: 'Your task has finished, congratulations' });
+			user = await User.findById(author).populate('tasks');
 		} catch (err) {
-			return HttpError('Could not finish your task', 500);
+			return res.status(500).json({ message: 'Could not finish your task' });
 		}
+
+		const taskToUpdate = user.tasks.find(
+			(task: any) => task._id.toString() === id
+		);
+
+		if (!taskToUpdate) {
+			return res.status(422).json({ message: 'Cannot find your task' });
+		}
+		if (!taskToUpdate.active) {
+			return res.status(422).json({
+				message: 'Cannot finish your task, because task is already finished',
+			});
+		}
+		user.points += 10;
+		taskToUpdate.active = false;
+
+		try {
+			const sess = await mongoose.startSession();
+			sess.startTransaction();
+			await user.save();
+			await taskToUpdate.save();
+			await sess.commitTransaction();
+		} catch (err) {
+			return res.status(500).json({
+				message: 'Could not finish your task, please try again later',
+			});
+		}
+		return res
+			.status(200)
+			.json({ message: 'Your task has been finished successfully' });
 	}
 }
