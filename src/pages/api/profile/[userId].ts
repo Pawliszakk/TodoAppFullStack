@@ -40,7 +40,7 @@ export default async function handler(
 			return plainObject;
 		});
 		res.status(200).json({
-			message: 'czesc',
+			message: 'Successfully fetched your data',
 			user,
 			tasks: transformedTasks,
 		});
