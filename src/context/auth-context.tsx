@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 interface AuthContextProps {
 	isLoggedIn: boolean;
@@ -33,12 +33,34 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		setToken(token);
 		setUserId(id);
 		setUserAvatar(avatar);
+
+		localStorage.setItem(
+			'userData',
+			JSON.stringify({
+				userId: id,
+				token,
+				avatar,
+			})
+		);
 	};
 	const logoutHandler = () => {
 		setToken(null);
 		setUserId(null);
 		setUserAvatar(null);
+		localStorage.removeItem('userData');
 	};
+
+	useEffect(() => {
+		const authStoredData = localStorage.getItem('userData');
+
+		if (authStoredData) {
+			const authData = JSON.parse(authStoredData);
+			if (authData && authData.token) {
+				const { userId, token, avatar } = authData;
+				loginHandler(userId, token, avatar);
+			}
+		}
+	}, [loginHandler]);
 
 	const context = {
 		userId,
