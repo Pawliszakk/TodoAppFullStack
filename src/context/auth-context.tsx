@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { createContext, useState } from 'react';
 
 interface AuthContextProps {
@@ -29,8 +28,6 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 	const [token, setToken] = useState<null | string>(null);
 	const [userId, setUserId] = useState<null | string>(null);
 	const [userAvatar, setUserAvatar] = useState<null | string>(null);
-
-	const router = useRouter();
 
 	const loginHandler = (id: string, token: string, avatar: string) => {
 		setToken(token);

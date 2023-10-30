@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '../utils/models/user';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
 import mongoose from 'mongoose';
+import { checkAuth } from '../utils/lib/checkAuth';
 // import { Task } from '../utils/models/task';
 
 const TaskSchema = new mongoose.Schema({
@@ -25,6 +26,7 @@ export default async function handler(
 	if (req.method === 'GET') {
 		const userId = req.query.userId;
 
+		// checkAuth(req, res);
 		await connectToDatabase();
 
 		let user;

@@ -5,6 +5,8 @@ import { Task } from '../utils/models/task';
 import { getDate } from '../utils/lib/getDate';
 import { User } from '../utils/models/user';
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
+import { checkAuth } from '../utils/lib/checkAuth';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -12,6 +14,8 @@ export default async function handler(
 ) {
 	if (req.method === 'GET') {
 		await connectToDatabase();
+
+		checkAuth(req, res);
 
 		let result;
 		try {
@@ -40,6 +44,8 @@ export default async function handler(
 
 	if (req.method === 'POST') {
 		const { title, description, category, importance, author } = req.body;
+
+		checkAuth(req, res);
 
 		const isTitleValid = title.length >= 5 && title.length <= 30;
 		const descriptionIsValid =
@@ -102,6 +108,9 @@ export default async function handler(
 	}
 	if (req.method === 'DELETE') {
 		const { id, author } = req.body;
+
+		checkAuth(req, res);
+
 		await connectToDatabase();
 		let task;
 		try {
@@ -128,6 +137,9 @@ export default async function handler(
 	}
 	if (req.method === 'PATCH') {
 		const { id, author } = req.body;
+
+		checkAuth(req, res);
+
 		await connectToDatabase();
 
 		let user;

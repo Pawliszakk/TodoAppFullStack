@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import classes from './TaskTile.module.scss';
@@ -7,6 +7,7 @@ import { Task } from '@/types/app';
 import { Categories } from '@/data/data';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
+import { AuthContext } from '@/context/auth-context';
 
 const TaskTile: React.FC<
 	Task & { onDelete: (id: string) => void; onFinish: (id: string) => void }
@@ -23,6 +24,7 @@ const TaskTile: React.FC<
 	active,
 }) => {
 	const [isLoading, setIsLoading] = useState(false);
+	const { token } = useContext(AuthContext);
 
 	const categoryIcon = Categories.find((cat) => cat.category === category);
 	const deleteTaskHandler = async () => {
@@ -32,14 +34,15 @@ const TaskTile: React.FC<
 			body: JSON.stringify({ id, author }),
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
 			},
 		});
 		const resData = await res.json();
 		console.log(resData);
 		if (res.ok) {
-			setIsLoading(false);
 			onDelete(id);
 		}
+		setIsLoading(false);
 	};
 
 	const editTaskHandler = async () => {
@@ -56,14 +59,15 @@ const TaskTile: React.FC<
 			body: JSON.stringify({ id, author }),
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
 			},
 		});
 		const resData = await res.json();
 		console.log(resData);
 		if (res.ok) {
-			setIsLoading(false);
 			onFinish(id);
 		}
+		setIsLoading(false);
 	};
 
 	return (
