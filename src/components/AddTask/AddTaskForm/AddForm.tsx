@@ -18,7 +18,7 @@ const AddForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
 
-	const { isLoggedIn, userId } = useContext(AuthContext);
+	const { isLoggedIn, userId, token } = useContext(AuthContext);
 	const router = useRouter();
 
 	const formik = useFormik({
@@ -45,6 +45,7 @@ const AddForm = () => {
 				body: JSON.stringify(task),
 				headers: {
 					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
 				},
 			});
 			const resData = await res.json();
