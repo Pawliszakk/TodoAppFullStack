@@ -30,11 +30,11 @@ const AddForm = () => {
 		},
 		validationSchema: AddingTaskSchema,
 		onSubmit: async (values) => {
+			setIsLoading(true);
 			if (!isLoggedIn) {
 				router.push('/');
 			}
 
-			setIsLoading(true);
 			const task = {
 				...values,
 				author: userId,
