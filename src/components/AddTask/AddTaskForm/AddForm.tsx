@@ -104,7 +104,7 @@ const AddForm = () => {
 				{reqMessage && !isLoading && (
 					<>
 						<p>{reqMessage}</p>
-						<Link href={`/profile/${userId}`}>
+						<Link href={`/profile/${userId}/?token=${token}`}>
 							Go to your profile to see new task!
 						</Link>
 					</>
