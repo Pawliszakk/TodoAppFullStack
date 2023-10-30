@@ -26,7 +26,7 @@ export default async function handler(
 	if (req.method === 'GET') {
 		const userId = req.query.userId;
 
-		// checkAuth(req, res);
+		checkAuth(req, res);
 		await connectToDatabase();
 
 		let user;

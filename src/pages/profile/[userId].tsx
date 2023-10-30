@@ -1,9 +1,9 @@
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { Task, User } from '@/types/app';
-import { NextPage } from 'next';
-import { redirect } from 'next/dist/server/api-utils';
+import { GetServerSidePropsContext, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 const UserProfile = dynamic(
 	() => import('@/components/Profile/UserProfile/UserProfile'),
@@ -20,6 +20,10 @@ interface ProfilePageProps {
 }
 
 const ProfilePage: NextPage<ProfilePageProps> = ({ user, tasks }) => {
+	useEffect(() => {
+		window.history.replaceState({}, document.title, user.name);
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -43,17 +47,19 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ user, tasks }) => {
 
 export default ProfilePage;
 
-export const getServerSideProps = async ({
-	params,
-}: {
-	params: {
-		userId: string;
-	};
-}) => {
-	const userId = params.userId;
+export const getServerSideProps = async (
+	context: GetServerSidePropsContext
+) => {
+	const { userId } = context.params || {};
+	const { token } = context.query;
 	let user;
 	let tasks;
-	const res = await fetch(`${process.env.DOMAIN_URL}/api/profile/${userId}`);
+	const res = await fetch(`${process.env.DOMAIN_URL}/api/profile/${userId}`, {
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+	});
 	const resData = await res.json();
 
 	if (!res.ok) {

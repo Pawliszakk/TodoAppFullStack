@@ -18,13 +18,15 @@ const NavList = () => {
 	// const closeAddTaskHandler = () => setIsAddTask(false);
 
 	const authCtx = useContext(AuthContext);
-	const { userAvatar, userId, isLoggedIn, logout } = authCtx;
+	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
 
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';
 
-	const avatarImageHref = isLoggedIn ? `/profile/${userId}` : '/login';
+	const avatarImageHref = isLoggedIn
+		? `/profile/${userId}/?token=${token}`
+		: '/login';
 
 	return (
 		<>
@@ -48,15 +50,6 @@ const NavList = () => {
 				</li>
 				{isLoggedIn && (
 					<li>
-						{/* <motion.button
-							whileHover={{ scale: 0.85 }}
-							whileTap={{ scale: 0.7 }}
-							className={classes.icon}
-							onClick={openAddTaskHandler}
-						>
-							<BsPlusCircleFill />
-							<span>Add Task</span>
-						</motion.button> */}
 						<Link href="/add" className={classes.icon}>
 							<BsPlusCircleFill />
 							<span>Add Task</span>
