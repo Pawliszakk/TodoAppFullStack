@@ -6,7 +6,7 @@ const Footer = () => {
 	return (
 		<footer className={classes.footer}>
 			<span>
-				Taskify <AiOutlineCheckCircle />
+				TaskPro <AiOutlineCheckCircle />
 			</span>
 			<hr />
 			<div className={classes.box}>

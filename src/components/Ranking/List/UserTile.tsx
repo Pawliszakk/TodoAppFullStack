@@ -34,7 +34,7 @@ const UserTile: React.FC<User & { index: number }> = ({
 					{name} {currentIcon}
 				</h3>
 				<p>Points: {points}</p>
-				<p className={classes.date}>On Taskify since: {date}</p>
+				<p className={classes.date}>On TaskPro since: {date}</p>
 			</div>
 		</SlideAnimation>
 	);

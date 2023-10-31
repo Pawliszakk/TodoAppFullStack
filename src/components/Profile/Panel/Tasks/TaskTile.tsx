@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 
+import { AuthContext } from '@/context/auth-context';
+import { Task } from '@/types/app';
+import { Categories } from '@/data/data';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import classes from './TaskTile.module.scss';
 import Button from '@/components/UI/Buttons/Button';
-import { Task } from '@/types/app';
-import { Categories } from '@/data/data';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
-import { AuthContext } from '@/context/auth-context';
 
 const TaskTile: React.FC<
 	Task & {
@@ -79,20 +79,17 @@ const TaskTile: React.FC<
 				<Spinner />
 			) : (
 				<>
-					<div className={classes.content}>
-						<h3>
-							{title} {categoryIcon!.icon}
-						</h3>
-						<hr />
-						<p>{description}</p>
-						<p className={classes.date}>Date: {date}</p>
-						<p className={classes.importance}>Importance: {importance}</p>
-					</div>
-					<div className={classes.category}>
-						<p>
-							Category: {category} {categoryIcon!.icon}
-						</p>
-					</div>
+					<h3>
+						{title} {categoryIcon!.icon}
+					</h3>
+					<hr />
+					<p>{description}</p>
+					<p className={classes.date}>Date: {date}</p>
+					<p className={classes.importance}>Importance: {importance}</p>
+					<p>
+						Category: <span className={classes.category}>{category}</span>{' '}
+						{categoryIcon!.icon}
+					</p>
 					{active ? (
 						<>
 							<div className={classes.buttons}>

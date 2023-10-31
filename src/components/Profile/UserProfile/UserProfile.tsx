@@ -27,7 +27,7 @@ const UserProfile: React.FC<User> = ({ name, date, points, avatar }) => {
 					Task Points: {points} <AiOutlineCheckCircle />
 				</p>
 				<p className={classes.date}>
-					On Taskify since: {date} <BsCalendarDay />
+					On TaskPro since: {date} <BsCalendarDay />
 				</p>
 			</SlideAnimation>
 		</section>

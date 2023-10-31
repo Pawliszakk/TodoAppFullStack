@@ -21,7 +21,7 @@ const Nav = () => {
 			<nav>
 				<h1>
 					<Link href="/">
-						Taskify <AiOutlineCheckCircle />
+						TaskPro <AiOutlineCheckCircle />
 					</Link>
 				</h1>
 				<NavList />

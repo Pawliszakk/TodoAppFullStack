@@ -19,17 +19,17 @@ const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
 	return (
 		<>
 			<Head>
-				<title>Taskify - Create or login to your account</title>
+				<title>TaskPro - Create or login to your account</title>
 				<meta
 					name="description"
-					content="Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs."
+					content="Welcome to TaskPro, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs."
 				/>
 			</Head>
 			<Section
 				alt="Ilustration of people standing on podium, one is with flag in hand"
 				image="/assets/ilustrations/success.jpg"
 				heading="Compete with others!"
-				description="Taskify collects points for tasks completed, below you will see the ranking of users who have earned the most points over time"
+				description="TaskPro collects points for tasks completed, below you will see the ranking of users who have earned the most points over time"
 				ranking
 			/>
 			<List users={users} />

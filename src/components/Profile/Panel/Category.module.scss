@@ -17,6 +17,9 @@
 	h3 {
 		font-size: 2rem;
 		font-weight: 200;
+		&::first-letter {
+			text-transform: uppercase;
+		}
 	}
 }
 
@@ -44,9 +47,9 @@
 	background-color: var(--ideas-color);
 }
 
-
-@media(min-width: 576px) {
-    .category{
-        width: 150px;height: 150px;
-    }
+@media (min-width: 576px) {
+	.category {
+		width: 150px;
+		height: 150px;
+	}
 }

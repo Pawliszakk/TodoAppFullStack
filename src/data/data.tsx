@@ -20,20 +20,20 @@ export const HomeSectionsData: SectionProps[] = [
 		alt: 'Ilustration of man and woman',
 		heading: 'Your Journey to Productivity.',
 		description:
-			'Transform Your Dreams into Actionable Tasks and Your Tasks into Achievements, Anytime, Anywhere with Taskify ',
+			'Transform Your Dreams into Actionable Tasks and Your Tasks into Achievements, Anytime, Anywhere with TaskPro ',
 		button: true,
 	},
 	{
 		image: '/assets/ilustrations/ideas.jpg',
 		alt: 'Ilustration of man thinking with bulb in background and gears',
-		heading: 'But, what is Taskify all about?',
+		heading: 'But, what is TaskPro all about?',
 		description:
-			"Welcome to Taskify, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs.",
+			"Welcome to TaskPro, your go-to solution for task management and goal accomplishment. Why juggle scattered to-do lists when we've simplified it for you? Make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs.",
 	},
 	{
 		image: '/assets/ilustrations/question.jpg',
 		alt: 'Ilustration of man with question mark and monitor in background thinking',
-		heading: 'How does Taskify work?',
+		heading: 'How does TaskPro work?',
 		description:
 			"Below, you'll find a step-by-step tutorial that guides you on how to use the application and accomplish your goals, much like this.",
 	},
