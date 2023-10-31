@@ -35,7 +35,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		setUserAvatar(avatar);
 
 		localStorage.setItem(
-			'userData',
+			'userAuth',
 			JSON.stringify({
 				userId: id,
 				token,
@@ -47,11 +47,11 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		setToken(null);
 		setUserId(null);
 		setUserAvatar(null);
-		localStorage.removeItem('userData');
+		localStorage.removeItem('userAuth');
 	};
 
 	useEffect(() => {
-		const authStoredData = localStorage.getItem('userData');
+		const authStoredData = localStorage.getItem('userAuth');
 
 		if (authStoredData) {
 			const authData = JSON.parse(authStoredData);
