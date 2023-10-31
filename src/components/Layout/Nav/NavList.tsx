@@ -50,7 +50,7 @@ const NavList = () => {
 				</li>
 				{isLoggedIn && (
 					<li>
-						<Link href="/add" className={classes.icon}>
+						<Link href="/add-task" className={classes.icon}>
 							<BsPlusCircleFill />
 							<span>Add Task</span>
 						</Link>
