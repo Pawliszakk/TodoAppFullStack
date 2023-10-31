@@ -1,3 +1,8 @@
-.box{
+.box {
 	margin-top: 5rem;
+	.submit {
+		margin-top: 5rem;
+		width: 100%;
+		background-color: var(--finish-button);
+	}
 }

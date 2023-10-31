@@ -100,7 +100,13 @@ const AddForm = () => {
 					options={selectImportanceOptions}
 				/>
 
-				{isLoading ? <Spinner /> : <Button type="submit">Add Task</Button>}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<Button className={classes.submit} type="submit">
+						Add Task
+					</Button>
+				)}
 				{reqMessage && !isLoading && (
 					<>
 						<p>{reqMessage}</p>
