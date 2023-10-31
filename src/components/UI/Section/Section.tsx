@@ -4,6 +4,8 @@ import SlideAnimation from '../Animations/SlideAnimation';
 import Button from '../Buttons/Button';
 import { SectionProps } from '@/types/app';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
+import { useContext } from 'react';
+import { AuthContext } from '@/context/auth-context';
 
 const Section: React.FC<SectionProps> = ({
 	image,
@@ -14,7 +16,10 @@ const Section: React.FC<SectionProps> = ({
 	index,
 	ranking,
 }) => {
+	const { isLoggedIn, userId, token } = useContext(AuthContext);
+
 	const isOdd = index! % 2 !== 0;
+
 	return (
 		<section className={`${classes.section} ${isOdd ? classes.darker : null}`}>
 			<SlideAnimation
@@ -24,11 +29,20 @@ const Section: React.FC<SectionProps> = ({
 				<div className={classes.content}>
 					<SectionTitle>{heading}</SectionTitle>
 					<p>{description}</p>
-					{button ? (
+					{button && isLoggedIn && (
+						<Button
+							className={classes.btn}
+							link
+							href={`/profile/${userId}/?token=${token}`}
+						>
+							Go to your profile
+						</Button>
+					)}
+					{button && !isLoggedIn && (
 						<Button className={classes.btn} link href="/login">
 							{"Let's get started"}
 						</Button>
-					) : null}
+					)}
 				</div>
 				<div className={classes.image}>
 					<Image
