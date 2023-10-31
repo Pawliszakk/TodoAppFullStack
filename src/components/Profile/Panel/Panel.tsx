@@ -31,7 +31,6 @@ const Panel: React.FC<PanelProps> = (props) => {
 	} else {
 		currentTasks = tasks.filter((task) => task.category === taskCategory);
 	}
-
 	const deleteTaskHandler = (id: string) => {
 		const filteredTasks = tasks.filter((task) => task.id !== id);
 		setTasks(filteredTasks);
@@ -47,9 +46,11 @@ const Panel: React.FC<PanelProps> = (props) => {
 		setTasks(updatedTasks);
 	};
 
+	const activeTasksAmount = tasks.filter((task) => task.active).length;
+	const finishedTasksAmount = tasks.filter((task) => !task.active).length;
+
 	return (
 		<>
-			{' '}
 			<section className={classes.panel}>
 				<h2>Categories</h2>
 				<div className={classes.categories}>
@@ -65,8 +66,12 @@ const Panel: React.FC<PanelProps> = (props) => {
 				</div>
 				<p>Show Tasks by category or...</p>
 				<SlideAnimation className={classes.buttons}>
-					<Button onClick={activeTasksHandler}>Show active tasks</Button>
-					<Button onClick={finishedTasksHandler}>Show finished tasks</Button>
+					<Button onClick={activeTasksHandler}>
+						Show active tasks {`(${activeTasksAmount})`}
+					</Button>
+					<Button onClick={finishedTasksHandler}>
+						Show finished tasks {`(${finishedTasksAmount})`}
+					</Button>
 				</SlideAnimation>
 			</section>
 			<TaskList

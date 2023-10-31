@@ -2,7 +2,7 @@ import Link from 'next/link';
 import classes from './Button.module.scss';
 import { motion } from 'framer-motion';
 interface ButtonProps {
-	children: string;
+	children: string | string[];
 	link?: boolean;
 	href?: string;
 	className?: string;
