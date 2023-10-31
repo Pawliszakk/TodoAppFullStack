@@ -9,6 +9,7 @@ import TaskList from './Tasks/TaskList';
 
 interface PanelProps {
 	tasks: Task[];
+	pointsHandler: () => void;
 }
 
 const Panel: React.FC<PanelProps> = (props) => {
@@ -44,6 +45,7 @@ const Panel: React.FC<PanelProps> = (props) => {
 		});
 
 		setTasks(updatedTasks);
+		props.pointsHandler();
 	};
 
 	const activeTasksAmount = tasks.filter((task) => task.active).length;

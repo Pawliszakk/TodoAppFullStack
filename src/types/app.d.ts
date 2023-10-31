@@ -17,7 +17,7 @@ export type User = {
 	avatar: string;
 	name: string;
 	date: string;
-	points: number;
+	points: number | null;
 	id?: string;
 };
 

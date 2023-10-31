@@ -10,7 +10,10 @@ import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 import { AuthContext } from '@/context/auth-context';
 
 const TaskTile: React.FC<
-	Task & { onDelete: (id: string) => void; onFinish: (id: string) => void }
+	Task & {
+		onDelete: (id: string) => void;
+		onFinish: (id: string) => void;
+	}
 > = ({
 	title,
 	description,

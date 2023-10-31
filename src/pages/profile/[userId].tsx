@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { Task, User } from '@/types/app';
 import { GetServerSidePropsContext, NextPage } from 'next';
@@ -20,8 +22,15 @@ interface ProfilePageProps {
 }
 
 const ProfilePage: NextPage<ProfilePageProps> = ({ user, tasks }) => {
+	const [points, setPoints] = useState<number | null>(null);
+
+	const userPointsHandler = () => setPoints((prev) => (prev! += 10));
+
 	useEffect(() => {
 		window.history.replaceState({}, document.title, user.name);
+		if (user) {
+			setPoints(user.points);
+		}
 	}, []);
 
 	return (
@@ -38,9 +47,9 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ user, tasks }) => {
 				avatar={user.avatar}
 				name={user.name}
 				date={user.date}
-				points={user.points}
+				points={points}
 			/>
-			<Panel tasks={tasks} />
+			<Panel tasks={tasks} pointsHandler={userPointsHandler} />
 		</>
 	);
 };
