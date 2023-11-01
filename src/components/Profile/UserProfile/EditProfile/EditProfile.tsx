@@ -19,19 +19,10 @@ interface EditProfileProps {
 }
 
 const EditProfile: React.FC<EditProfileProps> = (props) => {
-	const [isMen, setIsMen] = useState(false);
 	const [avatar, setAvatar] = useState('/assets/avatars/avatar2.jpg');
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
 
-	const menAvatarsHandler = () => {
-		setIsMen(true);
-		setAvatar('/assets/avatars/avatar1.jpg');
-	};
-	const womenAvatarsHandler = () => {
-		setIsMen(false);
-		setAvatar('/assets/avatars/avatar2.jpg');
-	};
 	const avatarChangeHandler = (avatar: string) => setAvatar(avatar);
 
 	const { token, userId } = useContext(AuthContext);
@@ -87,9 +78,6 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				/>
 
 				<AvatarsComponent
-					isMen={isMen}
-					onMen={menAvatarsHandler}
-					onWomen={womenAvatarsHandler}
 					onAvatarChange={avatarChangeHandler}
 					currentAvatar={avatar}
 				/>
