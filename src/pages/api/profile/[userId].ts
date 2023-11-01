@@ -47,4 +47,39 @@ export default async function handler(
 			tasks: transformedTasks,
 		});
 	}
+
+	if (req.method === 'PATCH') {
+		const userId = req.query.userId;
+
+		checkAuth(req, res);
+		const { name, avatar } = req.body;
+		const isNameValid = name.length >= 5 && name.length <= 20;
+		let isAvatarValid;
+
+		for (let i = 1; i <= 15; i++) {
+			const expectedValue = `/assets/avatars/avatar${i}.jpg`;
+			if (avatar === expectedValue) {
+				isAvatarValid = true;
+				break;
+			}
+		}
+		if (!isNameValid || !isAvatarValid) {
+			return res
+				.status(400)
+				.json({ message: 'Invalid input data. Please try again' });
+		}
+
+		await connectToDatabase();
+		let user;
+		try {
+			user = await User.findByIdAndUpdate(userId, { avatar, name });
+		} catch (err) {
+			return res.status(500).json({
+				message: 'Could not edit your settings, please try again later',
+			});
+		}
+		res
+			.status(200)
+			.json({ message: 'Successfully edited Your userData', user });
+	}
 }

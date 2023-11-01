@@ -45,15 +45,25 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		validationSchema: SignupSchema,
 		onSubmit: async (values) => {
 			setIsLoading(true);
-			if (!avatar) {
+
+			let isAvatarValid;
+
+			for (let i = 1; i <= 15; i++) {
+				const expectedValue = `/assets/avatars/avatar${i}.jpg`;
+				if (avatar === expectedValue) {
+					isAvatarValid = true;
+					break;
+				}
+			}
+
+			if (!isAvatarValid) {
 				return;
 			}
 			values.avatar = avatar;
-			const signupBody = values;
 
 			const res = await fetch('/api/signup', {
 				method: 'POST',
-				body: JSON.stringify(signupBody),
+				body: JSON.stringify(values),
 				headers: {
 					'Content-Type': 'application/json',
 				},

@@ -17,8 +17,16 @@ export default async function handler(
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
 		const passwordIsValid = password.length >= 8 && password.length <= 20;
+		let avatarIsValid;
+		for (let i = 1; i <= 15; i++) {
+			const expectedValue = `/assets/avatars/avatar${i}.jpg`;
+			if (avatar === expectedValue) {
+				avatarIsValid = true;
+				break;
+			}
+		}
 
-		if (!nameIsValid || !emailIsValid || !passwordIsValid) {
+		if (!nameIsValid || !emailIsValid || !passwordIsValid || !avatarIsValid) {
 			return res
 				.status(400)
 				.json({ message: 'Invalid input data. Please try again' });

@@ -39,3 +39,11 @@ export const AddingTaskSchema = Yup.object({
 		.required('Choose importance of your new Task')
 		.notOneOf([''], 'Please select level of importance'),
 });
+
+export const ChangeSettingsSchema = Yup.object({
+	name: Yup.string()
+		.min(5, 'Your name must have minimum 5 characters')
+		.max(20, 'Your name must have maximum 20 characters')
+		.required('Please enter your name'),
+	avatar: Yup.string().required('Please choose your avatar'),
+});

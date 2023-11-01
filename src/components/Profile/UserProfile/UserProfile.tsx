@@ -10,13 +10,22 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { BsCalendarDay } from 'react-icons/bs';
 import { FaEdit } from 'react-icons/fa';
 import EditProfile from './EditProfile/EditProfile';
+import Backdrop from '@/components/UI/Backdrop/Backdrop';
 
-const UserProfile: React.FC<User> = ({ name, date, points, avatar }) => {
+const UserProfile: React.FC<User> = (props) => {
+	const [name, setName] = useState(props.name);
+	const [avatar, setAvatar] = useState(props.avatar);
 	const [isEditForm, setIsEditForm] = useState(false);
 
-	const editFormHandler = () => setIsEditForm(true);
+	const showEditHandler = () => setIsEditForm(true);
+	const hideEditHandler = () => setIsEditForm(false);
 
-	
+	const changeSettingsHandler = (name: string, avatar: string) => {
+		setName(name);
+		setAvatar(avatar);
+		hideEditHandler();
+	};
+
 	return (
 		<section className={classes.userProfile}>
 			<SlideAnimation className={classes.user}>
@@ -36,19 +45,28 @@ const UserProfile: React.FC<User> = ({ name, date, points, avatar }) => {
 						whileTap={{ scale: 0.5 }}
 						whileHover={{ scale: 0.9 }}
 						className={classes.edit}
-						onClick={editFormHandler}
+						onClick={showEditHandler}
 					>
 						<FaEdit />
 					</motion.div>
 				</div>
 				<p>
-					Task Points: {points} <AiOutlineCheckCircle />
+					Task Points: {props.points} <AiOutlineCheckCircle />
 				</p>
 				<p className={classes.date}>
-					On TaskPro since: {date} <BsCalendarDay />
+					On TaskPro since: {props.date} <BsCalendarDay />
 				</p>
 			</SlideAnimation>
-			{isEditForm && <EditProfile />}
+			{isEditForm && (
+				<Backdrop onClose={hideEditHandler} isVisible={isEditForm}>
+					<EditProfile
+						onEdit={changeSettingsHandler}
+						onClose={hideEditHandler}
+						name={name}
+						avatar={avatar}
+					/>
+				</Backdrop>
+			)}
 		</section>
 	);
 };
