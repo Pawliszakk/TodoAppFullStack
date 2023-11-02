@@ -47,3 +47,15 @@ export const ChangeSettingsSchema = Yup.object({
 		.required('Please enter your name'),
 	avatar: Yup.string().required('Please choose your avatar'),
 });
+
+export const checkAvatarValidity = (avatar) => {
+	let isAvatarValid;
+	for (let i = 1; i <= 15; i++) {
+		const expectedValue = `/assets/avatars/avatar${i}.jpg`;
+		if (avatar === expectedValue) {
+			isAvatarValid = true;
+			break;
+		}
+	}
+	return isAvatarValid;
+};

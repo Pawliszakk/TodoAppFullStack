@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
-import { SignupSchema } from '../../../utils/validation';
+import { SignupSchema, checkAvatarValidity } from '../../../utils/validation';
 
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
@@ -36,17 +36,11 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		onSubmit: async (values) => {
 			setIsLoading(true);
 
-			let isAvatarValid;
-
-			for (let i = 1; i <= 15; i++) {
-				const expectedValue = `/assets/avatars/avatar${i}.jpg`;
-				if (avatar === expectedValue) {
-					isAvatarValid = true;
-					break;
-				}
-			}
+			const isAvatarValid = checkAvatarValidity(avatar);
 
 			if (!isAvatarValid) {
+				setIsLoading(false);
+				setReqMessage('Invalid Data');
 				return;
 			}
 			values.avatar = avatar;

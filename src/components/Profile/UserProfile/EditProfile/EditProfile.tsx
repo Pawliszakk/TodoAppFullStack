@@ -4,7 +4,7 @@ import classes from './EditProfile.module.scss';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import Button from '@/components/UI/Buttons/Button';
 import { useFormik } from 'formik';
-import { ChangeSettingsSchema } from '@/utils/validation';
+import { ChangeSettingsSchema, checkAvatarValidity } from '@/utils/validation';
 import Input from '@/components/UI/Form/Input';
 import AvatarsComponent from '@/components/UI/Form/AvatarsComponent';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
@@ -25,7 +25,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 
 	const avatarChangeHandler = (avatar: string) => setAvatar(avatar);
 
-	const { token, userId } = useContext(AuthContext);
+	const { token, userId, login } = useContext(AuthContext);
 
 	const formik = useFormik({
 		initialValues: {
@@ -35,7 +35,12 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 		validationSchema: ChangeSettingsSchema,
 		onSubmit: async (values) => {
 			setIsLoading(true);
-			if (!avatar) {
+
+			const isAvatarValid = checkAvatarValidity(avatar);
+
+			if (!isAvatarValid) {
+				setIsLoading(false);
+				setReqMessage('Invalid Data');
 				return;
 			}
 			values.avatar = avatar;
@@ -59,10 +64,10 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				setIsLoading(false);
 				setReqMessage(resData.message);
 				props.onEdit(values.name, values.avatar);
+				login(userId!, token!, avatar!);
 			}
 		},
 	});
-
 	return (
 		<FormBox>
 			<SectionTitle>Change your profile settings</SectionTitle>

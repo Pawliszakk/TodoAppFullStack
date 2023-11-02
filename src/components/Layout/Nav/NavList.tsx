@@ -19,7 +19,7 @@ const NavList = () => {
 
 	const authCtx = useContext(AuthContext);
 	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
-
+	console.log(userAvatar);
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';
