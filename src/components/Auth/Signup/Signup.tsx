@@ -63,7 +63,6 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				setIsLoading(false);
 				setReqMessage(resData.message);
 				authCtx.login(resData.userId, resData.token, resData.userAvatar);
-				router.push('/');
 			}
 		},
 	});

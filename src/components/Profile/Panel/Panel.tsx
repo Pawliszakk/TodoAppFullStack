@@ -30,7 +30,9 @@ const Panel: React.FC<PanelProps> = (props) => {
 	} else if (taskCategory === 'finished') {
 		currentTasks = tasks.filter((task) => !task.active);
 	} else {
-		currentTasks = tasks.filter((task) => task.category === taskCategory);
+		currentTasks = tasks.filter(
+			(task) => task.category === taskCategory && task.active
+		);
 	}
 	const deleteTaskHandler = (id: string) => {
 		const filteredTasks = tasks.filter((task) => task.id !== id);

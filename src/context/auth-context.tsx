@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { createContext, useEffect, useState } from 'react';
 
 interface AuthContextProps {
@@ -32,6 +33,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 	);
 	const [userAvatar, setUserAvatar] = useState<null | string>(null);
 
+	const router = useRouter();
+
 	const loginHandler = (
 		id: string,
 		token: string,
@@ -54,12 +57,14 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 				expiration: tokenExpirationDate.toISOString(),
 			})
 		);
+		router.push('/');
 	};
 	const logoutHandler = () => {
 		setToken(null);
 		setUserId(null);
 		setUserAvatar(null);
 		localStorage.removeItem('userAuth');
+		router.push('/');
 	};
 
 	useEffect(() => {
@@ -77,6 +82,12 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 			}
 		}
 	}, []);
+
+	useEffect(() => {
+		if (token && userId) {
+			router.push(`/profile/${userId}/?token=${token}`);
+		}
+	}, [token, userId]);
 
 	let logoutTimer: any;
 	useEffect(() => {
