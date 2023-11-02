@@ -1,25 +1,15 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
-import { motion } from 'framer-motion';
 
 import { BsPlusCircleFill } from 'react-icons/bs';
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import AddTask from '@/components/AddTask/AddTaskForm/AddForm';
-import Backdrop from '@/components/UI/Backdrop/Backdrop';
-import { useRouter } from 'next/router';
 
 const NavList = () => {
-	// const [isAddTask, setIsAddTask] = useState(false);
-
-	// const openAddTaskHandler = () => setIsAddTask(true);
-	// const closeAddTaskHandler = () => setIsAddTask(false);
-
 	const authCtx = useContext(AuthContext);
 	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
-	console.log(userAvatar);
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';

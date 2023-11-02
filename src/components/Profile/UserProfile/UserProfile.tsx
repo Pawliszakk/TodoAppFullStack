@@ -82,7 +82,7 @@ const UserProfile: React.FC<User> = (props) => {
 			)}
 			{isPasswordForm && (
 				<Backdrop onClose={hidePasswordHandler} isVisible={isPasswordForm}>
-					<ChangePassword />
+					<ChangePassword onClose={hidePasswordHandler} />
 				</Backdrop>
 			)}
 		</section>

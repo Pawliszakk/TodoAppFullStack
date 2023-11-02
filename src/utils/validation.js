@@ -48,6 +48,19 @@ export const ChangeSettingsSchema = Yup.object({
 	avatar: Yup.string().required('Please choose your avatar'),
 });
 
+export const ChangePasswordSchema = Yup.object({
+	newPassword: Yup.string()
+		.min(8, 'Your Password must have minimum 8 characters')
+		.max(20, 'Your Password must have maximum of 20 characters')
+		.required('Please enter your password'),
+	checkNewPassword: Yup.string()
+		.oneOf(
+			[Yup.ref('newPassword'), null],
+			'Password does not match new password'
+		)
+		.required('Please enter your password'),
+});
+
 export const checkAvatarValidity = (avatar) => {
 	let isAvatarValid;
 	for (let i = 1; i <= 15; i++) {
