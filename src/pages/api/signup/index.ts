@@ -16,7 +16,13 @@ export default async function handler(
 		const emailIsValid = email.match(
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
-		const passwordIsValid = password.length >= 8 && password.length <= 20;
+		const passwordIsValid =
+			password.length >= 8 &&
+			password.length <= 20 &&
+			/[A-Z]/.test(password) &&
+			/[0-9]/.test(password) &&
+			/[^A-Za-z0-9]/.test(password);
+
 		let avatarIsValid;
 		for (let i = 1; i <= 15; i++) {
 			const expectedValue = `/assets/avatars/avatar${i}.jpg`;
