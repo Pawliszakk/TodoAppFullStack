@@ -38,7 +38,9 @@ const Button: React.FC<ButtonProps> = ({
 			whileTap={{ scale: 0.7 }}
 			onClick={onClick}
 			type={type ? type : 'button'}
-			className={`${classes.btn} ${additionalClass}`}
+			className={`${classes.btn} ${additionalClass} ${
+				type === 'submit' ? classes.submit : null
+			}`}
 			disabled={disabled}
 		>
 			{children}

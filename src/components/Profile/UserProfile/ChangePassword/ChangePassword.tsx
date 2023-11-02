@@ -69,7 +69,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					label="Old Password"
 					name="oldPassword"
 					type="password"
-					placeholder="Please enter your current password..."
+					placeholder="Enter current password..."
 					error={formik.errors.oldPassword}
 					touched={formik.touched.oldPassword}
 					field={formik.getFieldProps('oldPassword')}
@@ -78,7 +78,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					label="New Password"
 					name="newPassword"
 					type="password"
-					placeholder="Please enter your new password..."
+					placeholder="Enter new password..."
 					error={formik.errors.newPassword}
 					touched={formik.touched.newPassword}
 					field={formik.getFieldProps('newPassword')}
@@ -87,12 +87,16 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					label="Confirm New Password"
 					name="checkNewPassword"
 					type="password"
-					placeholder="Please confirm your new password..."
+					placeholder="Confirm new password..."
 					error={formik.errors.checkNewPassword}
 					touched={formik.touched.checkNewPassword}
 					field={formik.getFieldProps('checkNewPassword')}
 				/>
-				{isLoading ? <Spinner /> : <Button type="submit"> Login</Button>}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<Button type="submit"> Change Password</Button>
+				)}
 				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 			<CloseButton onClick={onClose} />

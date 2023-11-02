@@ -6,8 +6,12 @@
 	div {
 		position: relative;
 		svg {
+			box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+				rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+			border-radius: 50%;
 			cursor: pointer;
-			font-size: 2rem;
+			color: var(--main-purple-darker);
+			font-size: 2.5rem;
 			position: absolute;
 			right: 5%;
 			top: 50%;

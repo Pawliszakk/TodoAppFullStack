@@ -10,13 +10,14 @@
 	&:hover {
 		background-color: var(--main-purple-darker);
 	}
+	&.submit {
+		background-color: var(--finish-button);
+	}
 }
 
 .btn {
 	border: none;
 }
-
-
 
 @media (min-width: 576px) {
 	.link,
