@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import FormBox from '@/components/UI/Form/FormBox';
-import classes from './EditProfile.module.scss';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import Button from '@/components/UI/Buttons/Button';
 import { useFormik } from 'formik';

@@ -27,6 +27,7 @@ body {
 	--ideas-color: #88510e;
 	--finish-button: rgb(94, 142, 22);
 	--delete-button: rgb(174, 39, 15);
+	--password: rgb(39, 42, 45);
 }
 html {
 	font-size: 62.5%;
