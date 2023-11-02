@@ -1,18 +1,18 @@
 import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { AddingTaskSchema } from '@/utils/validation';
+import { AuthContext } from '@/context/auth-context';
+import { useRouter } from 'next/router';
+import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 
+import Link from 'next/link';
 import FormBox from '../../UI/Form/FormBox';
 import classes from './AddForm.module.scss';
 import SectionTitle from '../../UI/Section/SectionTitle';
 import Input from '../../UI/Form/Input';
 import Button from '../../UI/Buttons/Button';
 import Select from '../../UI/Form/Select';
-import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 import Spinner from '../../UI/LoadingSpinner/Spinner';
-import { AuthContext } from '@/context/auth-context';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const AddForm = () => {
 	const [isLoading, setIsLoading] = useState(false);

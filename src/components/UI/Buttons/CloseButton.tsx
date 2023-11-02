@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+
 import classes from './CloseButton.module.scss';
 import { AiFillCloseCircle } from 'react-icons/ai';
 

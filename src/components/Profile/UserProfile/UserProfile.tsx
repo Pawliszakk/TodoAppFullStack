@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-
-import Image from 'next/image';
-import classes from './UserProfile.module.scss';
 import { User } from '@/types/app';
+import Image from 'next/image';
+
+import classes from './UserProfile.module.scss';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { PiHandWavingLight } from 'react-icons/pi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';

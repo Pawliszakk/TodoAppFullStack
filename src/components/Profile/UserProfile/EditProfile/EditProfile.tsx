@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react';
+import { AuthContext } from '@/context/auth-context';
+import { useFormik } from 'formik';
+import { ChangeSettingsSchema, checkAvatarValidity } from '@/utils/validation';
+
 import FormBox from '@/components/UI/Form/FormBox';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import Button from '@/components/UI/Buttons/Button';
-import { useFormik } from 'formik';
-import { ChangeSettingsSchema, checkAvatarValidity } from '@/utils/validation';
 import Input from '@/components/UI/Form/Input';
 import AvatarsComponent from '@/components/UI/Form/AvatarsComponent';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
-import { AuthContext } from '@/context/auth-context';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
 
 interface EditProfileProps {

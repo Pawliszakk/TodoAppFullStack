@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import classes from './UserTile.module.scss';
 import { User } from '@/types/app';
+
+import classes from './UserTile.module.scss';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
 
@@ -12,7 +13,7 @@ const UserTile: React.FC<User & { index: number }> = ({
 	index,
 }) => {
 	const icons = [
-		<GiPodiumWinner key="winner" />,
+		<GiPodiumWinner key="Winner" />,
 		<GiPodiumSecond key="Second" />,
 		<GiPodiumThird key="Third" />,
 	];

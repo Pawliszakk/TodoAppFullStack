@@ -1,7 +1,8 @@
-import classes from './Input.module.scss';
 import { useState } from 'react';
-import { BiErrorCircle } from 'react-icons/bi';
 import { FieldInputProps } from 'formik';
+
+import classes from './Input.module.scss';
+import { BiErrorCircle } from 'react-icons/bi';
 import { IoEyeSharp, IoEyeOff } from 'react-icons/io5';
 interface InputProps {
 	field: FieldInputProps<string>;

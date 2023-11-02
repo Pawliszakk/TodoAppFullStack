@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import classes from './Category.module.scss';
 import { Category } from '@/types/app';
+
+import classes from './Category.module.scss';
 import SlideFromTop from '@/components/UI/Animations/SlideFromTop';
+
 const CategoryTile: React.FC<Category> = ({
 	icon,
 	category,

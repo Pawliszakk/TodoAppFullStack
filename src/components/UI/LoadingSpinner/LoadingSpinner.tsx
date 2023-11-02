@@ -1,4 +1,5 @@
 import Portal from '@/utils/Portal';
+
 import classes from './LoadingSpinner.module.scss';
 import Spinner from './Spinner';
 

@@ -1,15 +1,17 @@
 import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import { BsPlusCircleFill } from 'react-icons/bs';
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
-import Link from 'next/link';
-import Image from 'next/image';
 
 const NavList = () => {
 	const authCtx = useContext(AuthContext);
+
 	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
+	
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';

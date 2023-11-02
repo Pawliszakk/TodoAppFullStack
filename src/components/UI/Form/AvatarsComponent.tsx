@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Avatars } from '@/data/data';
-import classes from './AvatarsComponent.module.scss';
 import Image from 'next/image';
+
+import classes from './AvatarsComponent.module.scss';
 
 interface AvatarsProps {
 	onAvatarChange: (avatar: string) => void;

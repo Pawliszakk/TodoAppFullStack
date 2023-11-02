@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import SlideAnimation from '../UI/Animations/SlideAnimation';
+
 import classes from './AddTask.module.scss';
+import SlideAnimation from '../UI/Animations/SlideAnimation';
 import AddForm from './AddTaskForm/AddForm';
 
 const AddTask = () => {

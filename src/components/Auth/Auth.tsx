@@ -1,10 +1,12 @@
-import Image from 'next/image';
-import classes from './Auth.module.scss';
 import { useState } from 'react';
+import Image from 'next/image';
+
+import classes from './Auth.module.scss';
 import Signup from './Signup/Signup';
 import Login from './Login/Login';
 import Start from './Start/Start';
 import SlideAnimation from '../UI/Animations/SlideAnimation';
+
 const Auth = () => {
 	const [currentForm, setCurrentForm] = useState(0);
 

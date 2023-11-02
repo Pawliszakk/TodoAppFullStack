@@ -3,6 +3,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear();
+
 	return (
 		<footer className={classes.footer}>
 			<span>

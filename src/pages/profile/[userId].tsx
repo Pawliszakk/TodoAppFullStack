@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { GetServerSidePropsContext, NextPage } from 'next';
+import { Task, User } from '@/types/app';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
-import { Task, User } from '@/types/app';
-import { GetServerSidePropsContext, NextPage } from 'next';
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { useEffect } from 'react';
 
 const UserProfile = dynamic(
 	() => import('@/components/Profile/UserProfile/UserProfile'),

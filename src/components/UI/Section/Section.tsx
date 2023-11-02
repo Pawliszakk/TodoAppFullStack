@@ -1,11 +1,12 @@
+import { useContext } from 'react';
+import { AuthContext } from '@/context/auth-context';
+import { SectionProps } from '@/types/app';
 import Image from 'next/image';
+
 import classes from './Section.module.scss';
 import SlideAnimation from '../Animations/SlideAnimation';
 import Button from '../Buttons/Button';
-import { SectionProps } from '@/types/app';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
-import { useContext } from 'react';
-import { AuthContext } from '@/context/auth-context';
 
 const Section: React.FC<SectionProps> = ({
 	image,

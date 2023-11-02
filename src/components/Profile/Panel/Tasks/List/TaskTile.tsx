@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-
 import { AuthContext } from '@/context/auth-context';
 import { CategoryType, Task } from '@/types/app';
 import { Categories } from '@/data/data';
+
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import classes from './TaskTile.module.scss';
 import Button from '@/components/UI/Buttons/Button';

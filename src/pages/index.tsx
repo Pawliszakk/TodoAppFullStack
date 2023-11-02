@@ -1,6 +1,7 @@
-import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
+
+import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 
 const Home = dynamic(() => import('@/components/Home/Home'), {
 	loading: () => <LoadingSpinner />,

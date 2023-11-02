@@ -1,6 +1,7 @@
-import Link from 'next/link';
-import classes from './Button.module.scss';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+import classes from './Button.module.scss';
 interface ButtonProps {
 	children: string | string[];
 	link?: boolean;

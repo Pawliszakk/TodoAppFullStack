@@ -1,7 +1,7 @@
 import React from 'react';
 import Portal from '@/utils/Portal';
-import classes from './Backdrop.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
+import classes from './Backdrop.module.scss';
 interface BackdropProps {
 	children: React.ReactNode;
 	onClose: () => void;

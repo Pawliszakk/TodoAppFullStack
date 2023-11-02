@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { SignupSchema, checkAvatarValidity } from '../../../utils/validation';
+import { AuthContext } from '@/context/auth-context';
 
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
@@ -8,7 +9,6 @@ import Input from '@/components/UI/Form/Input';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import AvatarsComponent from '../../UI/Form/AvatarsComponent';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
-import { AuthContext } from '@/context/auth-context';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;

@@ -1,5 +1,6 @@
-import Section from '../UI/Section/Section';
 import { HomeSectionsData } from '@/data/data';
+
+import Section from '../UI/Section/Section';
 
 const Home = () => {
 	return (

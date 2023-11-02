@@ -1,8 +1,9 @@
-import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { User } from '@/types/app';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+
+import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
 
 const Section = dynamic(() => import('@/components/UI/Section/Section'), {
 	loading: () => <LoadingSpinner />,

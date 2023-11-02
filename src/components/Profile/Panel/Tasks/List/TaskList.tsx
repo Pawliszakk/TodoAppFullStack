@@ -1,6 +1,7 @@
+import { Task } from '@/types/app';
+
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import classes from './TaskList.module.scss';
-import { Task } from '@/types/app';
 import TaskTile from './TaskTile';
 
 interface TaskListProps {

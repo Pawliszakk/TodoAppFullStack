@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import classes from './Start.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import FormBox from '@/components/UI/Form/FormBox';

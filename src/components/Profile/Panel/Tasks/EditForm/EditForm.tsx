@@ -1,11 +1,12 @@
 import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { AddingTaskSchema } from '@/utils/validation';
-
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { CategoryType } from '@/types/app';
+
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import FormBox from '@/components/UI/Form/FormBox';
 import Input from '@/components/UI/Form/Input';
@@ -13,7 +14,6 @@ import Select from '@/components/UI/Form/Select';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 import Button from '@/components/UI/Buttons/Button';
 import CloseButton from '@/components/UI/Buttons/CloseButton';
-import { CategoryType } from '@/types/app';
 
 interface EditFormProps {
 	onClose: () => void;

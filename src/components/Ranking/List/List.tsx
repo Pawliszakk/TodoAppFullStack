@@ -1,4 +1,5 @@
 import { User } from '@/types/app';
+
 import classes from './List.module.scss';
 import UserTile from './UserTile';
 

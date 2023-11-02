@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+
 import classes from './Nav.module.scss';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import NavList from './NavList';
-import { useEffect, useState } from 'react';
+
 const Nav = () => {
 	const [isNavScrolled, setIsNavScrolled] = useState(false);
 

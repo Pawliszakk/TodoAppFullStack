@@ -1,10 +1,11 @@
+import { useState } from 'react';
+import { Categories } from '@/data/data';
+import { CategoryType, Task } from '@/types/app';
+
 import Button from '@/components/UI/Buttons/Button';
 import classes from './Panel.module.scss';
 import CategoryTile from './Category';
-import { Categories } from '@/data/data';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
-import { CategoryType, Task } from '@/types/app';
-import { useState } from 'react';
 import TaskList from './Tasks/List/TaskList';
 
 interface PanelProps {
