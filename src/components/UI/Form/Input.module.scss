@@ -15,7 +15,11 @@
 			position: absolute;
 			right: 5%;
 			top: 50%;
-			transform: translatey(-50%);
+			transform: translateY(-50%);
+			transition: color 0.3s;
+			&:hover {
+				color: var(--finish-button);
+			}
 		}
 	}
 	label {

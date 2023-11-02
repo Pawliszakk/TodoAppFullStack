@@ -4,6 +4,7 @@ import { FieldInputProps } from 'formik';
 import classes from './Input.module.scss';
 import { BiErrorCircle } from 'react-icons/bi';
 import { IoEyeSharp, IoEyeOff } from 'react-icons/io5';
+import { motion } from 'framer-motion';
 interface InputProps {
 	field: FieldInputProps<string>;
 	name: string;
@@ -37,7 +38,7 @@ const Input: React.FC<InputProps> = ({
 	return (
 		<div className={classes.box}>
 			<label htmlFor={name}>{label}</label>
-			<div>
+			<div >
 				<input
 					id={name}
 					type={!isPassword ? type : inputType}
