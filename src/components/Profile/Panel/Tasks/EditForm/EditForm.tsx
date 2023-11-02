@@ -87,7 +87,7 @@ const EditForm: React.FC<EditFormProps> = ({
 					values.category,
 					values.importance
 				);
-				setTimeout(() => onClose(), 1000);
+				onClose();
 			}
 			setIsLoading(false);
 		},

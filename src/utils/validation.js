@@ -51,7 +51,11 @@ export const ChangeSettingsSchema = Yup.object({
 export const ChangePasswordSchema = Yup.object({
 	newPassword: Yup.string()
 		.min(8, 'Your Password must have minimum 8 characters')
-		.max(20, 'Your Password must have maximum of 20 characters')
+		.max(20, 'Your Password must have a maximum of 20 characters')
+		.notOneOf(
+			[Yup.ref('oldPassword'), null],
+			'New password cannot be the same as the old password'
+		)
 		.required('Please enter your password'),
 	checkNewPassword: Yup.string()
 		.oneOf(

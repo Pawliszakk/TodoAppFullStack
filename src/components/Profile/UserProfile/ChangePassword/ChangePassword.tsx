@@ -53,7 +53,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 				setReqMessage(resData.message);
 				setTimeout(() => {
 					onClose();
-				}, 1500);
+				}, 1000);
 			}
 		},
 	});

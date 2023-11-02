@@ -20,6 +20,11 @@ export default async function handler(
 				.status(400)
 				.json({ message: 'Invalid input data. Please try again' });
 		}
+		if (oldPassword === newPassword) {
+			return res
+				.status(400)
+				.json({ message: 'Your old password is the same as new password' });
+		}
 		await connectToDatabase();
 
 		let user;
