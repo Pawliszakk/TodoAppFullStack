@@ -27,19 +27,31 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 }) => {
 	const [token, setToken] = useState<null | string>(null);
 	const [userId, setUserId] = useState<null | string>(null);
+	const [tokenExpirationDate, setTokenExpirationDate] = useState<null | Date>(
+		null
+	);
 	const [userAvatar, setUserAvatar] = useState<null | string>(null);
 
-	const loginHandler = (id: string, token: string, avatar: string) => {
+	const loginHandler = (
+		id: string,
+		token: string,
+		avatar: string,
+		expirationDate?: Date
+	) => {
 		setToken(token);
 		setUserId(id);
 		setUserAvatar(avatar);
 
+		const tokenExpirationDate =
+			expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
+		setTokenExpirationDate(tokenExpirationDate);
 		localStorage.setItem(
 			'userAuth',
 			JSON.stringify({
 				userId: id,
 				token,
 				avatar,
+				expiration: tokenExpirationDate.toISOString(),
 			})
 		);
 	};
@@ -55,12 +67,28 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
 		if (authStoredData) {
 			const authData = JSON.parse(authStoredData);
-			if (authData && authData.token) {
+			if (
+				authData &&
+				authData.token &&
+				new Date(authData.expiration) > new Date()
+			) {
 				const { userId, token, avatar } = authData;
-				loginHandler(userId, token, avatar);
+				loginHandler(userId, token, avatar, new Date(authData.expiration));
 			}
 		}
-	}, [loginHandler]);
+	}, []);
+
+	let logoutTimer: any;
+	useEffect(() => {
+		if (token && tokenExpirationDate) {
+			const remainingTime =
+				tokenExpirationDate.getTime() - new Date().getTime();
+
+			logoutTimer = setTimeout(logoutHandler, remainingTime);
+		} else {
+			clearTimeout(logoutTimer);
+		}
+	}, [token, logoutHandler, tokenExpirationDate]);
 
 	const context = {
 		userId,
