@@ -9,7 +9,6 @@ import SectionTitle from '@/components/UI/Section/SectionTitle';
 import AvatarsComponent from '../../UI/Form/AvatarsComponent';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 import { AuthContext } from '@/context/auth-context';
-import { useRouter } from 'next/router';
 
 interface LoginProps {
 	onFormChange: (number: number) => void;
@@ -20,7 +19,6 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
 
-	const router = useRouter();
 	const authCtx = useContext(AuthContext);
 
 	const avatarChangeHandler = (avatar: string) => setAvatar(avatar);

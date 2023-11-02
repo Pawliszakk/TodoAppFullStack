@@ -70,7 +70,6 @@ export const getServerSideProps = async (
 		},
 	});
 	const resData = await res.json();
-
 	if (!res.ok) {
 		return {
 			redirect: {
