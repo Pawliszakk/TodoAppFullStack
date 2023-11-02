@@ -9,17 +9,43 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	if (req.method === 'PATCH') {
-		const { userId, newPassword } = req.body;
+		const { userId, oldPassword, newPassword } = req.body;
 		checkAuth(req, res);
 
 		const passwordIsValid = newPassword.length >= 8 && newPassword.length <= 20;
-		if (!passwordIsValid) {
+		const oldPasswordIsValid =
+			oldPassword.length >= 8 && oldPassword.length <= 20;
+		if (!passwordIsValid || !oldPasswordIsValid) {
 			return res
 				.status(400)
 				.json({ message: 'Invalid input data. Please try again' });
 		}
+		await connectToDatabase();
 
 		let user;
+		try {
+			user = await User.findById(userId);
+		} catch (err) {
+			res.status(500).json({
+				message: 'Cannot change your password, please try again later',
+			});
+		}
+
+		let isPasswordValid = false;
+		try {
+			isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+		} catch (err) {
+			res.status(422).json({
+				message:
+					'Cannot log you in, something went wrong, please try again later',
+			});
+		}
+
+		if (!isPasswordValid) {
+			return res.status(409).json({
+				message: `Your old password is not valid, please try again`,
+			});
+		}
 
 		let hashedPassword;
 		try {
@@ -29,15 +55,16 @@ export default async function handler(
 				message: 'Cannot change your password, please try again later',
 			});
 		}
-		await connectToDatabase();
 
 		try {
-			user = await User.findByIdAndUpdate(userId, { password: hashedPassword });
+			user.password = hashedPassword;
+			user.save();
 		} catch (err) {
 			return res.status(500).json({
 				message: 'Could not find user, please try again later',
 			});
 		}
+
 		res.status(200).json({ message: 'Changed your password successfully' });
 	}
 }

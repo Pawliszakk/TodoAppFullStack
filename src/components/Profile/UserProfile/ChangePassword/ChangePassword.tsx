@@ -23,6 +23,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 
 	const formik = useFormik({
 		initialValues: {
+			oldPassword: '',
 			newPassword: '',
 			checkNewPassword: '',
 		},
@@ -64,6 +65,15 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 			</SectionTitle>
 
 			<form onSubmit={formik.handleSubmit}>
+				<Input
+					label="Old Password"
+					name="oldPassword"
+					type="password"
+					placeholder="Please enter your current password..."
+					error={formik.errors.oldPassword}
+					touched={formik.touched.oldPassword}
+					field={formik.getFieldProps('oldPassword')}
+				/>
 				<Input
 					label="New Password"
 					name="newPassword"
