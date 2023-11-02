@@ -1,7 +1,8 @@
 import classes from './Input.module.scss';
+import { useState } from 'react';
 import { BiErrorCircle } from 'react-icons/bi';
 import { FieldInputProps } from 'formik';
-
+import { IoEyeSharp, IoEyeOff } from 'react-icons/io5';
 interface InputProps {
 	field: FieldInputProps<string>;
 	name: string;
@@ -21,12 +22,34 @@ const Input: React.FC<InputProps> = ({
 	name,
 	touched,
 }) => {
+	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+	const isPassword = type === 'password';
+
 	const isError = touched && error;
+
+	const inputType = isPasswordVisible ? 'text' : 'password';
+
+	const passwordVisibilityHandler = () => {
+		setIsPasswordVisible((prevState) => !prevState);
+	};
 
 	return (
 		<div className={classes.box}>
 			<label htmlFor={name}>{label}</label>
-			<input id={name} type={type} {...field} placeholder={placeholder} />
+			<div>
+				<input
+					id={name}
+					type={!isPassword ? type : inputType}
+					{...field}
+					placeholder={placeholder}
+				/>
+				{isPassword && isPasswordVisible && (
+					<IoEyeOff onClick={passwordVisibilityHandler} />
+				)}
+				{isPassword && !isPasswordVisible && (
+					<IoEyeSharp onClick={passwordVisibilityHandler} />
+				)}
+			</div>
 			{isError ? (
 				<p>
 					{error} <BiErrorCircle />
