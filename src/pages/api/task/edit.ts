@@ -22,7 +22,7 @@ export default async function handler(
 		}
 
 		if (task.author.toString() !== author || !task) {
-			return res.status(409).json({ message: 'Cannot update your tas1' });
+			return res.status(409).json({ message: 'Cannot update your task' });
 		}
 
 		const updateFields = { title, description, category, importance };

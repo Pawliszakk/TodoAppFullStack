@@ -11,36 +11,6 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	if (req.method === 'GET') {
-		await connectToDatabase();
-
-		checkAuth(req, res);
-
-		let result;
-		try {
-			result = await Task.find({});
-			const tasksToSend: any[] = [];
-			result.map((r) => {
-				tasksToSend.push({
-					id: r.id,
-					title: r.title,
-					description: r.description,
-					category: r.category,
-					importance: r.importance,
-					author: r.author,
-					date: r.date,
-					active: r.active,
-				});
-			});
-
-			res
-				.status(200)
-				.json({ message: 'Tasks fetched successfully', tasks: tasksToSend });
-		} catch (err) {
-			return HttpError('Failed to fetch tasks', 500);
-		}
-	}
-
 	if (req.method === 'POST') {
 		const { title, description, category, importance, author } = req.body;
 

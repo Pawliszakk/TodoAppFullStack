@@ -3,5 +3,22 @@
 	.submit {
 		margin-top: 5rem;
 		width: 100%;
+		padding: 1em;
+	}
+	.message {
+		font-size: 2rem;
+	}
+	a {
+		font-size: 1.4rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.box {
+		a {
+			display: block;
+			margin: 0.5em 0;
+			font-size: 2rem;
+		}
 	}
 }

@@ -52,7 +52,7 @@ export default async function handler(
 		if (user) {
 			return res
 				.status(409)
-				.json({ message: `Account for ${email} already exists` });
+				.json({ message: `Account for this email already exists` });
 		}
 
 		let hashedPassword;
@@ -74,7 +74,7 @@ export default async function handler(
 		});
 
 		try {
-			const result = await createdUser.save();
+			await createdUser.save();
 		} catch (err) {
 			return res
 				.status(500)
