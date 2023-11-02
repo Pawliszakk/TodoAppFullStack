@@ -5,7 +5,7 @@ import { Categories } from '@/data/data';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { CategoryType, Task } from '@/types/app';
 import { useState } from 'react';
-import TaskList from './Tasks/TaskList';
+import TaskList from './Tasks/List/TaskList';
 
 interface PanelProps {
 	tasks: Task[];

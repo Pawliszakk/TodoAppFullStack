@@ -5,7 +5,6 @@ import { Task } from '../utils/models/task';
 import { getDate } from '../utils/lib/getDate';
 import { User } from '../utils/models/user';
 import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
 import { checkAuth } from '../utils/lib/checkAuth';
 
 export default async function handler(
