@@ -5,7 +5,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: var(--main-purple-darker);
+	color: var(--finish-button);
 	background-color: #fff;
 	border-radius: 50%;
 	z-index: 500;
@@ -13,5 +13,13 @@
 		position: absolute;
 		opacity: 0;
 		pointer-events: none;
+	}
+}
+
+
+
+@media(min-width: 768px) {
+	.button {
+		font-size: 10rem;
 	}
 }
