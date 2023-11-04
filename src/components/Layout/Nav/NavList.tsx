@@ -11,7 +11,7 @@ const NavList = () => {
 	const authCtx = useContext(AuthContext);
 
 	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
-	
+
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';
@@ -40,14 +40,7 @@ const NavList = () => {
 						Top 10
 					</Button>
 				</li>
-				{isLoggedIn && (
-					<li>
-						<Link href="/add-task" className={classes.icon}>
-							<BsPlusCircleFill />
-							<span>Add Task</span>
-						</Link>
-					</li>
-				)}
+
 				<li>
 					<Link href={avatarImageHref}>
 						<Image
