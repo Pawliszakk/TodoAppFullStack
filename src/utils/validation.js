@@ -73,6 +73,17 @@ export const ChangePasswordSchema = Yup.object({
 		.required('Please enter your password'),
 });
 
+export const deleteAccountValidation = Yup.object({
+	password: Yup.string()
+		.min(8, 'Your Password must have minimum 8 characters')
+		.max(20, 'Your Password must have a maximum of 20 characters')
+		.matches(
+			/^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).*$/,
+			'Your Password must contain at least one uppercase letter, one number, and one special character'
+		)
+		.required('Please enter your password'),
+});
+
 export const checkAvatarValidity = (avatar) => {
 	let isAvatarValid;
 	for (let i = 1; i <= 15; i++) {

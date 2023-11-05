@@ -1,0 +1,46 @@
+.icon {
+	position: absolute;
+	border: 2px solid #fff;
+	display: flex;
+	right: 0;
+	justify-content: center;
+	align-items: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	cursor: pointer;
+	&.edit {
+		background-color: var(--main-purple-darker);
+		bottom: 0;
+	}
+	&.password {
+		background-color: var(--password);
+		top: 0;
+	}
+	&.delete {
+		left: 0;
+		top: 0;
+		background-color: var(--health-color);
+	}
+	svg {
+		color: #fff;
+		font-size: 2.5rem;
+	}
+}
+
+@media(min-width: 768px) {
+	.icon{
+		&.edit {
+			bottom: 3%;
+			right: 3%;
+		}
+		&.password {
+			top: 3%;
+			right: 3%;
+		}
+		&.delete {
+			left: 3%;
+			top: 3%;
+		}
+	}
+}

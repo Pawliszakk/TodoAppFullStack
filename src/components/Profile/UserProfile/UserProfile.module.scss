@@ -29,32 +29,7 @@
 		width: 100%;
 		height: 100%;
 	}
-	.icon {
-		position: absolute;
-		border: 2px solid #fff;
-		display: flex;
-		right: 0;
-		justify-content: center;
-		align-items: center;
-		width: 60px;
-		height: 60px;
-		border-radius: 50%;
-		cursor: pointer;
-		&.edit {
-			background-color: var(--main-purple-darker);
 
-			bottom: 5%;
-		}
-		&.pass {
-			background-color: var(--password);
-
-			top: 5%;
-		}
-		svg {
-			color: #fff;
-			font-size: 2.5rem;
-		}
-	}
 }
 
 @media (min-width: 576px) {
