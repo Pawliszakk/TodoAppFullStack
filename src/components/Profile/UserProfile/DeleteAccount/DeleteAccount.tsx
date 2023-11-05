@@ -22,7 +22,29 @@ const DeleteAccount = () => {
 		validationSchema: deleteAccountValidation,
 
 		onSubmit: async (values) => {
-			console.log(values);
+			setIsLoading(true);
+
+			const res = await fetch(`/api/profile/${userId}`, {
+				method: 'DELETE',
+				body: JSON.stringify(values),
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			const resData = await res.json();
+
+			if (!res.ok) {
+				setIsLoading(false);
+				setReqMessage(
+					resData.message ||
+						'Cannot delete your account, please try again later.'
+				);
+			} else {
+				setIsLoading(false);
+				setReqMessage(resData.message);
+				logout();
+			}
 		},
 	});
 
@@ -30,7 +52,7 @@ const DeleteAccount = () => {
 		<FormBox>
 			<SectionTitle>Are you sure you want to delete your account?</SectionTitle>
 
-			<form>
+			<form onSubmit={formik.handleSubmit}>
 				<Input
 					label="Write your password"
 					name="password"
