@@ -107,13 +107,19 @@ const AddForm = () => {
 						Add Task
 					</Button>
 				)}
-				{reqMessage && !isLoading && (
+
+				{reqMessage && !isLoading ? (
 					<>
 						<p>{reqMessage}</p>
 						<Link href={`/profile/${userId}/?token=${token}`}>
 							Go to your profile to see new task!
 						</Link>
 					</>
+				) : (
+					<p>
+						By clicking the button below, a new task will be created and{' '}
+						<strong>assigned to your account.</strong>
+					</p>
 				)}
 			</form>
 		</FormBox>
