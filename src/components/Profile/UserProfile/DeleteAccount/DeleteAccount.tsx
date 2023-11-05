@@ -1,15 +1,21 @@
 import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { deleteAccountValidation } from '@/utils/validation';
+import { AuthContext } from '@/context/auth-context';
 
+import classes from './DeleteAccount.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import FormBox from '@/components/UI/Form/FormBox';
 import Input from '@/components/UI/Form/Input';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
-import { AuthContext } from '@/context/auth-context';
+import CloseButton from '@/components/UI/Buttons/CloseButton';
 
-const DeleteAccount = () => {
+interface DeleteAccountProps {
+	onClose: () => void;
+}
+
+const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [reqMessage, setReqMessage] = useState('');
 
@@ -50,7 +56,9 @@ const DeleteAccount = () => {
 
 	return (
 		<FormBox>
-			<SectionTitle>Are you sure you want to delete your account?</SectionTitle>
+			<SectionTitle className={classes.heading}>
+				Are you sure you want to delete your account?
+			</SectionTitle>
 
 			<form onSubmit={formik.handleSubmit}>
 				<Input
@@ -66,10 +74,21 @@ const DeleteAccount = () => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit">Delete Account</Button>
+					<Button className={classes.submit} type="submit" deleteBtn>
+						Delete Account
+					</Button>
 				)}
-				{reqMessage && <p>{reqMessage}</p>}
+
+				{reqMessage ? (
+					<p>{reqMessage}</p>
+				) : (
+					<p>
+						By clicking the button below, your account will be permanently
+						deleted. <strong>This action is irreversible.</strong>
+					</p>
+				)}
 			</form>
+			<CloseButton onClick={onClose} />
 		</FormBox>
 	);
 };

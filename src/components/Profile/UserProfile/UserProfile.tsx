@@ -79,7 +79,7 @@ const UserProfile: React.FC<User> = (props) => {
 			)}
 			{isDeleteForm && (
 				<Backdrop onClose={hideDeleteHandler} isVisible={isDeleteForm}>
-					<DeleteAccount />
+					<DeleteAccount onClose={hideDeleteHandler} />
 				</Backdrop>
 			)}
 		</section>

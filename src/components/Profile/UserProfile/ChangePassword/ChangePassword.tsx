@@ -97,7 +97,14 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 				) : (
 					<Button type="submit"> Change Password</Button>
 				)}
-				{reqMessage && <p>{reqMessage}</p>}
+				{reqMessage ? (
+					<p>{reqMessage}</p>
+				) : (
+					<p>
+						By confirming below, your password will be permanently and{' '}
+						<strong>irreversibly</strong> changed.
+					</p>
+				)}
 			</form>
 			<CloseButton onClick={onClose} />
 		</FormBox>

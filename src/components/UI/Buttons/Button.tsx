@@ -10,6 +10,7 @@ interface ButtonProps {
 	onClick?: (arg: any) => void;
 	type?: 'button' | 'reset' | 'submit';
 	disabled?: boolean;
+	deleteBtn?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 	onClick,
 	type,
 	disabled,
+	deleteBtn,
 }) => {
 	const additionalClass = className ? className : null;
 
@@ -41,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
 			type={type ? type : 'button'}
 			className={`${classes.btn} ${additionalClass} ${
 				type === 'submit' ? classes.submit : null
-			}`}
+			} ${deleteBtn ? classes.delete : null}`}
 			disabled={disabled}
 		>
 			{children}

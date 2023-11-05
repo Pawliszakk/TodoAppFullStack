@@ -92,7 +92,14 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				) : (
 					<Button type="submit">Change your settings</Button>
 				)}
-				{reqMessage && <p>{reqMessage}</p>}
+				{reqMessage ? (
+					<p>{reqMessage}</p>
+				) : (
+					<p>
+						By clicking the button below, your profile settings will be{' '}
+						<strong>updated</strong>.
+					</p>
+				)}
 			</form>
 			<CloseButton onClick={props.onClose} />
 		</FormBox>

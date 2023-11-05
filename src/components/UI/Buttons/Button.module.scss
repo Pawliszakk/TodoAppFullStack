@@ -13,6 +13,9 @@
 	&.submit {
 		background-color: var(--finish-button);
 	}
+	&.delete {
+		background-color: var(--delete-button);
+	}
 }
 
 .btn {
