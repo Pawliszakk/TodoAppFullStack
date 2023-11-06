@@ -11,15 +11,15 @@
 	cursor: pointer;
 	&.edit {
 		background-color: var(--main-purple-darker);
-		bottom: 0;
+		bottom: -5%;
 	}
 	&.password {
 		background-color: var(--password);
-		top: 0;
+		top: -5%;
 	}
 	&.delete {
-		left: 0;
-		top: 0;
+		left: -5%;
+		top: -5%;
 		background-color: var(--health-color);
 	}
 	svg {
@@ -28,8 +28,8 @@
 	}
 }
 
-@media(min-width: 768px) {
-	.icon{
+@media (min-width: 768px) {
+	.icon {
 		&.edit {
 			bottom: 3%;
 			right: 3%;
