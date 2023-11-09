@@ -45,17 +45,18 @@
 	}
 }
 
-@media (max-height: 500px) {
+@media (max-height: 600px) {
 	.list {
 		.btn {
 			font-size: 1rem;
 		}
 	}
 }
-@media (max-height: 700px) {
+
+@media (max-height: 500px) {
 	.list {
 		.btn {
-			font-size: 1.2rem;
+			font-size: 0.8rem;
 		}
 	}
 }

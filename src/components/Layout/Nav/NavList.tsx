@@ -46,8 +46,8 @@ const NavList = () => {
 						<Image
 							src={avatarImage}
 							alt="An avatar of a user"
-							width={40}
-							height={40}
+							width={35}
+							height={35}
 						/>
 						<span>Check Profile</span>
 					</Link>
