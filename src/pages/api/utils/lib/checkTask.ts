@@ -25,4 +25,5 @@ export const checkTask = (req: NextApiRequest, res: NextApiResponse) => {
 	) {
 		return false;
 	}
+	return true;
 };

@@ -22,6 +22,9 @@ const SlideAnimation: React.FC<SlideAnimationProps> = ({
 				className={className}
 				initial={{ opacity: 0, x: left ? 50 : -50 }}
 				whileInView={{ opacity: 1, x: 0 }}
+				viewport={{
+					once: true,
+				}}
 				transition={{ delay: delay ? delay : 0.3 }}
 			>
 				{children}
@@ -35,6 +38,9 @@ const SlideAnimation: React.FC<SlideAnimationProps> = ({
 			initial={{ opacity: 0, x: left ? 50 : -50 }}
 			whileInView={{ opacity: 1, x: 0 }}
 			transition={{ delay: delay ? delay : 0.3 }}
+			viewport={{
+				once: true,
+			}}
 		>
 			{children}
 		</motion.div>
