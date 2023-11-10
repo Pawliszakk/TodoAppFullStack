@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
-import { HttpError } from '../utils/lib/HttpError';
 import { Task } from '../utils/models/task';
 import { getDate } from '../utils/lib/getDate';
 import { User } from '../utils/models/user';
 import mongoose from 'mongoose';
 import { checkAuth } from '../utils/lib/checkAuth';
+import { checkTask } from '../utils/lib/checkTask';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -16,30 +16,7 @@ export default async function handler(
 
 		checkAuth(req, res);
 
-		const isTitleValid = title.length >= 5 && title.length <= 30;
-		const descriptionIsValid =
-			description.length >= 10 && description.length <= 50;
-
-		const isCategoryValid =
-			category === 'health' ||
-			category === 'work' ||
-			category === 'house' ||
-			category === 'personal' ||
-			category === 'payments' ||
-			category === 'ideas';
-		const importanceIsValid =
-			importance === '1' || importance === '2' || importance === '3';
-
-		if (
-			!isTitleValid ||
-			!descriptionIsValid ||
-			!isCategoryValid ||
-			!importanceIsValid
-		) {
-			return res
-				.status(400)
-				.json({ message: 'Invalid data. Please try again' });
-		}
+		checkTask(req, res);
 
 		await connectToDatabase();
 

@@ -55,7 +55,7 @@ export default async function handler(
 
 		checkAuth(req, res);
 		const { name, avatar } = req.body;
-		const isNameValid = name.length >= 5 && name.length <= 20;
+		const isNameValid = name.trim().length >= 5 && name.trim().length <= 20;
 		let isAvatarValid;
 
 		for (let i = 1; i <= 15; i++) {

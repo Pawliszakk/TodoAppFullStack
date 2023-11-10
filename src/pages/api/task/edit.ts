@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../utils/lib/connectToDatabase';
 import { checkAuth } from '../utils/lib/checkAuth';
 import { Task } from '../utils/models/task';
+import { checkTask } from '../utils/lib/checkTask';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -11,6 +12,8 @@ export default async function handler(
 		const { id, author, title, description, category, importance } = req.body;
 
 		checkAuth(req, res);
+
+		checkTask(req, res);
 
 		await connectToDatabase();
 

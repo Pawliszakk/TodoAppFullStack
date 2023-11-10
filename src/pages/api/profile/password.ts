@@ -11,16 +11,15 @@ export default async function handler(
 	if (req.method === 'PATCH') {
 		const { userId, oldPassword, newPassword } = req.body;
 		checkAuth(req, res);
-
 		const passwordIsValid =
-			newPassword.length >= 8 &&
-			newPassword.length <= 20 &&
+			newPassword.trim().length >= 8 &&
+			newPassword.trim().length <= 20 &&
 			/[A-Z]/.test(newPassword) &&
 			/[0-9]/.test(newPassword) &&
 			/[^A-Za-z0-9]/.test(newPassword);
 
 		const oldPasswordIsValid =
-			oldPassword.length >= 8 && oldPassword.length <= 20;
+			oldPassword.trim().length >= 8 && oldPassword.trim().length <= 20;
 		if (!passwordIsValid || !oldPasswordIsValid) {
 			return res
 				.status(400)
