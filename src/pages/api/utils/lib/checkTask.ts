@@ -23,6 +23,6 @@ export const checkTask = (req: NextApiRequest, res: NextApiResponse) => {
 		!isCategoryValid ||
 		!importanceIsValid
 	) {
-		return res.status(400).json({ message: 'Invalid data. Please try again' });
+		return false;
 	}
 };

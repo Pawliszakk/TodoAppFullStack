@@ -13,7 +13,12 @@ export default async function handler(
 
 		checkAuth(req, res);
 
-		checkTask(req, res);
+		const isTaskValid = checkTask(req, res);
+		if (!isTaskValid) {
+			return res
+				.status(400)
+				.json({ message: 'Invalid data. Please try again' });
+		}
 
 		await connectToDatabase();
 
