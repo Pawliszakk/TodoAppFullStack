@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { ChangePasswordSchema } from '@/utils/validation';
 import { useFormik } from 'formik';
 import { AuthContext } from '@/context/auth-context';
+import { Toaster, toast } from 'sonner';
+
 import classes from './ChangePassword.module.scss';
 
 import FormBox from '@/components/UI/Form/FormBox';
@@ -44,22 +46,29 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 
 			if (!res.ok) {
 				setIsLoading(false);
+				toast.error(
+					resData.message ||
+						'Cannot change your password, please try again later'
+				);
+
 				setReqMessage(
 					resData.message ||
 						'Cannot change your password, please try again later'
 				);
 			} else {
 				setIsLoading(false);
+				toast.success(resData.message);
 				setReqMessage(resData.message);
 				setTimeout(() => {
 					onClose();
-				}, 1000);
+				}, 3000);
 			}
 		},
 	});
 
 	return (
 		<FormBox>
+			<Toaster position="top-center" />
 			<SectionTitle className={classes.title}>
 				Change Your Password
 			</SectionTitle>

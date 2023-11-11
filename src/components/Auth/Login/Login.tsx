@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { LoginSchema } from '../../../utils/validation';
 import { AuthContext } from '@/context/auth-context';
+import { Toaster, toast } from 'sonner';
 
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
@@ -41,10 +42,15 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			if (!res.ok) {
 				setIsLoading(false);
+				toast.error(
+					resData.message || 'Cannot log you in, please try again later'
+				);
+
 				setReqMessage(
 					resData.message || 'Cannot log you in, please try again later'
 				);
 			} else {
+				toast.success(resData.message);
 				setIsLoading(false);
 				setReqMessage(resData.message);
 				authCtx.login(resData.userId, resData.token, resData.userAvatar);
@@ -55,6 +61,8 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 	return (
 		<FormBox>
 			<SectionTitle>Login</SectionTitle>
+			<Toaster position="top-center" />
+
 			<p>Welcome back! Login with your credentials</p>
 
 			<form onSubmit={formik.handleSubmit}>

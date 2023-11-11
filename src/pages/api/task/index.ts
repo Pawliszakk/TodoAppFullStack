@@ -17,7 +17,6 @@ export default async function handler(
 		checkAuth(req, res);
 
 		const isTaskValid = checkTask(req, res);
-		console.log(isTaskValid);
 		if (!isTaskValid) {
 			return res
 				.status(400)

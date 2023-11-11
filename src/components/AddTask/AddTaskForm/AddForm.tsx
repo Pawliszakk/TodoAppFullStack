@@ -4,6 +4,7 @@ import { AddingTaskSchema } from '@/utils/validation';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/router';
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
+import { Toaster, toast } from 'sonner';
 
 import Link from 'next/link';
 import FormBox from '../../UI/Form/FormBox';
@@ -51,10 +52,14 @@ const AddForm = () => {
 			const resData = await res.json();
 
 			if (!res.ok) {
+				toast.error(
+					resData.message || 'Cannot create a task, please try again later'
+				);
 				setReqMessage(
 					resData.message || 'Cannot create a task, please try again later'
 				);
 			} else {
+				toast.success(resData.message);
 				setReqMessage(resData.message);
 			}
 			setIsLoading(false);
@@ -63,6 +68,7 @@ const AddForm = () => {
 
 	return (
 		<FormBox className={classes.box}>
+			<Toaster position="top-center" />
 			<SectionTitle>Add New Task</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input

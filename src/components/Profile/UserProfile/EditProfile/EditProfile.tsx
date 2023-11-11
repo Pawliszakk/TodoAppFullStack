@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
 import { useFormik } from 'formik';
 import { ChangeSettingsSchema, checkAvatarValidity } from '@/utils/validation';
+import { Toaster, toast } from 'sonner';
 
 import FormBox from '@/components/UI/Form/FormBox';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
@@ -56,20 +57,28 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 
 			if (!res.ok) {
 				setIsLoading(false);
+				toast.error(
+					resData.message ||
+						'Cannot change your settings, please try again later'
+				);
 				setReqMessage(
 					resData.message ||
 						'Cannot change your settings, please try again later'
 				);
 			} else {
+				toast.success(resData.message);
 				setIsLoading(false);
 				setReqMessage(resData.message);
-				props.onEdit(values.name, values.avatar);
 				login(userId!, token!, avatar!);
+				setTimeout(() => {
+					props.onEdit(values.name, values.avatar);
+				}, 3000);
 			}
 		},
 	});
 	return (
 		<FormBox>
+			<Toaster position="top-center" />
 			<SectionTitle>Change your profile settings</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input

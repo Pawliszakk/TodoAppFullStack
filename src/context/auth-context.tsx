@@ -57,7 +57,10 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 				expiration: tokenExpirationDate.toISOString(),
 			})
 		);
-		router.push('/');
+
+		if (!token) {
+			router.push('/');
+		}
 	};
 	const logoutHandler = () => {
 		setToken(null);

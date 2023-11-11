@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { SignupSchema, checkAvatarValidity } from '../../../utils/validation';
 import { AuthContext } from '@/context/auth-context';
+import { Toaster, toast } from 'sonner';
 
 import FormBox from '@/components/UI/Form/FormBox';
 import Button from '@/components/UI/Buttons/Button';
@@ -54,11 +55,14 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			if (!res.ok) {
 				setIsLoading(false);
+				toast.error(resData.message);
+
 				setReqMessage(
 					resData.message || 'Cannot sign you in, please try again later'
 				);
 			} else {
 				setIsLoading(false);
+				toast.success(resData.message);
 				setReqMessage(resData.message);
 				authCtx.login(resData.userId, resData.token, resData.userAvatar);
 			}
@@ -67,6 +71,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 	return (
 		<FormBox>
+			<Toaster position="top-center" />
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
 			<form onSubmit={formik.handleSubmit}>

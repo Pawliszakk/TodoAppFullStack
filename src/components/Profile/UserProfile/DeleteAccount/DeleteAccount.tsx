@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { deleteAccountValidation } from '@/utils/validation';
 import { AuthContext } from '@/context/auth-context';
+import { Toaster, toast } from 'sonner';
 
 import classes from './DeleteAccount.module.scss';
 import Button from '@/components/UI/Buttons/Button';
@@ -42,20 +43,28 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 
 			if (!res.ok) {
 				setIsLoading(false);
+				toast.error(
+					resData.message ||
+						'Cannot delete your account, please try again later.'
+				);
 				setReqMessage(
 					resData.message ||
 						'Cannot delete your account, please try again later.'
 				);
 			} else {
+				toast.success(resData.message);
+
 				setIsLoading(false);
 				setReqMessage(resData.message);
-				logout();
+				setTimeout(() => logout(), 3000);
 			}
 		},
 	});
 
 	return (
 		<FormBox>
+			<Toaster position="top-center" />
+
 			<SectionTitle className={classes.heading}>
 				Are you sure you want to delete your account?
 			</SectionTitle>
