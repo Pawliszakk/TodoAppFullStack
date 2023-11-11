@@ -70,15 +70,16 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				setIsLoading(false);
 				setReqMessage(resData.message);
 				login(userId!, token!, avatar!);
+				props.onEdit(values.name, values.avatar);
 				setTimeout(() => {
-					props.onEdit(values.name, values.avatar);
+					props.onClose();
 				}, 3000);
 			}
 		},
 	});
 	return (
 		<FormBox>
-			<Toaster position="top-center" richColors/>
+			<Toaster position="top-center" richColors />
 			<SectionTitle>Change your profile settings</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input

@@ -33,7 +33,6 @@ const UserProfile: React.FC<User> = (props) => {
 	const changeSettingsHandler = (name: string, avatar: string) => {
 		setName(name);
 		setAvatar(avatar);
-		hideEditHandler();
 	};
 
 	return (

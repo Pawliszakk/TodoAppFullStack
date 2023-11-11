@@ -61,8 +61,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
 		if (!token) {
 			router.push('/');
+			toast.success('Correct credentials, you are logged in');
 		}
-		toast.success('Correct credentials, you are logged in');
 	};
 	const logoutHandler = () => {
 		setToken(null);

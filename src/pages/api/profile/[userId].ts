@@ -82,7 +82,7 @@ export default async function handler(
 		}
 		res
 			.status(200)
-			.json({ message: 'Successfully edited Your userData', user });
+			.json({ message: 'Successfully edited your profile settings', user });
 	}
 	if (req.method === 'DELETE') {
 		const userId = req.query.userId;
