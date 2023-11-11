@@ -61,7 +61,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 	return (
 		<FormBox>
 			<SectionTitle>Login</SectionTitle>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors/>
 
 			<p>Welcome back! Login with your credentials</p>
 

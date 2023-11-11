@@ -71,7 +71,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 	return (
 		<FormBox>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors/>
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
 			<form onSubmit={formik.handleSubmit}>

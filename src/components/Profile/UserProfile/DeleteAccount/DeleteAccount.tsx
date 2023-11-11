@@ -63,7 +63,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 
 	return (
 		<FormBox>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors/>
 
 			<SectionTitle className={classes.heading}>
 				Are you sure you want to delete your account?

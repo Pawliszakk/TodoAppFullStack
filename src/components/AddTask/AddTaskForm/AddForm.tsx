@@ -68,7 +68,7 @@ const AddForm = () => {
 
 	return (
 		<FormBox className={classes.box}>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors />
 			<SectionTitle>Add New Task</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input

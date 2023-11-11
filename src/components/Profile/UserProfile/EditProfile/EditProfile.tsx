@@ -78,7 +78,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 	});
 	return (
 		<FormBox>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors/>
 			<SectionTitle>Change your profile settings</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input

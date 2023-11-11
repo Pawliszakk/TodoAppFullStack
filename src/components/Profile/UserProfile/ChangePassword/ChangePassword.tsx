@@ -68,7 +68,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 
 	return (
 		<FormBox>
-			<Toaster position="top-center" />
+			<Toaster position="top-center" richColors/>
 			<SectionTitle className={classes.title}>
 				Change Your Password
 			</SectionTitle>
