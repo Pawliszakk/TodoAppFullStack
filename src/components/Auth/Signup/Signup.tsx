@@ -62,7 +62,6 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				);
 			} else {
 				setIsLoading(false);
-				toast.success(resData.message);
 				setReqMessage(resData.message);
 				authCtx.login(resData.userId, resData.token, resData.userAvatar);
 			}
@@ -71,7 +70,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 	return (
 		<FormBox>
-			<Toaster position="top-center" richColors/>
+			<Toaster position="top-center" richColors />
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
 			<form onSubmit={formik.handleSubmit}>
