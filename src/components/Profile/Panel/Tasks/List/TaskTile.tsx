@@ -65,11 +65,11 @@ const TaskTile: React.FC<
 			},
 		});
 		const resData = await res.json();
-		console.log(resData);
 		if (res.ok) {
 			onDelete(id);
+		} else {
+			setIsLoading(false);
 		}
-		setIsLoading(false);
 	};
 
 	const finishTaskHandler = async () => {
@@ -83,7 +83,6 @@ const TaskTile: React.FC<
 			},
 		});
 		const resData = await res.json();
-		console.log(resData);
 		if (res.ok) {
 			onFinish(id);
 		}

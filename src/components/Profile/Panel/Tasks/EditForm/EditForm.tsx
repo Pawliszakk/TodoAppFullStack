@@ -4,8 +4,9 @@ import { AddingTaskSchema } from '@/utils/validation';
 import { selectCategoryOptions, selectImportanceOptions } from '@/data/data';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { CategoryType } from '@/types/app';
+import { Toaster, toast } from 'sonner';
+import Link from 'next/link';
 
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import FormBox from '@/components/UI/Form/FormBox';
@@ -76,10 +77,14 @@ const EditForm: React.FC<EditFormProps> = ({
 			const resData = await res.json();
 
 			if (!res.ok) {
+				toast.error(
+					resData.message || 'Cannot create a task, please try again later'
+				);
 				setReqMessage(
 					resData.message || 'Cannot create a task, please try again later'
 				);
 			} else {
+				toast.success(resData.message);
 				setReqMessage(resData.message);
 				onTaskEdit(
 					values.title,
@@ -87,7 +92,7 @@ const EditForm: React.FC<EditFormProps> = ({
 					values.category,
 					values.importance
 				);
-				onClose();
+				setTimeout(() => onClose(), 2500);
 			}
 			setIsLoading(false);
 		},
@@ -95,6 +100,8 @@ const EditForm: React.FC<EditFormProps> = ({
 
 	return (
 		<FormBox>
+			<Toaster position="top-center" richColors />
+
 			<SectionTitle>Edit your task</SectionTitle>
 			<form onSubmit={formik.handleSubmit}>
 				<Input
