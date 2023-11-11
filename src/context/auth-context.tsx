@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Toaster, toast } from 'sonner';
 
 interface AuthContextProps {
 	isLoggedIn: boolean;
@@ -61,6 +62,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		if (!token) {
 			router.push('/');
 		}
+		toast.success('Correct credentials, you are logged in');
 	};
 	const logoutHandler = () => {
 		setToken(null);
@@ -68,6 +70,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		setUserAvatar(null);
 		localStorage.removeItem('userAuth');
 		router.push('/');
+		toast.info('You have been logged out');
 	};
 
 	useEffect(() => {
@@ -114,6 +117,9 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 	};
 
 	return (
-		<AuthContext.Provider value={context}>{children}</AuthContext.Provider>
+		<AuthContext.Provider value={context}>
+			{children}
+			<Toaster position="top-center" richColors />
+		</AuthContext.Provider>
 	);
 };
