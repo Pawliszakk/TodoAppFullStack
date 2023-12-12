@@ -40,7 +40,31 @@
 		"@types/uuid": "^9.0.6",
 		"eslint": "^8",
 		"eslint-config-next": "13.5.4",
+		"identity-obj-proxy": "^3.0.0",
 		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^29.7.0",
 		"typescript": "^5"
+	},
+	"jest": {
+		"rootDir": "./src/",
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"tsx",
+			"ts",
+			"scss",
+			"css"
+		],
+		"moduleDirectories": [
+			"node_modules",
+			"bower_components",
+			"src"
+		],
+		"verbose": true,
+		"moduleNameMapper": {
+			"^@/(.*)$": "<rootDir>/$1",
+			"\\.(scss|css)$": "identity-obj-proxy"
+		},
+		"testEnvironment": "jsdom"
 	}
 }
