@@ -64,7 +64,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			<p>Welcome back! Login with your credentials</p>
 
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={formik.handleSubmit} data-testid="login-form">
 				<Input
 					label="E-mail"
 					name="email"
@@ -73,6 +73,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					error={formik.errors.email}
 					touched={formik.touched.email}
 					field={formik.getFieldProps('email')}
+					testId="email-input"
 				/>
 
 				<Input
@@ -83,13 +84,17 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					error={formik.errors.password}
 					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
+					testId="password-input"
 				/>
 				{isLoading ? <Spinner /> : <Button type="submit"> Login</Button>}
 				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 
-			<p>
-				No account? <span onClick={() => onFormChange(1)}>create one</span>
+			<p data-testid="create-account">
+				No account?{' '}
+				<span data-testId="create-span" onClick={() => onFormChange(1)}>
+					create one
+				</span>
 			</p>
 		</FormBox>
 	);

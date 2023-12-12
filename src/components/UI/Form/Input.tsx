@@ -13,6 +13,7 @@ interface InputProps {
 	type: string;
 	error?: string;
 	touched?: boolean;
+	testId?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,6 +24,7 @@ const Input: React.FC<InputProps> = ({
 	error,
 	name,
 	touched,
+	testId,
 }) => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 	const isPassword = type === 'password';
@@ -44,6 +46,7 @@ const Input: React.FC<InputProps> = ({
 					type={!isPassword ? type : inputType}
 					{...field}
 					placeholder={placeholder}
+					data-testid={testId}
 				/>
 				{isPassword && isPasswordVisible && (
 					<IoEyeOff onClick={passwordVisibilityHandler} />
