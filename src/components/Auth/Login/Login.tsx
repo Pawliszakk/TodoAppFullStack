@@ -92,7 +92,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			<p data-testid="create-account">
 				No account?{' '}
-				<span data-testId="create-span" onClick={() => onFormChange(1)}>
+				<span data-testid="create-span" onClick={() => onFormChange(1)}>
 					create one
 				</span>
 			</p>

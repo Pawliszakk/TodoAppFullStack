@@ -20,7 +20,7 @@ describe('Login', () => {
 		expect(createParagraph).toBeInTheDocument();
 	});
 
-	test('Clicking on Create account span should trigger onFormChange function', () => {
+	test('Clicking on Create account span should trigger onFormChange with 1 as an argument', () => {
 		const mockOnFormChange = jest.fn();
 		render(<Login onFormChange={mockOnFormChange} />);
 
@@ -28,6 +28,6 @@ describe('Login', () => {
 
 		fireEvent.click(createOneSpan);
 
-		expect(mockOnFormChange).toHaveBeenCalled();
+		expect(mockOnFormChange).toHaveBeenCalledWith(1);
 	});
 });

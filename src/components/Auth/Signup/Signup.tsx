@@ -73,7 +73,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 			<Toaster position="top-center" richColors />
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={formik.handleSubmit} data-testid="signup-form">
 				<Input
 					label="Username"
 					name="name"
@@ -82,6 +82,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					error={formik.errors.name}
 					touched={formik.touched.name}
 					field={formik.getFieldProps('name')}
+					testId="username-input"
 				/>
 				<Input
 					label="E-mail"
@@ -91,6 +92,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					error={formik.errors.email}
 					touched={formik.touched.email}
 					field={formik.getFieldProps('email')}
+					testId="email-input"
 				/>
 				<Input
 					label="Password"
@@ -100,6 +102,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					error={formik.errors.password}
 					touched={formik.touched.password}
 					field={formik.getFieldProps('password')}
+					testId="password-input"
 				/>
 
 				<AvatarsComponent
@@ -111,7 +114,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 			</form>
 
 			<p>
-				Already a user? <span onClick={() => onFormChange(2)}>Login</span>
+				Already a user? <span onClick={() => onFormChange(2)} data-testid='login-span'>Login</span>
 			</p>
 		</FormBox>
 	);
