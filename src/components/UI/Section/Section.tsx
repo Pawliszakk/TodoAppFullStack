@@ -16,13 +16,17 @@ const Section: React.FC<SectionProps> = ({
 	button,
 	index,
 	ranking,
+	home,
 }) => {
 	const { isLoggedIn, userId, token } = useContext(AuthContext);
 
 	const isOdd = index! % 2 !== 0;
 
 	return (
-		<section className={`${classes.section} ${isOdd ? classes.darker : null}`}>
+		<section
+			className={`${classes.section} ${isOdd ? classes.darker : null}`}
+			{...(home ? { 'data-testid': 'home-section' } : {})}
+		>
 			<SlideAnimation
 				left={isOdd}
 				className={`${classes.box} ${isOdd ? classes.reverse : null} `}

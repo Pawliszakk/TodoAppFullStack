@@ -3,7 +3,6 @@ import { AuthContext } from '@/context/auth-context';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { BsPlusCircleFill } from 'react-icons/bs';
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
 

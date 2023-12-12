@@ -17,6 +17,7 @@ const AddTaskButton = () => {
 					right: '5%',
 					zIndex: 500,
 				}}
+				data-testid="add-task"
 			>
 				<Link href="/add-task" className={classes.button}>
 					<BsFillPlusCircleFill />

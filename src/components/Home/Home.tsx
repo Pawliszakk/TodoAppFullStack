@@ -14,6 +14,7 @@ const Home = () => {
 					heading={data.heading}
 					description={data.description}
 					button={data.button}
+					home
 				/>
 			))}
 		</>

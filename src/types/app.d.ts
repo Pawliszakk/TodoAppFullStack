@@ -6,6 +6,7 @@ export type SectionProps = {
 	button?: boolean;
 	index?: number;
 	ranking?: boolean;
+	home?: boolean;
 };
 
 export type Avatar = {
