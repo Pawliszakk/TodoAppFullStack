@@ -28,7 +28,11 @@ const Button: React.FC<ButtonProps> = ({
 	if (link && href) {
 		return (
 			<motion.div whileHover={{ scale: 0.95 }} whileTap={{ scale: 0.7 }}>
-				<Link href={href} className={`${classes.link} ${additionalClass}`}>
+				<Link
+					href={href}
+					className={`${classes.link} ${additionalClass}`}
+					data-testid="test-anchor"
+				>
 					{children}
 				</Link>
 			</motion.div>
@@ -45,6 +49,7 @@ const Button: React.FC<ButtonProps> = ({
 				type === 'submit' ? classes.submit : null
 			} ${deleteBtn ? classes.delete : null}`}
 			disabled={disabled}
+			data-testid="test-button"
 		>
 			{children}
 		</motion.button>

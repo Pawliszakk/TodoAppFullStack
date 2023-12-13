@@ -15,6 +15,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ onClick, className }) => {
 			whileTap={{ scale: 0.6 }}
 			className={`${classes.close} ${className ? className : null}`}
 			onClick={onClick}
+			data-testId="test-close"
 		>
 			<AiFillCloseCircle />
 		</motion.div>
