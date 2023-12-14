@@ -14,18 +14,22 @@ interface ProfileIconProps {
 const ProfileIcon: React.FC<ProfileIconProps> = (props) => {
 	let additionalClass;
 	let icon;
+	let testId;
 
 	if (props.delete) {
 		additionalClass = classes.delete;
 		icon = <AiOutlineClose />;
+		testId = 'delete-btn';
 	}
 	if (props.edit) {
 		additionalClass = classes.edit;
 		icon = <FaEdit />;
+		testId = 'edit-btn';
 	}
 	if (props.password) {
 		additionalClass = classes.password;
 		icon = <FaUserLock />;
+		testId = 'password-btn';
 	}
 
 	return (
@@ -34,6 +38,7 @@ const ProfileIcon: React.FC<ProfileIconProps> = (props) => {
 			whileHover={{ scale: 0.9 }}
 			className={`${classes.icon} ${additionalClass}`}
 			onClick={props.onClick}
+			data-testid={testId}
 		>
 			{icon}
 		</motion.div>

@@ -47,9 +47,19 @@ const UserProfile: React.FC<User> = (props) => {
 						priority
 					/>
 
-					<ProfileIcon edit onClick={() => setCurrentForm('edit')} />
-					<ProfileIcon password onClick={() => setCurrentForm('password')} />
-					<ProfileIcon delete onClick={() => setCurrentForm('delete')} />
+					<ProfileIcon
+						edit
+						onClick={() => setCurrentForm('edit')}
+					/>
+					<ProfileIcon
+						password
+						onClick={() => setCurrentForm('password')}
+					/>
+					<ProfileIcon
+						delete
+						onClick={() => setCurrentForm('delete')}
+						
+					/>
 				</div>
 				<p>
 					Task Points: {props.points} <AiOutlineCheckCircle />
@@ -65,6 +75,7 @@ const UserProfile: React.FC<User> = (props) => {
 						onClose={closeFormHandler}
 						name={name}
 						avatar={avatar}
+						data-testid="edit-form"
 					/>
 				</Backdrop>
 			)}
