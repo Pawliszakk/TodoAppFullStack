@@ -8,7 +8,7 @@ interface ListProps {
 }
 
 const List: React.FC<ListProps> = ({ users }) => {
-	const headingContent = users.length >= 10 ? '10' : '';
+	const headingContent = (users && users.length) >= 10 ? '10' : '';
 
 	return (
 		<section className={classes.ranking}>
