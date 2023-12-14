@@ -49,6 +49,7 @@ const CategoryTile: React.FC<Category> = ({
 				whileTap={{ scale: 0.7 }}
 				className={`${classes.category} ${categoryClass}`}
 				onClick={handleCategoryClick}
+				data-testid="test-tile"
 			>
 				{icon}
 				<h3>{category}</h3>
