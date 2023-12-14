@@ -8,8 +8,7 @@ describe('CloseButton', () => {
 	test('Should trigger provided onClick value if clicked', () => {
 		const mockOnClick = jest.fn();
 
-		render(<CloseButton onClick={mockOnClick}  
-        />);
+		render(<CloseButton onClick={mockOnClick} />);
 
 		const closeElement = screen.getByTestId('test-close');
 

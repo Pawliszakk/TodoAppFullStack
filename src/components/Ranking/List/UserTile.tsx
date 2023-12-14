@@ -13,9 +13,9 @@ const UserTile: React.FC<User & { index: number }> = ({
 	index,
 }) => {
 	const icons = [
-		<GiPodiumWinner key="Winner" />,
-		<GiPodiumSecond key="Second" />,
-		<GiPodiumThird key="Third" />,
+		<GiPodiumWinner key="Winner" data-testid="winner-test" />,
+		<GiPodiumSecond key="Second" data-testid="second-test" />,
+		<GiPodiumThird key="Third" data-testid="third-test" />,
 	];
 	const currentIcon = icons[index];
 
