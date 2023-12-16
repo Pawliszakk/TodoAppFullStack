@@ -64,7 +64,6 @@ const TaskTile: React.FC<
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		const resData = await res.json();
 		if (res.ok) {
 			onDelete(id);
 		} else {
@@ -82,7 +81,6 @@ const TaskTile: React.FC<
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		const resData = await res.json();
 		if (res.ok) {
 			onFinish(id);
 		}
@@ -113,7 +111,11 @@ const TaskTile: React.FC<
 						<>
 							<div className={classes.buttons}>
 								<Button onClick={showEditHandler}>Edit Task</Button>
-								<Button onClick={finishTaskHandler} className={classes.finish}>
+								<Button
+									onClick={finishTaskHandler}
+									className={classes.finish}
+									testId="finish-btn"
+								>
 									Finish Task
 								</Button>
 							</div>
@@ -121,7 +123,11 @@ const TaskTile: React.FC<
 						</>
 					) : (
 						<div className={classes.buttons}>
-							<Button onClick={deleteTaskHandler} className={classes.delete}>
+							<Button
+								onClick={deleteTaskHandler}
+								className={classes.delete}
+								testId="delete-btn"
+							>
 								Delete Task
 							</Button>
 						</div>

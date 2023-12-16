@@ -33,4 +33,32 @@ describe('Button', () => {
 
 		expect(buttonElement).toBeInTheDocument();
 	});
+
+	test('renders a button element with given text', () => {
+		render(<Button>Click me</Button>);
+
+		const buttonElement = screen.getByText('Click me');
+
+		expect(buttonElement).toBeInTheDocument();
+	});
+
+	test('renders a disabled button when disabled prop is true', () => {
+		render(<Button disabled>Click me</Button>);
+
+		const buttonElement = screen.getByText('Click me');
+
+		expect(buttonElement).toBeDisabled();
+	});
+
+	test('renders a link when link prop and href are provided', () => {
+		render(
+			<Button link href="/some-path">
+				Go somewhere
+			</Button>
+		);
+
+		const linkElement = screen.getByRole('link', { name: 'Go somewhere' });
+
+		expect(linkElement).toHaveAttribute('href', '/some-path');
+	});
 });

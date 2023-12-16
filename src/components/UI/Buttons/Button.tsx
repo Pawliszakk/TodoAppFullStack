@@ -11,6 +11,7 @@ interface ButtonProps {
 	type?: 'button' | 'reset' | 'submit';
 	disabled?: boolean;
 	deleteBtn?: boolean;
+	testId?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,8 +23,16 @@ const Button: React.FC<ButtonProps> = ({
 	type,
 	disabled,
 	deleteBtn,
+	testId,
 }) => {
 	const additionalClass = className ? className : null;
+
+	let dataTestId;
+	if (testId) {
+		dataTestId = testId;
+	} else {
+		dataTestId = 'test-button';
+	}
 
 	if (link && href) {
 		return (
@@ -49,7 +58,7 @@ const Button: React.FC<ButtonProps> = ({
 				type === 'submit' ? classes.submit : null
 			} ${deleteBtn ? classes.delete : null}`}
 			disabled={disabled}
-			data-testid="test-button"
+			data-testid={dataTestId}
 		>
 			{children}
 		</motion.button>

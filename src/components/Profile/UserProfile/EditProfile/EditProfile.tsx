@@ -81,7 +81,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 		<FormBox>
 			<Toaster position="top-center" richColors />
 			<SectionTitle>Change your profile settings</SectionTitle>
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={formik.handleSubmit} data-testid="edit-form">
 				<Input
 					label="Username"
 					name="name"
