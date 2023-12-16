@@ -5,7 +5,7 @@ Welcome to TaskPro, your go-to solution for task management and goal accomplishm
 
 
 ## Preview
-
+![Second](https://github.com/Pawliszakk/TodoAppFullStack/assets/118575646/aad50100-cb70-4670-9a4f-8f0825463d68)
 
 
 ## Environment Variables
