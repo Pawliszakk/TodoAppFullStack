@@ -4,7 +4,7 @@
 Welcome to TaskPro, your go-to solution for task management and goal accomplishment.With TaskPro App you can make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs.
 
 
-## Preview
+
 ## Preview
 ![Second](https://github.com/Pawliszakk/TodoAppFullStack/assets/118575646/aad50100-cb70-4670-9a4f-8f0825463d68)
 
