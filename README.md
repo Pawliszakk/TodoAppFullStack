@@ -4,10 +4,8 @@
 Welcome to TaskPro, your go-to solution for task management and goal accomplishment.With TaskPro App you can make collection of tasks, meticulously designed for your ease, all in one convenient platform for your needs.
 
 
-
 ## Preview
 <img src="https://github.com/Pawliszakk/TodoAppFullStack/assets/118575646/aad50100-cb70-4670-9a4f-8f0825463d68" height="400" />
-
 
 
 
@@ -34,6 +32,29 @@ To run this project, you will need to add the following environment variables to
 - Editing Task
 - Filtering tasks based on category or by active property
 - List of top 10 users with the most points
+
+## Tech Stack
+
+next.js, node.js, mongoDB, Sass, Typescript, Api Routes
+
+
+## Installation
+
+Install dependencies and run developer server
+
+```bash
+  npm install 
+  npm run dev
+```
+    
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
 
 ## Support
 
