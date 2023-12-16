@@ -10,6 +10,7 @@ import CloseButton from '@/components/UI/Buttons/CloseButton';
 import Spinner from '@/components/UI/LoadingSpinner/Spinner';
 import Backdrop from '@/components/UI/Backdrop/Backdrop';
 import EditTask from '../EditForm/EditForm';
+import { Toaster, toast } from 'sonner';
 
 const TaskTile: React.FC<
 	Task & {
@@ -66,6 +67,7 @@ const TaskTile: React.FC<
 		});
 		if (res.ok) {
 			onDelete(id);
+			toast.success('Successfully deleted your task');
 		} else {
 			setIsLoading(false);
 		}
@@ -83,12 +85,14 @@ const TaskTile: React.FC<
 		});
 		if (res.ok) {
 			onFinish(id);
+			toast.success('Successfully finished your task. Congratulations!');
 		}
 		setIsLoading(false);
 	};
 
 	return (
 		<SlideAnimation list className={classes.task}>
+			<Toaster position="top-center" richColors />
 			{isLoading ? (
 				<Spinner />
 			) : (

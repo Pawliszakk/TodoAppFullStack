@@ -8,10 +8,11 @@
 	padding-top: 2em;
 	border-radius: 25px;
 	width: 80%;
-	transition: scale 0.3s;
+	transition: box-shadow 0.3s;
 	min-height: 250px;
 	&:hover {
-		scale: 0.99;
+		box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px,
+			rgba(0, 0, 0, 0.22) 0px 10px 10px;
 	}
 	h3 {
 		font-size: 1.8rem;
