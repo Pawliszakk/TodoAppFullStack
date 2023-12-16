@@ -19,6 +19,7 @@ const Nav = () => {
 	return (
 		<header
 			className={`${classes.header} ${isNavScrolled ? classes.blur : null}`}
+			data-testid="test-header"
 		>
 			<nav>
 				<h1>

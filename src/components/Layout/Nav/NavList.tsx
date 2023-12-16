@@ -20,39 +20,36 @@ const NavList = () => {
 		: '/login';
 
 	return (
-		<>
-			{' '}
-			<ul className={classes.list}>
-				<li>
-					{isLoggedIn ? (
-						<Button className={classes.btn} onClick={logout}>
-							Logout
-						</Button>
-					) : (
-						<Button className={classes.btn} link href="/login">
-							Login
-						</Button>
-					)}
-				</li>
-				<li>
-					<Button className={classes.btn} link href="/ranking">
-						Top 10
+		<ul className={classes.list}>
+			<li>
+				{isLoggedIn ? (
+					<Button className={classes.btn} onClick={logout}>
+						Logout
 					</Button>
-				</li>
+				) : (
+					<Button className={classes.btn} link href="/login">
+						Login
+					</Button>
+				)}
+			</li>
+			<li>
+				<Button className={classes.btn} link href="/ranking">
+					Top 10
+				</Button>
+			</li>
 
-				<li>
-					<Link href={avatarImageHref}>
-						<Image
-							src={avatarImage}
-							alt="An avatar of a user"
-							width={40}
-							height={40}
-						/>
-						<span>Check Profile</span>
-					</Link>
-				</li>
-			</ul>
-		</>
+			<li>
+				<Link href={avatarImageHref}>
+					<Image
+						src={avatarImage}
+						alt="An avatar of a user"
+						width={40}
+						height={40}
+					/>
+					<span>Check Profile</span>
+				</Link>
+			</li>
+		</ul>
 	);
 };
 
