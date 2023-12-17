@@ -41,14 +41,14 @@ const NavList = () => {
 					Top 10
 				</Button>
 			</li>
-			<li>
+			{/* <li>
 				<motion.div
 					whileTap={{ scale: 0.7 }}
 					whileHover={{ scale: 1.05 }}
 					className={classes.themeBox}
 					onClick={changeTheme}
 				></motion.div>
-			</li>
+			</li> */}
 			<li>
 				<Link href={avatarImageHref}>
 					<Image
