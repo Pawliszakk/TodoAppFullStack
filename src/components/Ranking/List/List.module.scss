@@ -2,7 +2,7 @@
 	text-align: center;
 	padding: 3rem 0;
 	min-height: 50vh;
-
+	background-color: var(--white);
 	h2 {
 		color: var(--main-purple-darker);
 		font-size: 2rem;
@@ -18,7 +18,7 @@
 	.error {
 		font-size: 2rem;
 		margin-top: 5rem;
-			color: var(--error);
+		color: var(--error);
 	}
 }
 

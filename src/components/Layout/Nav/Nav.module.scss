@@ -7,7 +7,7 @@
 	line-height: 6vh;
 	z-index: 2000;
 	transition: box-shadow 0.3s;
-
+	background-color: var(--white);
 	&.blur {
 		backdrop-filter: blur(10px);
 		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -21,6 +21,7 @@
 		h1 {
 			font-size: 1.4rem;
 			a {
+				color: var(--main-purple);
 				text-decoration: none;
 			}
 		}

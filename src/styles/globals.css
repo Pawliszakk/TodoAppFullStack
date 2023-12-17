@@ -6,7 +6,7 @@
 	margin: 0;
 }
 main {
-	margin-top: 7vh;
+	margin-top: 6vh;
 }
 
 body {
@@ -28,6 +28,26 @@ body {
 	--finish-button: rgb(94, 142, 22);
 	--delete-button: rgb(174, 39, 15);
 	--password: rgb(39, 42, 45);
+	--text-color: #000;
+	--opposite-color: #ff6c22;
+}
+[data-theme='dark'] {
+	--main-purple: #ff9209;
+	--main-purple-darker: #ff6c22;
+	--white: #040d12;
+	--white-cream: #183d3d;
+	--error: #ff6347;
+	--health-color: #a0230d;
+	--work-color: #3a0707;
+	--house-color: #7752fe;
+	--personal-color: #190482;
+	--payments-color: #936c17;
+	--ideas-color: #88510e;
+	--finish-button: rgb(94, 142, 22);
+	--delete-button: rgb(174, 39, 15);
+	--password: rgb(39, 42, 45);
+	--text-color: #fff;
+	--opposite-color: #6d21d7;
 }
 html {
 	font-size: 62.5%;
