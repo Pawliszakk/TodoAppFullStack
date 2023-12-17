@@ -57,7 +57,9 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 			}
 		},
 	});
-
+	const isError =
+		(formik.touched.email && formik.errors.email) ||
+		(formik.touched.password && formik.errors.password);
 	return (
 		<FormBox>
 			<SectionTitle>Login</SectionTitle>
@@ -87,7 +89,13 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					field={formik.getFieldProps('password')}
 					testId="password-input"
 				/>
-				{isLoading ? <Spinner /> : <Button type="submit"> Login</Button>}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<Button type="submit" disabled={!!isError}>
+						Login
+					</Button>
+				)}
 				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 

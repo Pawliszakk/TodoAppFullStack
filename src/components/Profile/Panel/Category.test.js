@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 
 import { screen, render, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Category from './Category';
 
 describe('Category', () => {
@@ -13,14 +14,15 @@ describe('Category', () => {
 		expect(heading).toBeInTheDocument();
 	});
 
-	test('Should trigger handleCategoryClick when clicked and is provided', () => {
+	test('Should trigger handleCategoryClick when clicked and is provided', async () => {
 		const mockOnTasksShow = jest.fn();
 
 		render(<Category onTasksShow={mockOnTasksShow} />);
 
 		const categoryTile = screen.getByTestId('test-tile');
 
-		fireEvent.click(categoryTile);
+		// fireEvent.click(categoryTile);
+		await userEvent.click(categoryTile);
 
 		expect(mockOnTasksShow).toHaveBeenCalled();
 	});

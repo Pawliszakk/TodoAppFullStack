@@ -68,6 +68,11 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		},
 	});
 
+	const isError =
+		(formik.touched.name && formik.errors.name) ||
+		(formik.touched.email && formik.errors.email) ||
+		(formik.touched.password && formik.errors.password);
+
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
@@ -109,12 +114,21 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					onAvatarChange={avatarChangeHandler}
 					currentAvatar={avatar}
 				/>
-				{isLoading ? <Spinner /> : <Button type="submit">Sign Up</Button>}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<Button type="submit" disabled={!!isError}>
+						Sign Up
+					</Button>
+				)}
 				{reqMessage && <p>{reqMessage}</p>}
 			</form>
 
 			<p>
-				Already a user? <span onClick={() => onFormChange(2)} data-testid='login-span'>Login</span>
+				Already a user?{' '}
+				<span onClick={() => onFormChange(2)} data-testid="login-span">
+					Login
+				</span>
 			</p>
 		</FormBox>
 	);

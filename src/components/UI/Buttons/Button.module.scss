@@ -16,6 +16,10 @@
 	&.delete {
 		background-color: var(--delete-button);
 	}
+	&.disabled {
+		background-color: #8c8c8c91;
+		cursor: not-allowed;
+	}
 }
 
 .btn {
