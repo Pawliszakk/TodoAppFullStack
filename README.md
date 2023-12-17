@@ -32,6 +32,7 @@ To run this project, you will need to add the following environment variables to
 - Editing Task
 - Filtering tasks based on category or by active property
 - List of top 10 users with the most points
+- Light/Dark theme
 
 ## Tech Stack
 
