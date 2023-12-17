@@ -3,8 +3,16 @@ import Image from 'next/image';
 import classes from './AddTask.module.scss';
 import SlideAnimation from '../UI/Animations/SlideAnimation';
 import AddForm from './AddTaskForm/AddForm';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 const AddTask = () => {
+	const { isDark } = useContext(ThemeContext);
+
+	const imageSrc = isDark
+		? '/assets/ilustrations/creating.jpg'
+		: '/assets/ilustrations/creating-dark.jpg';
+
 	return (
 		<section className={classes.addTask}>
 			<div className={classes.box}>
@@ -13,7 +21,7 @@ const AddTask = () => {
 				</SlideAnimation>
 				<SlideAnimation left className={classes.image}>
 					<Image
-						src="/assets/ilustrations/creating.jpg"
+						src={imageSrc}
 						alt="Ilustration of woman and man planning something on whiteboard"
 						width={550}
 						height={550}
