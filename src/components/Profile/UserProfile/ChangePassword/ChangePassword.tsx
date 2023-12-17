@@ -42,23 +42,21 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			const resData = await res.json();
+			const { message } = await res.json();
 
 			if (!res.ok) {
 				setIsLoading(false);
 				toast.error(
-					resData.message ||
-						'Cannot change your password, please try again later'
+					message || 'Cannot change your password, please try again later'
 				);
 
 				setReqMessage(
-					resData.message ||
-						'Cannot change your password, please try again later'
+					message || 'Cannot change your password, please try again later'
 				);
 			} else {
 				setIsLoading(false);
-				toast.success(resData.message);
-				setReqMessage(resData.message);
+				toast.success(message);
+				setReqMessage(message);
 				setTimeout(() => {
 					onClose();
 				}, 3000);

@@ -51,19 +51,17 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					'Content-Type': 'application/json',
 				},
 			});
-			const resData = await res.json();
+			const { message, userId, token, userAvatar } = await res.json();
 
 			if (!res.ok) {
 				setIsLoading(false);
-				toast.error(resData.message);
+				toast.error(message);
 
-				setReqMessage(
-					resData.message || 'Cannot sign you in, please try again later'
-				);
+				setReqMessage(message || 'Cannot sign you in, please try again later');
 			} else {
 				setIsLoading(false);
-				setReqMessage(resData.message);
-				authCtx.login(resData.userId, resData.token, resData.userAvatar);
+				setReqMessage(message);
+				authCtx.login(userId, token, userAvatar);
 			}
 		},
 	});

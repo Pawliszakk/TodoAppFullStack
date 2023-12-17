@@ -53,22 +53,20 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			const resData = await res.json();
+			const { message } = await res.json();
 
 			if (!res.ok) {
 				setIsLoading(false);
 				toast.error(
-					resData.message ||
-						'Cannot change your settings, please try again later'
+					message || 'Cannot change your settings, please try again later'
 				);
 				setReqMessage(
-					resData.message ||
-						'Cannot change your settings, please try again later'
+					message || 'Cannot change your settings, please try again later'
 				);
 			} else {
-				toast.success(resData.message);
+				toast.success(message);
 				setIsLoading(false);
-				setReqMessage(resData.message);
+				setReqMessage(message);
 				login(userId!, token!, avatar!);
 				props.onEdit(values.name, values.avatar);
 				setTimeout(() => {

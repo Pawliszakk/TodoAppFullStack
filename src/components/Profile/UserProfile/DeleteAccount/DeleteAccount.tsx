@@ -39,23 +39,21 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			const resData = await res.json();
+			const { message } = await res.json();
 
 			if (!res.ok) {
 				setIsLoading(false);
 				toast.error(
-					resData.message ||
-						'Cannot delete your account, please try again later.'
+					message || 'Cannot delete your account, please try again later.'
 				);
 				setReqMessage(
-					resData.message ||
-						'Cannot delete your account, please try again later.'
+					message || 'Cannot delete your account, please try again later.'
 				);
 			} else {
-				toast.success(resData.message);
+				toast.success(message);
 
 				setIsLoading(false);
-				setReqMessage(resData.message);
+				setReqMessage(message);
 				setTimeout(() => logout(), 3000);
 			}
 		},

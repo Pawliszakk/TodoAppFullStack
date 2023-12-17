@@ -49,18 +49,16 @@ const AddForm = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			const resData = await res.json();
+			const { message } = await res.json();
 
 			if (!res.ok) {
-				toast.error(
-					resData.message || 'Cannot create a task, please try again later'
-				);
+				toast.error(message || 'Cannot create a task, please try again later');
 				setReqMessage(
-					resData.message || 'Cannot create a task, please try again later'
+					message || 'Cannot create a task, please try again later'
 				);
 			} else {
-				toast.success(resData.message);
-				setReqMessage(resData.message);
+				toast.success(message);
+				setReqMessage(message);
 			}
 			setIsLoading(false);
 		},
