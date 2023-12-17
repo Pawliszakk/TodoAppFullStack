@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import LoadingSpinner from '@/components/UI/LoadingSpinner/LoadingSpinner';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 const Section = dynamic(() => import('@/components/UI/Section/Section'), {
 	loading: () => <LoadingSpinner />,
@@ -17,6 +19,12 @@ interface RankingPageProps {
 }
 
 const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
+	const { isDark } = useContext(ThemeContext);
+
+	const imageSrc = isDark
+		? '/assets/ilustrations/success.jpg'
+		: '/assets/ilustrations/success-dark.jpg';
+
 	return (
 		<>
 			<Head>
@@ -28,7 +36,7 @@ const RankingPage: NextPage<RankingPageProps> = ({ users }) => {
 			</Head>
 			<Section
 				alt="Ilustration of people standing on podium, one is with flag in hand"
-				image="/assets/ilustrations/success.jpg"
+				image={imageSrc}
 				heading="Compete with others!"
 				description="TaskPro collects points for tasks completed, below you will see the ranking of users who have earned the most points over time"
 				ranking

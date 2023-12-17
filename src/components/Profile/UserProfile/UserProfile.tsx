@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { User } from '@/types/app';
 import Image from 'next/image';
 
@@ -12,10 +12,13 @@ import Backdrop from '@/components/UI/Backdrop/Backdrop';
 import ChangePassword from './ChangePassword/ChangePassword';
 import DeleteAccount from './DeleteAccount/DeleteAccount';
 import ProfileIcon from './ProfileIcon/ProfileIcon';
+import ThemeContext from '@/context/theme-context';
 
 const UserProfile: React.FC<User> = (props) => {
 	const [name, setName] = useState(props.name);
 	const [avatar, setAvatar] = useState(props.avatar);
+
+	const { isDark } = useContext(ThemeContext);
 
 	const [currentForm, setCurrentForm] = useState<
 		null | 'edit' | 'delete' | 'password'
@@ -32,6 +35,13 @@ const UserProfile: React.FC<User> = (props) => {
 	const isPasswordForm = currentForm === 'password';
 	const isDeleteForm = currentForm === 'delete';
 
+	let avatarImage;
+	if (!isDark) {
+		avatarImage = avatar.replace('.jpg', '-dark.jpg');
+	} else {
+		avatarImage = avatar;
+	}
+
 	return (
 		<section className={classes.userProfile}>
 			<SlideAnimation className={classes.user}>
@@ -40,26 +50,16 @@ const UserProfile: React.FC<User> = (props) => {
 				</h2>
 				<div className={classes.image}>
 					<Image
-						src={avatar}
+						src={avatarImage}
 						alt={`Avatar photo of ${name}`}
 						width={300}
 						height={300}
 						priority
 					/>
 
-					<ProfileIcon
-						edit
-						onClick={() => setCurrentForm('edit')}
-					/>
-					<ProfileIcon
-						password
-						onClick={() => setCurrentForm('password')}
-					/>
-					<ProfileIcon
-						delete
-						onClick={() => setCurrentForm('delete')}
-						
-					/>
+					<ProfileIcon edit onClick={() => setCurrentForm('edit')} />
+					<ProfileIcon password onClick={() => setCurrentForm('password')} />
+					<ProfileIcon delete onClick={() => setCurrentForm('delete')} />
 				</div>
 				<p>
 					Task Points: {props.points} <AiOutlineCheckCircle />

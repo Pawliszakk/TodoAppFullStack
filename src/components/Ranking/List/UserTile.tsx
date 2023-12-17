@@ -4,6 +4,8 @@ import { User } from '@/types/app';
 import classes from './UserTile.module.scss';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 const UserTile: React.FC<User & { index: number }> = ({
 	name,
@@ -12,19 +14,27 @@ const UserTile: React.FC<User & { index: number }> = ({
 	avatar,
 	index,
 }) => {
+	const { isDark } = useContext(ThemeContext);
+
 	const icons = [
 		<GiPodiumWinner key="Winner" data-testid="winner-test" />,
 		<GiPodiumSecond key="Second" data-testid="second-test" />,
 		<GiPodiumThird key="Third" data-testid="third-test" />,
 	];
 	const currentIcon = icons[index];
+	let avatarImage;
+	if (!isDark) {
+		avatarImage = avatar.replace('.jpg', '-dark.jpg');
+	} else {
+		avatarImage = avatar;
+	}
 
 	return (
 		<SlideAnimation className={classes.user} list>
 			{' '}
 			<div className={classes.image}>
 				<Image
-					src={avatar}
+					src={avatarImage}
 					alt={`Profile Avatar of ${name}`}
 					width={238}
 					height={238}

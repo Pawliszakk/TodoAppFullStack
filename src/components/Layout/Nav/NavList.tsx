@@ -9,19 +9,21 @@ import classes from './NavList.module.scss';
 import ThemeContext from '@/context/theme-context';
 
 const NavList = () => {
-	const authCtx = useContext(AuthContext);
-	const themeCtx = useContext(ThemeContext);
+	const { userAvatar, userId, isLoggedIn, logout, token } =
+		useContext(AuthContext);
+	const { changeTheme, isDark } = useContext(ThemeContext);
 
-	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
-	const { changeTheme } = themeCtx;
-
-	const avatarImage = isLoggedIn
+	let avatarImage = isLoggedIn
 		? `${userAvatar}`
 		: '/assets/avatars/avatarLogout.jpg';
 
 	const avatarImageHref = isLoggedIn
 		? `/profile/${userId}/?token=${token}`
 		: '/login';
+
+	if (!isDark) {
+		avatarImage = avatarImage.replace('.jpg', '-dark.jpg');
+	}
 
 	return (
 		<ul className={classes.list}>
