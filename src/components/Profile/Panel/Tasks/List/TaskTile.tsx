@@ -53,8 +53,6 @@ const TaskTile: React.FC<
 		setTaskProperties({ title, description, category, importance });
 	};
 
-	const categoryIcon = Categories.find((cat) => cat.category === category);
-
 	const deleteTaskHandler = async () => {
 		setIsLoading(true);
 		const res = await fetch('/api/task', {
@@ -89,6 +87,8 @@ const TaskTile: React.FC<
 		}
 		setIsLoading(false);
 	};
+
+	const categoryIcon = Categories.find((cat) => cat.category === category);
 
 	return (
 		<SlideAnimation list className={classes.task}>
