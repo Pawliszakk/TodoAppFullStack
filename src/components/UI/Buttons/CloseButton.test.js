@@ -18,4 +18,11 @@ describe('CloseButton', () => {
 
 		expect(closeElement).toBeInTheDocument();
 	});
+	test('Should render icon correctly inside of closebutton', () => {
+		render(<CloseButton />);
+
+		const closeIconElement = screen.getByTestId('test-icon');
+
+		expect(closeIconElement).toBeInTheDocument();
+	});
 });

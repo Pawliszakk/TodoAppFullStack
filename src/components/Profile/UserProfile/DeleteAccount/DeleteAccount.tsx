@@ -99,7 +99,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 				) : (
 					<p>
 						By clicking the button below, your account will be permanently
-						deleted. <strong>This action is irreversible.</strong>
+						deleted. <b>This action is irreversible.</b>
 					</p>
 				)}
 			</form>

@@ -130,7 +130,7 @@ const AddForm = () => {
 				) : (
 					<p>
 						By clicking the button below, a new task will be created and{' '}
-						<strong>assigned to your account.</strong>
+						<b>assigned to your account.</b>
 					</p>
 				)}
 			</form>

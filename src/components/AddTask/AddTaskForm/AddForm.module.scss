@@ -11,6 +11,11 @@
 	a {
 		font-size: 1.4rem;
 	}
+	p{
+		span{
+			font-weight: bold;
+		}
+	}
 }
 
 @media (min-width: 768px) {

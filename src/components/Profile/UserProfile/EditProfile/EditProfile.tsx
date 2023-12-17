@@ -111,7 +111,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				) : (
 					<p>
 						By clicking the button below, your profile settings will be{' '}
-						<strong>updated</strong>.
+						<b>updated</b>.
 					</p>
 				)}
 			</form>

@@ -21,7 +21,6 @@ describe('Category', () => {
 
 		const categoryTile = screen.getByTestId('test-tile');
 
-		// fireEvent.click(categoryTile);
 		await userEvent.click(categoryTile);
 
 		expect(mockOnTasksShow).toHaveBeenCalled();

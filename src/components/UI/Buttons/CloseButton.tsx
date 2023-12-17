@@ -17,7 +17,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ onClick, className }) => {
 			onClick={onClick}
 			data-testid="test-close"
 		>
-			<AiFillCloseCircle />
+			<AiFillCloseCircle data-testid="test-icon" />
 		</motion.div>
 	);
 };

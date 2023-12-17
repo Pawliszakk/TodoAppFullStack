@@ -61,4 +61,11 @@ describe('Button', () => {
 
 		expect(linkElement).toHaveAttribute('href', '/some-path');
 	});
+	test('Should render disabled button if disabled prop is provided', () => {
+		render(<Button disabled>Test Button</Button>);
+
+		const buttonElement = screen.getByText('Test Button');
+
+		expect(buttonElement).toBeDisabled();
+	});
 });
