@@ -66,6 +66,12 @@ const AddForm = () => {
 		},
 	});
 
+	const isError =
+		(formik.touched.title && formik.errors.title) ||
+		(formik.touched.description && formik.errors.description) ||
+		(formik.touched.category && formik.errors.category) ||
+		(formik.touched.importance && formik.errors.importance);
+
 	return (
 		<FormBox className={classes.box}>
 			<Toaster position="top-center" richColors />
@@ -109,7 +115,7 @@ const AddForm = () => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button className={classes.submit} type="submit">
+					<Button className={classes.submit} type="submit" disabled={!!isError}>
 						Add Task
 					</Button>
 				)}

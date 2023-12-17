@@ -66,6 +66,11 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 		},
 	});
 
+	const isError =
+		(formik.touched.oldPassword && formik.errors.oldPassword) ||
+		(formik.touched.newPassword && formik.errors.newPassword) ||
+		(formik.touched.checkNewPassword && formik.errors.checkNewPassword);
+
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
@@ -104,7 +109,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit"> Change Password</Button>
+					<Button type="submit" disabled={!!isError}>
+						Change Password
+					</Button>
 				)}
 				{reqMessage ? (
 					<p>{reqMessage}</p>

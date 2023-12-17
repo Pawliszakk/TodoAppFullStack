@@ -77,6 +77,9 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 			}
 		},
 	});
+
+	const isError = formik.touched.name && formik.errors.name;
+
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
@@ -100,7 +103,9 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit">Change your settings</Button>
+					<Button type="submit" disabled={!!isError}>
+						Change your settings
+					</Button>
 				)}
 				{reqMessage ? (
 					<p>{reqMessage}</p>

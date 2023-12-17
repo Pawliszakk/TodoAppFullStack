@@ -98,6 +98,12 @@ const EditForm: React.FC<EditFormProps> = ({
 		},
 	});
 
+	const isError =
+		(formik.touched.title && formik.errors.title) ||
+		(formik.touched.description && formik.errors.description) ||
+		(formik.touched.category && formik.errors.category) ||
+		(formik.touched.importance && formik.errors.importance);
+
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
@@ -139,7 +145,13 @@ const EditForm: React.FC<EditFormProps> = ({
 					options={selectImportanceOptions}
 				/>
 
-				{isLoading ? <Spinner /> : <Button type="submit">Edit Task</Button>}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<Button type="submit" disabled={!!isError}>
+						Edit Task
+					</Button>
+				)}
 				{reqMessage && !isLoading && (
 					<>
 						<p>{reqMessage}</p>

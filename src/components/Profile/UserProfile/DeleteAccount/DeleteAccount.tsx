@@ -61,9 +61,11 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 		},
 	});
 
+	const isError = formik.touched.password && formik.errors.password;
+
 	return (
 		<FormBox>
-			<Toaster position="top-center" richColors/>
+			<Toaster position="top-center" richColors />
 
 			<SectionTitle className={classes.heading}>
 				Are you sure you want to delete your account?
@@ -83,7 +85,12 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button className={classes.submit} type="submit" deleteBtn>
+					<Button
+						className={classes.submit}
+						type="submit"
+						deleteBtn
+						disabled={!!isError}
+					>
 						Delete Account
 					</Button>
 				)}
