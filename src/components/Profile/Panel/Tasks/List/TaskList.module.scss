@@ -2,6 +2,9 @@
 	padding: 3rem 0;
 	text-align: center;
 	background-color: var(--white-cream);
+	&.light {
+		background-color: var(--white);
+	}
 }
 
 .list {

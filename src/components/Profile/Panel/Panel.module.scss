@@ -6,6 +6,9 @@
 	flex-direction: column;
 	background-color: var(--white);
 	color: var(--text-color);
+	&.light {
+		background-color: var(--white-cream);
+	}
 	h2 {
 		font-size: 2rem;
 		color: var(--main-purple-darker);

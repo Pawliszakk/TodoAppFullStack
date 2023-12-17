@@ -3,6 +3,8 @@ import { Task } from '@/types/app';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import classes from './TaskList.module.scss';
 import TaskTile from './TaskTile';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 interface TaskListProps {
 	currentTasks: Task[];
@@ -17,10 +19,12 @@ const TaskList: React.FC<TaskListProps> = ({
 	onDelete,
 	onFinish,
 }) => {
+	const { isDark } = useContext(ThemeContext);
+
 	const isTasks = currentTasks && currentTasks.length > 0;
 
 	return (
-		<section className={classes.tasks}>
+		<section className={`${classes.tasks} ${isDark ? classes.light : null}`}>
 			<SectionTitle>{currentCategory} Tasks</SectionTitle>
 			<ul className={classes.list}>
 				{isTasks ? (

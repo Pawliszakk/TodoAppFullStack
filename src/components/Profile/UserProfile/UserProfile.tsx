@@ -43,7 +43,9 @@ const UserProfile: React.FC<User> = (props) => {
 	}
 
 	return (
-		<section className={classes.userProfile}>
+		<section
+			className={`${classes.userProfile} ${isDark ? classes.light : null}`}
+		>
 			<SlideAnimation className={classes.user}>
 				<h2>
 					Welcome {name}! <PiHandWavingLight />

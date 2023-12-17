@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Categories } from '@/data/data';
 import { CategoryType, Task } from '@/types/app';
 
@@ -7,6 +7,7 @@ import classes from './Panel.module.scss';
 import CategoryTile from './Category';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import TaskList from './Tasks/List/TaskList';
+import ThemeContext from '@/context/theme-context';
 
 interface PanelProps {
 	tasks: Task[];
@@ -17,6 +18,8 @@ const Panel: React.FC<PanelProps> = (props) => {
 	const [taskCategory, setTaskCategory] = useState('active');
 	const [tasks, setTasks] = useState(props.tasks);
 	const activeTasksHandler = () => setTaskCategory('active');
+
+	const { isDark } = useContext(ThemeContext);
 
 	const finishedTasksHandler = () => setTaskCategory('finished');
 
@@ -56,7 +59,7 @@ const Panel: React.FC<PanelProps> = (props) => {
 
 	return (
 		<>
-			<section className={classes.panel}>
+			<section className={`${classes.panel} ${isDark ? classes.light : null}`}>
 				<h2>Categories</h2>
 				<div className={classes.categories}>
 					{Categories.map((cat, i) => (
