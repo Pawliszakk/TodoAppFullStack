@@ -9,6 +9,9 @@
 	transition: scale 0.3s;
 	background-color: var(--white-cream);
 	color: var(--text-color);
+	&.light {
+		background-color: var(--white);
+	}
 	h3 {
 		color: var(--main-purple-darker);
 		font-size: 2rem;
