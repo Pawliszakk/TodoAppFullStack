@@ -2,14 +2,18 @@ import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
+import ThemeContext from '@/context/theme-context';
 
 const NavList = () => {
 	const authCtx = useContext(AuthContext);
+	const themeCtx = useContext(ThemeContext);
 
 	const { userAvatar, userId, isLoggedIn, logout, token } = authCtx;
+	const { changeTheme } = themeCtx;
 
 	const avatarImage = isLoggedIn
 		? `${userAvatar}`
@@ -37,7 +41,14 @@ const NavList = () => {
 					Top 10
 				</Button>
 			</li>
-
+			<li>
+				<motion.div
+					whileTap={{ scale: 0.7 }}
+					whileHover={{ scale: 1.05 }}
+					className={classes.themeBox}
+					onClick={changeTheme}
+				></motion.div>
+			</li>
 			<li>
 				<Link href={avatarImageHref}>
 					<Image
