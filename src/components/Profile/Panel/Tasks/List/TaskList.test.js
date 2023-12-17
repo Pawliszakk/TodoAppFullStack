@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'intersection-observer';
 
-import { screen, render, fireEvent } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import TaskList from './TaskList';
 
 describe('TaskList', () => {

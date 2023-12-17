@@ -50,13 +50,15 @@ const Button: React.FC<ButtonProps> = ({
 
 	return (
 		<motion.button
-			whileHover={{ scale: 0.95 }}
-			whileTap={{ scale: 0.7 }}
+			whileHover={disabled ? {} : { scale: 0.95 }}
+			whileTap={disabled ? {} : { scale: 0.7 }}
 			onClick={onClick}
 			type={type ? type : 'button'}
 			className={`${classes.btn} ${additionalClass} ${
 				type === 'submit' ? classes.submit : null
-			} ${deleteBtn ? classes.delete : null}`}
+			} ${deleteBtn ? classes.delete : null} ${
+				disabled ? classes.disabled : null
+			}`}
 			disabled={disabled}
 			data-testid={dataTestId}
 		>
