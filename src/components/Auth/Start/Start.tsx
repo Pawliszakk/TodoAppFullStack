@@ -4,12 +4,20 @@ import classes from './Start.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import FormBox from '@/components/UI/Form/FormBox';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 interface StartProps {
 	onFormChange: (number: number) => void;
 }
 
 const Start: React.FC<StartProps> = ({ onFormChange }) => {
+	const { isDark } = useContext(ThemeContext);
+
+	const imageSrc = isDark
+		? '/assets/ilustrations/auth.jpg'
+		: '/assets/ilustrations/auth-dark.jpg';
+
 	return (
 		<FormBox>
 			{' '}
@@ -20,7 +28,7 @@ const Start: React.FC<StartProps> = ({ onFormChange }) => {
 			</p>
 			<div className={classes.image}>
 				<Image
-					src="/assets/ilustrations/auth.jpg"
+					src={imageSrc}
 					alt="woman authenticating, on phone background"
 					width={300}
 					height={300}

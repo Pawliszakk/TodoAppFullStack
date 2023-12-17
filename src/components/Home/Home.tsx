@@ -1,8 +1,14 @@
-import { HomeSectionsData } from '@/data/data';
+import { getSections } from '@/data/data';
 
 import Section from '../UI/Section/Section';
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 
 const Home = () => {
+	const { isDark } = useContext(ThemeContext);
+
+	const HomeSectionsData = getSections(isDark);
+
 	return (
 		<>
 			{HomeSectionsData.map((data, i) => (

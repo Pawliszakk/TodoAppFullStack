@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { Avatars } from '@/data/data';
+import { useContext, useState } from 'react';
+import { getAvatars } from '@/data/data';
 import Image from 'next/image';
 
 import classes from './AvatarsComponent.module.scss';
+import ThemeContext from '@/context/theme-context';
 
 interface AvatarsProps {
 	onAvatarChange: (avatar: string) => void;
@@ -15,6 +16,8 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 }) => {
 	const [isMen, setIsMen] = useState(false);
 
+	const { isDark } = useContext(ThemeContext);
+
 	const menAvatarsHandler = () => {
 		setIsMen(true);
 		onAvatarChange('/assets/avatars/avatar1.jpg');
@@ -23,6 +26,7 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 		setIsMen(false);
 		onAvatarChange('/assets/avatars/avatar2.jpg');
 	};
+	const Avatars = getAvatars(isDark);
 
 	const currentAvatarsByGender = Avatars.filter(
 		(a) => a.gender === (isMen ? 'Man' : 'Woman')

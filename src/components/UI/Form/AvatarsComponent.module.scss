@@ -6,12 +6,14 @@
 	.buttons {
 		display: flex;
 		gap: 1em;
+
 		button {
 			box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
 				rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 			border: 2px solid transparent;
 			background-color: var(--white);
 			border-radius: 15px;
+			color: var(--text-color);
 			cursor: pointer;
 			padding: 0.5em 0.5em;
 			max-width: 120px;
