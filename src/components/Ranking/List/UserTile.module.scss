@@ -7,7 +7,8 @@
 	width: 80%;
 	max-width: 500px;
 	transition: scale 0.3s;
-	background-color: #fff;
+	background-color: var(--white-cream);
+	color: var(--text-color);
 	h3 {
 		color: var(--main-purple-darker);
 		font-size: 2rem;

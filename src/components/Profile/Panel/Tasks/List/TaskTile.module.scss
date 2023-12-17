@@ -10,6 +10,8 @@
 	width: 80%;
 	transition: box-shadow 0.3s;
 	min-height: 250px;
+	background-color: var(--white-cream);
+	color: var(--text-color);
 	&:hover {
 		box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px,
 			rgba(0, 0, 0, 0.22) 0px 10px 10px;
