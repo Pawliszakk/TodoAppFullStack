@@ -68,25 +68,27 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 		},
 	});
 
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
+
 	const isError =
-		(formik.touched.name && formik.errors.name) ||
-		(formik.touched.email && formik.errors.email) ||
-		(formik.touched.password && formik.errors.password);
+		(touched.name && errors.name) ||
+		(touched.email && errors.email) ||
+		(touched.password && errors.password);
 
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
 			<SectionTitle>Sign Up</SectionTitle>
 			<p>Create an account for free</p>
-			<form onSubmit={formik.handleSubmit} data-testid="signup-form">
+			<form onSubmit={handleSubmit} data-testid="signup-form">
 				<Input
 					label="Username"
 					name="name"
 					type="text"
 					placeholder="Please enter your name..."
-					error={formik.errors.name}
-					touched={formik.touched.name}
-					field={formik.getFieldProps('name')}
+					error={errors.name}
+					touched={touched.name}
+					field={getFieldProps('name')}
 					testId="username-input"
 				/>
 				<Input
@@ -94,9 +96,9 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					name="email"
 					type="email"
 					placeholder="Please enter your email..."
-					error={formik.errors.email}
-					touched={formik.touched.email}
-					field={formik.getFieldProps('email')}
+					error={errors.email}
+					touched={touched.email}
+					field={getFieldProps('email')}
 					testId="email-input"
 				/>
 				<Input
@@ -104,9 +106,9 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					name="password"
 					type="password"
 					placeholder="Please enter your password..."
-					error={formik.errors.password}
-					touched={formik.touched.password}
-					field={formik.getFieldProps('password')}
+					error={errors.password}
+					touched={touched.password}
+					field={getFieldProps('password')}
 					testId="password-input"
 				/>
 

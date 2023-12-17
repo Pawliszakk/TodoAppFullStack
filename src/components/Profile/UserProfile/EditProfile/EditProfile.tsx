@@ -77,22 +77,23 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 			}
 		},
 	});
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
 
-	const isError = formik.touched.name && formik.errors.name;
+	const isError = touched.name && errors.name;
 
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
 			<SectionTitle>Change your profile settings</SectionTitle>
-			<form onSubmit={formik.handleSubmit} data-testid="edit-form">
+			<form onSubmit={handleSubmit} data-testid="edit-form">
 				<Input
 					label="Username"
 					name="name"
 					type="text"
 					placeholder="Please enter your name..."
-					error={formik.errors.name}
-					touched={formik.touched.name}
-					field={formik.getFieldProps('name')}
+					error={errors.name}
+					touched={touched.name}
+					field={getFieldProps('name')}
 				/>
 
 				<AvatarsComponent

@@ -60,8 +60,9 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 			}
 		},
 	});
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
 
-	const isError = formik.touched.password && formik.errors.password;
+	const isError = touched.password && errors.password;
 
 	return (
 		<FormBox>
@@ -71,15 +72,15 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 				Are you sure you want to delete your account?
 			</SectionTitle>
 
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<Input
 					label="Write your password"
 					name="password"
 					type="password"
 					placeholder="Enter current password..."
-					error={formik.errors.password}
-					touched={formik.touched.password}
-					field={formik.getFieldProps('password')}
+					error={errors.password}
+					touched={touched.password}
+					field={getFieldProps('password')}
 				/>
 
 				{isLoading ? (

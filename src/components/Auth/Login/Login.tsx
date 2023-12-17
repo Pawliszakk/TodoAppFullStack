@@ -57,9 +57,11 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 			}
 		},
 	});
+
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
+
 	const isError =
-		(formik.touched.email && formik.errors.email) ||
-		(formik.touched.password && formik.errors.password);
+		(touched.email && errors.email) || (touched.password && errors.password);
 	return (
 		<FormBox>
 			<SectionTitle>Login</SectionTitle>
@@ -67,15 +69,15 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			<p>Welcome back! Login with your credentials</p>
 
-			<form onSubmit={formik.handleSubmit} data-testid="login-form">
+			<form onSubmit={handleSubmit} data-testid="login-form">
 				<Input
 					label="E-mail"
 					name="email"
 					type="email"
 					placeholder="Please enter your email..."
-					error={formik.errors.email}
-					touched={formik.touched.email}
-					field={formik.getFieldProps('email')}
+					error={errors.email}
+					touched={touched.email}
+					field={getFieldProps('email')}
 					testId="email-input"
 				/>
 
@@ -84,9 +86,9 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					name="password"
 					type="password"
 					placeholder="Please enter your password..."
-					error={formik.errors.password}
-					touched={formik.touched.password}
-					field={formik.getFieldProps('password')}
+					error={errors.password}
+					touched={touched.password}
+					field={getFieldProps('password')}
 					testId="password-input"
 				/>
 				{isLoading ? (

@@ -66,10 +66,12 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 		},
 	});
 
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
+
 	const isError =
-		(formik.touched.oldPassword && formik.errors.oldPassword) ||
-		(formik.touched.newPassword && formik.errors.newPassword) ||
-		(formik.touched.checkNewPassword && formik.errors.checkNewPassword);
+		(touched.oldPassword && errors.oldPassword) ||
+		(touched.newPassword && errors.newPassword) ||
+		(touched.checkNewPassword && errors.checkNewPassword);
 
 	return (
 		<FormBox>
@@ -78,33 +80,33 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 				Change Your Password
 			</SectionTitle>
 
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<Input
 					label="Old Password"
 					name="oldPassword"
 					type="password"
 					placeholder="Enter current password..."
-					error={formik.errors.oldPassword}
-					touched={formik.touched.oldPassword}
-					field={formik.getFieldProps('oldPassword')}
+					error={errors.oldPassword}
+					touched={touched.oldPassword}
+					field={getFieldProps('oldPassword')}
 				/>
 				<Input
 					label="New Password"
 					name="newPassword"
 					type="password"
 					placeholder="Enter new password..."
-					error={formik.errors.newPassword}
-					touched={formik.touched.newPassword}
-					field={formik.getFieldProps('newPassword')}
+					error={errors.newPassword}
+					touched={touched.newPassword}
+					field={getFieldProps('newPassword')}
 				/>
 				<Input
 					label="Confirm New Password"
 					name="checkNewPassword"
 					type="password"
 					placeholder="Confirm new password..."
-					error={formik.errors.checkNewPassword}
-					touched={formik.touched.checkNewPassword}
-					field={formik.getFieldProps('checkNewPassword')}
+					error={errors.checkNewPassword}
+					touched={touched.checkNewPassword}
+					field={getFieldProps('checkNewPassword')}
 				/>
 				{isLoading ? (
 					<Spinner />

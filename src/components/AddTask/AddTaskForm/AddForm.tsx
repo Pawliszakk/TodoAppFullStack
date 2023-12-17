@@ -66,48 +66,50 @@ const AddForm = () => {
 		},
 	});
 
+	const { touched, errors, getFieldProps, handleSubmit } = formik;
+
 	const isError =
-		(formik.touched.title && formik.errors.title) ||
-		(formik.touched.description && formik.errors.description) ||
-		(formik.touched.category && formik.errors.category) ||
-		(formik.touched.importance && formik.errors.importance);
+		(touched.title && errors.title) ||
+		(touched.description && errors.description) ||
+		(touched.category && errors.category) ||
+		(touched.importance && errors.importance);
 
 	return (
 		<FormBox className={classes.box}>
 			<Toaster position="top-center" richColors />
 			<SectionTitle>Add New Task</SectionTitle>
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<Input
 					label="Title"
 					name="title"
 					type="text"
 					placeholder="Please enter your task title..."
-					error={formik.errors.title}
-					touched={formik.touched.title}
-					field={formik.getFieldProps('title')}
+					error={errors.title}
+					touched={touched.title}
+					field={getFieldProps('title')}
 				/>
 				<Input
 					label="Description"
 					name="description"
 					type="text"
 					placeholder="Please enter your task description..."
-					error={formik.errors.description}
-					touched={formik.touched.description}
-					field={formik.getFieldProps('description')}
+					error={errors.description}
+					touched={touched.description}
+					field={getFieldProps('description')}
 				/>
 				<Select
 					id="category"
-					field={formik.getFieldProps('category')}
-					error={formik.errors.category}
-					touched={formik.touched.category}
+					field={getFieldProps('category')}
+					error={errors.category}
+					touched={touched.category}
 					text="Choose Category"
 					options={selectCategoryOptions}
 				/>
 				<Select
 					id="importance"
-					field={formik.getFieldProps('importance')}
-					error={formik.errors.importance}
-					touched={formik.touched.importance}
+					field={getFieldProps('importance')}
+					error={errors.importance}
+					touched={touched.importance}
 					text="Choose Importance"
 					options={selectImportanceOptions}
 				/>
