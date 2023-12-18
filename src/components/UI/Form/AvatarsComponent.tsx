@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import classes from './AvatarsComponent.module.scss';
 import ThemeContext from '@/context/theme-context';
+import { Avatar } from '@/types/app';
 
 interface AvatarsProps {
 	onAvatarChange: (avatar: string) => void;
@@ -31,6 +32,14 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 	const currentAvatarsByGender = Avatars.filter(
 		(a) => a.gender === (isMen ? 'Man' : 'Woman')
 	);
+
+	const handleAvatarChange = (source: string) => {
+		
+		let avatarSrc = !isDark ? source.replace('-dark.jpg', '.jpg') : source;
+
+		onAvatarChange(avatarSrc);
+	};
+
 	return (
 		<div className={classes.avatar}>
 			<p>Choose your avatar</p>
@@ -55,9 +64,11 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 					<div
 						key={i}
 						className={`${classes.tile} ${
-							a.src === currentAvatar ? classes.active : null
+							a.src.replace('-dark.jpg', '.jpg') === currentAvatar
+								? classes.active
+								: null
 						}`}
-						onClick={() => onAvatarChange(a.src)}
+						onClick={() => handleAvatarChange(a.src)}
 					>
 						<Image src={a.src} alt="Avatar of a user" width={60} height={60} />
 					</div>
