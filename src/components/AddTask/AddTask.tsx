@@ -1,10 +1,10 @@
+import { useContext } from 'react';
 import Image from 'next/image';
+import ThemeContext from '@/context/theme-context';
 
 import classes from './AddTask.module.scss';
 import SlideAnimation from '../UI/Animations/SlideAnimation';
 import AddForm from './AddTaskForm/AddForm';
-import { useContext } from 'react';
-import ThemeContext from '@/context/theme-context';
 
 const AddTask = () => {
 	const { isDark } = useContext(ThemeContext);

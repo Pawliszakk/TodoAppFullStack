@@ -1,10 +1,10 @@
+import { useContext } from 'react';
 import { Task } from '@/types/app';
+import ThemeContext from '@/context/theme-context';
 
 import SectionTitle from '@/components/UI/Section/SectionTitle';
 import classes from './TaskList.module.scss';
 import TaskTile from './TaskTile';
-import { useContext } from 'react';
-import ThemeContext from '@/context/theme-context';
 
 interface TaskListProps {
 	currentTasks: Task[];

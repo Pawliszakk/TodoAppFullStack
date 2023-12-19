@@ -1,10 +1,9 @@
 import { useContext, useState } from 'react';
-import { getAvatars } from '@/data/data';
 import Image from 'next/image';
+import ThemeContext from '@/context/theme-context';
+import { getAvatars } from '@/data/data';
 
 import classes from './AvatarsComponent.module.scss';
-import ThemeContext from '@/context/theme-context';
-import { Avatar } from '@/types/app';
 
 interface AvatarsProps {
 	onAvatarChange: (avatar: string) => void;
@@ -34,7 +33,6 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 	);
 
 	const handleAvatarChange = (source: string) => {
-		
 		let avatarSrc = !isDark ? source.replace('-dark.jpg', '.jpg') : source;
 
 		onAvatarChange(avatarSrc);

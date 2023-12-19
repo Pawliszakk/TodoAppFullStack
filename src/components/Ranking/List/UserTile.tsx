@@ -1,11 +1,11 @@
+import { useContext } from 'react';
 import Image from 'next/image';
 import { User } from '@/types/app';
+import ThemeContext from '@/context/theme-context';
 
 import classes from './UserTile.module.scss';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
-import { useContext } from 'react';
-import ThemeContext from '@/context/theme-context';
 
 const UserTile: React.FC<User & { index: number }> = ({
 	name,

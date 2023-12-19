@@ -1,11 +1,11 @@
+import { useContext } from 'react';
 import Image from 'next/image';
+import ThemeContext from '@/context/theme-context';
 
 import classes from './Start.module.scss';
 import Button from '@/components/UI/Buttons/Button';
 import FormBox from '@/components/UI/Form/FormBox';
 import SectionTitle from '@/components/UI/Section/SectionTitle';
-import { useContext } from 'react';
-import ThemeContext from '@/context/theme-context';
 
 interface StartProps {
 	onFormChange: (number: number) => void;

@@ -1,8 +1,8 @@
+import { useContext } from 'react';
+import ThemeContext from '@/context/theme-context';
 import { getSections } from '@/data/data';
 
 import Section from '../UI/Section/Section';
-import { useContext } from 'react';
-import ThemeContext from '@/context/theme-context';
 
 const Home = () => {
 	const { isDark } = useContext(ThemeContext);

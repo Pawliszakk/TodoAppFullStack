@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import Image from 'next/image';
+import ThemeContext from '@/context/theme-context';
 
 import classes from './Auth.module.scss';
 import Signup from './Signup/Signup';
 import Login from './Login/Login';
 import Start from './Start/Start';
 import SlideAnimation from '../UI/Animations/SlideAnimation';
-import ThemeContext from '@/context/theme-context';
 
 const Auth = () => {
 	const [currentForm, setCurrentForm] = useState(0);

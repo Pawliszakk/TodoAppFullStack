@@ -3,10 +3,10 @@ import { AuthContext } from '@/context/auth-context';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import ThemeContext from '@/context/theme-context';
 
 import Button from '@/components/UI/Buttons/Button';
 import classes from './NavList.module.scss';
-import ThemeContext from '@/context/theme-context';
 
 const NavList = () => {
 	const { userAvatar, userId, isLoggedIn, logout, token } =

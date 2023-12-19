@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { User } from '@/types/app';
 import Image from 'next/image';
+import ThemeContext from '@/context/theme-context';
 
 import classes from './UserProfile.module.scss';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
@@ -12,7 +13,6 @@ import Backdrop from '@/components/UI/Backdrop/Backdrop';
 import ChangePassword from './ChangePassword/ChangePassword';
 import DeleteAccount from './DeleteAccount/DeleteAccount';
 import ProfileIcon from './ProfileIcon/ProfileIcon';
-import ThemeContext from '@/context/theme-context';
 
 const UserProfile: React.FC<User> = (props) => {
 	const [name, setName] = useState(props.name);

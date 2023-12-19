@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 import { Categories } from '@/data/data';
 import { CategoryType, Task } from '@/types/app';
+import ThemeContext from '@/context/theme-context';
 
 import Button from '@/components/UI/Buttons/Button';
 import classes from './Panel.module.scss';
 import CategoryTile from './Category';
 import SlideAnimation from '@/components/UI/Animations/SlideAnimation';
 import TaskList from './Tasks/List/TaskList';
-import ThemeContext from '@/context/theme-context';
 
 interface PanelProps {
 	tasks: Task[];
