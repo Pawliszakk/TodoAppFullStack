@@ -29,12 +29,12 @@ export default async function handler(
 				message: 'Something went wrong, please try again later',
 			});
 		}
+
 		if (!user) {
 			return res.status(409).json({
 				message: `Your email address or password is wrong, please try again`,
 			});
 		}
-
 		let isPasswordValid = false;
 		try {
 			isPasswordValid = await bcrypt.compare(password, user.password);
