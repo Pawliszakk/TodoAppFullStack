@@ -25,9 +25,9 @@ body {
 	--personal-color: #190482;
 	--payments-color: #936c17;
 	--ideas-color: #88510e;
-	--finish-button: rgb(94, 142, 22);
-	--delete-button: rgb(174, 39, 15);
-	--password: rgb(39, 42, 45);
+	--finish-button: #5e8e16;
+	--delete-button: #ae270f;
+	--password: #272a2d;
 	--text-color: #000;
 	--opposite-color: #ff6c22;
 }
@@ -36,16 +36,6 @@ body {
 	--main-darker: #ff6c22;
 	--theme: #030b0f;
 	--theme-cream: #0d1414;
-	--error: #ff6347;
-	--health-color: #a0230d;
-	--work-color: #3a0707;
-	--house-color: #7752fe;
-	--personal-color: #190482;
-	--payments-color: #936c17;
-	--ideas-color: #88510e;
-	--finish-button: rgb(94, 142, 22);
-	--delete-button: rgb(174, 39, 15);
-	--password: rgb(39, 42, 45);
 	--text-color: #fff;
 	--opposite-color: #6d21d7;
 }
@@ -55,17 +45,17 @@ html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 7vh;
 	scrollbar-width: thin;
-	scrollbar-color: var(--main-purple-darker), var(--main-purple);
+	scrollbar-color: var(--main-darker), var(--main);
 }
 html::-webkit-scrollbar {
 	width: 0.5vw;
 }
 html::-webkit-scrollbar-thumb {
-	background-color: var(--main-purple);
+	background-color: var(--main);
 	border-radius: 100vw;
 }
 html::-webkit-scrollbar-thumb:hover {
-	background-color: var(--main-purple-darker);
+	background-color: var(--main-darker);
 }
 html::-webkit-scrollbar-track {
 	background: #fff;

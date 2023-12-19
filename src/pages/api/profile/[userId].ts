@@ -39,7 +39,7 @@ export default async function handler(
 				message: 'Could not find user, please try again later',
 			});
 		}
-		console.log(user);
+
 
 		const transformedTasks = user.tasks.map((task: any) => {
 			const plainObject = task.toObject({ getters: true });

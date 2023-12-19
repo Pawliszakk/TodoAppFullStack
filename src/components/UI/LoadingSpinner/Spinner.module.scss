@@ -12,7 +12,7 @@
 		border-top: 10px solid var(--main);
 		animation: spin 1.5s infinite linear;
 		&.white {
-			border-top: 10px solid var(--white);
+			border-top: 10px solid #fff;
 		}
 	}
 }

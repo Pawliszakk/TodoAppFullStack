@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import { AuthContext } from '@/context/auth-context';
+
 import Footer from './Footer/Footer';
 import Nav from './Nav/Nav';
-import { AuthContext } from '@/context/auth-context';
 import AddTaskButton from '../UI/Buttons/AddTaskButton';
 
 interface LayoutProps {
