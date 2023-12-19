@@ -9,7 +9,7 @@
 		height: 100px;
 		border-radius: 50%;
 		border: 10px solid rgba(255, 255, 255, 0.1);
-		border-top: 10px solid var(--main-purple);
+		border-top: 10px solid var(--main);
 		animation: spin 1.5s infinite linear;
 		&.white {
 			border-top: 10px solid var(--white);

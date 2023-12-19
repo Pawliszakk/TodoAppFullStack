@@ -1,14 +1,14 @@
 .link,
 .btn {
-	background-color: var(--main-purple);
-	color: var(--white);
+	background-color: var(--main);
+	color: var(--theme);
 	border-radius: 10px;
 	padding: 0.5em 1em;
 	text-decoration: none;
 	transition: background-color 0.3s;
 	cursor: pointer;
 	&:hover {
-		background-color: var(--main-purple-darker);
+		background-color: var(--main-darker);
 	}
 	&.submit {
 		background-color: var(--finish-button);

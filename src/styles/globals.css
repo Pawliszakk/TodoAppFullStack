@@ -14,10 +14,10 @@ body {
 }
 
 :root {
-	--main-purple: #6d21d7;
-	--main-purple-darker: #3c0686;
-	--white: #fff;
-	--white-cream: #f8f3f3;
+	--main: #6d21d7;
+	--main-darker: #3c0686;
+	--theme: #fff;
+	--theme-cream: #f8f3f3;
 	--error: #ff6347;
 	--health-color: #a0230d;
 	--work-color: #3a0707;
@@ -32,10 +32,10 @@ body {
 	--opposite-color: #ff6c22;
 }
 [data-theme='dark'] {
-	--main-purple: #ff9209;
-	--main-purple-darker: #ff6c22;
-	--white: #030b0f;
-	--white-cream: #0d1414;
+	--main: #ff9209;
+	--main-darker: #ff6c22;
+	--theme: #030b0f;
+	--theme-cream: #0d1414;
 	--error: #ff6347;
 	--health-color: #a0230d;
 	--work-color: #3a0707;

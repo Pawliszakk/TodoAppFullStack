@@ -1,6 +1,6 @@
 .avatar {
 	p {
-		color: var(--main-purple-darker);
+		color: var(--main-darker);
 		font-size: 1.8rem;
 	}
 	.buttons {
@@ -19,12 +19,12 @@
 			max-width: 120px;
 			transition: background-color 0.3s, color 0.3s;
 			&.active {
-				border-color: var(--main-purple-darker);
-				color: var(--main-purple-darker);
+				border-color: var(--main-darker);
+				color: var(--main-darker);
 			}
 			&:hover {
-				background-color: var(--main-purple);
-				color: var(--white);
+				background-color: var(--main);
+				color: #fff;
 			}
 		}
 	}
@@ -43,6 +43,6 @@
 		border-radius: 50%;
 	}
 	&.active {
-		border-color: var(--main-purple-darker);
+		border-color: var(--main-darker);
 	}
 }

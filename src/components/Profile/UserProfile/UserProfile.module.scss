@@ -1,9 +1,9 @@
 .userProfile {
 	padding: 3rem 0;
-	background-color: var(--white-cream);
+	background-color: var(--theme-cream);
 	color: var(--text-color);
 	&.light {
-		background-color: var(--white);
+		background-color: var(--theme);
 	}
 }
 
@@ -11,13 +11,13 @@
 	text-align: center;
 	h2 {
 		font-size: 2rem;
-		color: var(--main-purple-darker);
+		color: var(--main-darker);
 	}
 	p {
 		font-size: 2rem;
 		margin: 2rem 0;
 		svg {
-			color: var(--main-purple-darker);
+			color: var(--main-darker);
 		}
 	}
 	.date {

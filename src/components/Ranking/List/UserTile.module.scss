@@ -7,13 +7,13 @@
 	width: 80%;
 	max-width: 500px;
 	transition: scale 0.3s;
-	background-color: var(--white-cream);
+	background-color: var(--theme-cream);
 	color: var(--text-color);
 	&.light {
-		background-color: var(--white);
+		background-color: var(--theme);
 	}
 	h3 {
-		color: var(--main-purple-darker);
+		color: var(--main-darker);
 		font-size: 2rem;
 		margin: 1em 0;
 		svg {

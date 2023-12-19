@@ -1,6 +1,6 @@
 .formBox {
 	position: relative;
-	background-color: var(--white-cream);
+	background-color: var(--theme-cream);
 	width: 80%;
 	max-width: 400px;
 	margin: 0 auto;
@@ -17,7 +17,7 @@
 		margin: 0 auto;
 		span {
 			cursor: pointer;
-			color: var(--main-purple-darker);
+			color: var(--main-darker);
 			text-decoration: underline;
 		}
 	}
