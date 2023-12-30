@@ -92,6 +92,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 					error={errors.name}
 					touched={touched.name}
 					field={getFieldProps('name')}
+					dataCy='username-input'
 				/>
 
 				<AvatarsComponent
@@ -102,7 +103,7 @@ const EditProfile: React.FC<EditProfileProps> = (props) => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit" disabled={!!isError}>
+					<Button type="submit" disabled={!!isError} dataCy='edit-submit'>
 						Change your settings
 					</Button>
 				)}

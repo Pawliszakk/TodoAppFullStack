@@ -10,7 +10,6 @@ export const seed = async (
 ) => {
 	await connectToDatabase(password, user, database);
 
-	console.log('latwo');
 	try {
 		await Task.deleteMany({});
 	} catch (err) {
@@ -36,7 +35,7 @@ export const seed = async (
 		name: 'test',
 		email: 'test@example.com',
 		password: hashedPassword,
-		avatar: '/assets/avatars/avatar2.jpg',
+		avatar: '/assets/avatars/avatar4.jpg',
 		points: 0,
 		date: '21-07-2023',
 		tasks: [],

@@ -29,11 +29,20 @@ const NavList = () => {
 		<ul className={classes.list}>
 			<li>
 				{isLoggedIn ? (
-					<Button className={classes.btn} onClick={logout}>
+					<Button
+						className={classes.btn}
+						onClick={logout}
+						dataCy="logout-button"
+					>
 						Logout
 					</Button>
 				) : (
-					<Button className={classes.btn} link href="/login">
+					<Button
+						className={classes.btn}
+						link
+						href="/login"
+						dataCy="login-button"
+					>
 						Login
 					</Button>
 				)}

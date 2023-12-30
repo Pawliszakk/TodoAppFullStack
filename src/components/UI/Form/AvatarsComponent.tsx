@@ -46,6 +46,7 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 					type="button"
 					onClick={menAvatarsHandler}
 					className={isMen ? classes.active : undefined}
+					data-cy="men-button"
 				>
 					Men
 				</button>
@@ -53,6 +54,7 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 					type="button"
 					onClick={womenAvatarsHandler}
 					className={!isMen ? classes.active : undefined}
+					data-cy="women-button"
 				>
 					Women
 				</button>
@@ -67,6 +69,7 @@ const AvatarsComponent: React.FC<AvatarsProps> = ({
 								: null
 						}`}
 						onClick={() => handleAvatarChange(a.src)}
+						data-cy={`avatar-${i}`}
 					>
 						<Image src={a.src} alt="Avatar of a user" width={60} height={60} />
 					</div>

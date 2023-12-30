@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     "cypress/plugins/index.js"
-  ],
+, "cypress/support/commands.js", "cypress/e2e/auth.cy.js"  ],
   "exclude": [
     "node_modules"
   ]

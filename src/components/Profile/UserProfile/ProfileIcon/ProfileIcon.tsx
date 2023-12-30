@@ -9,6 +9,7 @@ interface ProfileIconProps {
 	delete?: boolean;
 	password?: boolean;
 	edit?: boolean;
+	dataCy?: string;
 }
 
 const ProfileIcon: React.FC<ProfileIconProps> = (props) => {
@@ -39,6 +40,7 @@ const ProfileIcon: React.FC<ProfileIconProps> = (props) => {
 			className={`${classes.icon} ${additionalClass}`}
 			onClick={props.onClick}
 			data-testid={testId}
+			data-cy={props.dataCy}
 		>
 			{icon}
 		</motion.div>

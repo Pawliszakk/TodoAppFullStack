@@ -74,6 +74,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={touched.email}
 					field={getFieldProps('email')}
 					testId="email-input"
+					dataCy="email-input"
 				/>
 
 				<Input
@@ -85,11 +86,12 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={touched.password}
 					field={getFieldProps('password')}
 					testId="password-input"
+					dataCy="password-input"
 				/>
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit" disabled={!!isError}>
+					<Button type="submit" disabled={!!isError} dataCy="submit-login">
 						Login
 					</Button>
 				)}

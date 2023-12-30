@@ -35,3 +35,21 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('login', () => {
+	cy.visit('/login');
+	cy.get('[data-cy="login-start"]').click();
+	cy.get('[data-cy="email-input"]').click();
+	cy.get('[data-cy="email-input"]').type('test@example.com');
+	cy.get('[data-cy="password-input"]').click();
+	cy.get('[data-cy="password-input"]').type('TestPassword1!');
+	cy.get('[data-cy="submit-login"]').click();
+});
+
+Cypress.Commands.add('seed', () => {
+	cy.task('seedDatabase', {
+		password: Cypress.env('DB_PASSWORD'),
+		user: Cypress.env('DB_USER'),
+		database: Cypress.env('DB_NAME'),
+	});
+});

@@ -47,7 +47,7 @@ const UserProfile: React.FC<User> = (props) => {
 			className={`${classes.userProfile} ${isDark ? classes.light : null}`}
 		>
 			<SlideAnimation className={classes.user}>
-				<h2>
+				<h2 data-cy="username-heading">
 					Welcome {name}! <PiHandWavingLight />
 				</h2>
 				<div className={classes.image}>
@@ -59,9 +59,21 @@ const UserProfile: React.FC<User> = (props) => {
 						priority
 					/>
 
-					<ProfileIcon edit onClick={() => setCurrentForm('edit')} />
-					<ProfileIcon password onClick={() => setCurrentForm('password')} />
-					<ProfileIcon delete onClick={() => setCurrentForm('delete')} />
+					<ProfileIcon
+						edit
+						onClick={() => setCurrentForm('edit')}
+						dataCy="edit-button"
+					/>
+					<ProfileIcon
+						password
+						onClick={() => setCurrentForm('password')}
+						dataCy="password-button"
+					/>
+					<ProfileIcon
+						delete
+						onClick={() => setCurrentForm('delete')}
+						dataCy="delete-button"
+					/>
 				</div>
 				<p>
 					Task Points: {props.points} <AiOutlineCheckCircle />

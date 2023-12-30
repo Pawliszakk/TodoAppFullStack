@@ -87,6 +87,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					error={errors.oldPassword}
 					touched={touched.oldPassword}
 					field={getFieldProps('oldPassword')}
+					dataCy="oldPassword-input"
 				/>
 				<Input
 					label="New Password"
@@ -96,6 +97,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					error={errors.newPassword}
 					touched={touched.newPassword}
 					field={getFieldProps('newPassword')}
+					dataCy="newPassword-input"
 				/>
 				<Input
 					label="Confirm New Password"
@@ -105,11 +107,12 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ onClose }) => {
 					error={errors.checkNewPassword}
 					touched={touched.checkNewPassword}
 					field={getFieldProps('checkNewPassword')}
+					dataCy="checkNewPassword-input"
 				/>
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit" disabled={!!isError}>
+					<Button type="submit" disabled={!!isError} dataCy="submit-changePassword">
 						Change Password
 					</Button>
 				)}

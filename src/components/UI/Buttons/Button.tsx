@@ -12,6 +12,7 @@ interface ButtonProps {
 	disabled?: boolean;
 	deleteBtn?: boolean;
 	testId?: string;
+	dataCy?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
 	disabled,
 	deleteBtn,
 	testId,
+	dataCy,
 }) => {
 	const additionalClass = className ? className : null;
 
@@ -41,6 +43,7 @@ const Button: React.FC<ButtonProps> = ({
 					href={href}
 					className={`${classes.link} ${additionalClass}`}
 					data-testid="test-anchor"
+					data-cy={dataCy}
 				>
 					{children}
 				</Link>
@@ -61,6 +64,7 @@ const Button: React.FC<ButtonProps> = ({
 			}`}
 			disabled={disabled}
 			data-testid={dataTestId}
+			data-cy={dataCy}
 		>
 			{children}
 		</motion.button>

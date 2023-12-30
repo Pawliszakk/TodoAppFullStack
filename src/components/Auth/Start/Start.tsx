@@ -35,10 +35,18 @@ const Start: React.FC<StartProps> = ({ onFormChange }) => {
 				/>{' '}
 			</div>
 			<div className={classes.buttons}>
-				<Button className={classes.btn} onClick={() => onFormChange(2)}>
+				<Button
+					className={classes.btn}
+					onClick={() => onFormChange(2)}
+					dataCy="login-start"
+				>
 					Login
 				</Button>
-				<Button className={classes.btn} onClick={() => onFormChange(1)}>
+				<Button
+					className={classes.btn}
+					onClick={() => onFormChange(1)}
+					dataCy="signup-start"
+				>
 					SignUp
 				</Button>
 			</div>

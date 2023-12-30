@@ -79,6 +79,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 					error={errors.password}
 					touched={touched.password}
 					field={getFieldProps('password')}
+					dataCy="password-input"
 				/>
 
 				{isLoading ? (
@@ -89,6 +90,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ onClose }) => {
 						type="submit"
 						deleteBtn
 						disabled={!!isError}
+						dataCy="delete-submit"
 					>
 						Delete Account
 					</Button>

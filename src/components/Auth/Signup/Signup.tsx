@@ -88,6 +88,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={touched.name}
 					field={getFieldProps('name')}
 					testId="username-input"
+					dataCy="username-input"
 				/>
 				<Input
 					label="E-mail"
@@ -98,6 +99,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={touched.email}
 					field={getFieldProps('email')}
 					testId="email-input"
+					dataCy="email-input"
 				/>
 				<Input
 					label="Password"
@@ -108,6 +110,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 					touched={touched.password}
 					field={getFieldProps('password')}
 					testId="password-input"
+					dataCy="password-input"
 				/>
 
 				<AvatarsComponent
@@ -117,7 +120,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit" disabled={!!isError}>
+					<Button type="submit" disabled={!!isError} dataCy="submit-signup">
 						Sign Up
 					</Button>
 				)}
