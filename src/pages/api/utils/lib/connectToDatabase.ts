@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 import { HttpError } from './HttpError';
 
 export const connectToDatabase = async (
-	pass: string,
-	user: string,
-	database: string
+	pass?: string,
+	user?: string,
+	database?: string
 ) => {
 	let password = process.env.DB_PASSWORD;
 	let userName = process.env.DB_USER;
