@@ -2,9 +2,14 @@ import { Task } from '../models/task';
 import { User } from '../models/user';
 import { connectToDatabase } from './connectToDatabase';
 
-export const seed = async () => {
-	await connectToDatabase(); 
+export const seed = async (
+	password: string,
+	user: string,
+	database: string
+) => {
+	await connectToDatabase(password, user, database);
 
+	console.log('latwo');
 	try {
 		await Task.deleteMany({});
 	} catch (err) {

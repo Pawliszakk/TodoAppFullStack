@@ -1,10 +1,21 @@
 import mongoose from 'mongoose';
 import { HttpError } from './HttpError';
 
-export const connectToDatabase = async () => {
-	const password = process.env.DB_PASSWORD;
-	const userName = process.env.DB_USER;
-	const dbName = process.env.DB_NAME;
+export const connectToDatabase = async (
+	pass: string,
+	user: string,
+	database: string
+) => {
+	let password = process.env.DB_PASSWORD;
+	let userName = process.env.DB_USER;
+	let dbName = process.env.DB_NAME;
+
+	if (pass && user && database) {
+		password = pass;
+		userName = user;
+		dbName = database;
+	}
+
 	const URL = `mongodb+srv://${userName}:${password}@cluster0.fvub0dj.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 	console.log(password, userName, dbName, URL);
 	let db;
