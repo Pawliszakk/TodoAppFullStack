@@ -17,7 +17,6 @@ export const connectToDatabase = async (
 	}
 
 	const URL = `mongodb+srv://${userName}:${password}@cluster0.fvub0dj.mongodb.net/${dbName}?retryWrites=true&w=majority`;
-	console.log(password, userName, dbName, URL);
 	let db;
 	try {
 		db = await mongoose.connect(URL);
