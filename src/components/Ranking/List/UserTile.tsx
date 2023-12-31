@@ -33,6 +33,7 @@ const UserTile: React.FC<User & { index: number }> = ({
 		<SlideAnimation
 			className={`${classes.user} ${isDark ? classes.light : null} `}
 			list
+			dataCy="user-tile"
 		>
 			{' '}
 			<div className={classes.image}>

@@ -48,7 +48,12 @@ const NavList = () => {
 				)}
 			</li>
 			<li>
-				<Button className={classes.btn} link href="/ranking">
+				<Button
+					className={classes.btn}
+					link
+					href="/ranking"
+					dataCy="ranking-link"
+				>
 					Top 10
 				</Button>
 			</li>
