@@ -7,6 +7,7 @@ interface SlideAnimationProps {
 	left?: boolean;
 	delay?: number;
 	list?: boolean;
+	dataCy?: string;
 }
 
 const SlideAnimation: React.FC<SlideAnimationProps> = ({
@@ -15,6 +16,7 @@ const SlideAnimation: React.FC<SlideAnimationProps> = ({
 	left,
 	list,
 	delay,
+	dataCy,
 }) => {
 	if (list) {
 		return (
@@ -26,6 +28,7 @@ const SlideAnimation: React.FC<SlideAnimationProps> = ({
 					once: true,
 				}}
 				transition={{ delay: delay ? delay : 0.3 }}
+				data-cy={dataCy}
 			>
 				{children}
 			</motion.li>
@@ -34,6 +37,7 @@ const SlideAnimation: React.FC<SlideAnimationProps> = ({
 
 	return (
 		<motion.div
+			data-cy={dataCy}
 			className={className}
 			initial={{ opacity: 0, x: left ? 50 : -50 }}
 			whileInView={{ opacity: 1, x: 0 }}

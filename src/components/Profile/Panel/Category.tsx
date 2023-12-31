@@ -50,6 +50,7 @@ const CategoryTile: React.FC<Category> = ({
 				className={`${classes.category} ${categoryClass}`}
 				onClick={handleCategoryClick}
 				data-testid="test-tile"
+				data-cy={`category-tile-${category}`}
 			>
 				{icon}
 				<h3>{category}</h3>

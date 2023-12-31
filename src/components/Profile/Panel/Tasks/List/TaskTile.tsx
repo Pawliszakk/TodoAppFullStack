@@ -91,7 +91,7 @@ const TaskTile: React.FC<
 	const categoryIcon = Categories.find((cat) => cat.category === category);
 
 	return (
-		<SlideAnimation list className={classes.task}>
+		<SlideAnimation list className={classes.task} dataCy="task-tile">
 			<Toaster position="top-center" richColors />
 			{isLoading ? (
 				<Spinner />

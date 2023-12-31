@@ -74,10 +74,10 @@ const Panel: React.FC<PanelProps> = (props) => {
 				</div>
 				<p>Show Tasks by category or...</p>
 				<SlideAnimation className={classes.buttons}>
-					<Button onClick={activeTasksHandler}>
+					<Button onClick={activeTasksHandler} dataCy="active-tasks-button">
 						Show active tasks {`(${activeTasksAmount})`}
 					</Button>
-					<Button onClick={finishedTasksHandler}>
+					<Button onClick={finishedTasksHandler} dataCy="finished-tasks-button">
 						Show finished tasks {`(${finishedTasksAmount})`}
 					</Button>
 				</SlideAnimation>

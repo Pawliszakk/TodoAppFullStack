@@ -25,7 +25,9 @@ const TaskList: React.FC<TaskListProps> = ({
 
 	return (
 		<section className={`${classes.tasks} ${isDark ? classes.light : null}`}>
-			<SectionTitle>{currentCategory} Tasks</SectionTitle>
+			<SectionTitle dataCy="task-category-heading">
+				{currentCategory} Tasks
+			</SectionTitle>
 			<ul className={classes.list}>
 				{isTasks ? (
 					currentTasks.map((task) => (
