@@ -126,7 +126,7 @@ const TaskTile: React.FC<
 									Finish Task
 								</Button>
 							</div>
-							<CloseButton onClick={deleteTaskHandler} />
+							<CloseButton onClick={deleteTaskHandler} dataCy='close-task-button' />
 						</>
 					) : (
 						<div className={classes.buttons}>

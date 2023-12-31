@@ -36,6 +36,10 @@
 //   }
 // }
 
+Cypress.Commands.add('getById', (id) => {
+	cy.get(`[data-cy="${id}"]`);
+});
+
 Cypress.Commands.add('login', () => {
 	cy.visit('/login');
 	cy.get('[data-cy="login-start"]').click();

@@ -75,7 +75,7 @@ const UserProfile: React.FC<User> = (props) => {
 						dataCy="delete-button"
 					/>
 				</div>
-				<p>
+				<p data-cy="task-points">
 					Task Points: {props.points} <AiOutlineCheckCircle />
 				</p>
 				<p className={classes.date}>
