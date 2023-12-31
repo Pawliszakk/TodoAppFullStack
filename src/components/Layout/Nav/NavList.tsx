@@ -67,6 +67,7 @@ const NavList = () => {
 						alt="An avatar of a user"
 						width={40}
 						height={40}
+						data-cy="user-avatar"
 					/>
 					<span>Check Profile</span>
 				</Link>
