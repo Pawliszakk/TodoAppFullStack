@@ -97,7 +97,7 @@ const TaskTile: React.FC<
 				<Spinner />
 			) : (
 				<>
-					<h3>
+					<h3 data-cy="task-title">
 						{taskProperties.title} {categoryIcon!.icon}
 					</h3>
 					<hr />
@@ -114,11 +114,14 @@ const TaskTile: React.FC<
 					{active ? (
 						<>
 							<div className={classes.buttons}>
-								<Button onClick={showEditHandler}>Edit Task</Button>
+								<Button onClick={showEditHandler} dataCy="edit-task-button">
+									Edit Task
+								</Button>
 								<Button
 									onClick={finishTaskHandler}
 									className={classes.finish}
 									testId="finish-btn"
+									dataCy="finish-task-button"
 								>
 									Finish Task
 								</Button>
@@ -131,6 +134,7 @@ const TaskTile: React.FC<
 								onClick={deleteTaskHandler}
 								className={classes.delete}
 								testId="delete-btn"
+								dataCy="delete-task-button"
 							>
 								Delete Task
 							</Button>

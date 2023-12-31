@@ -85,6 +85,7 @@ const AddForm = () => {
 					error={errors.title}
 					touched={touched.title}
 					field={getFieldProps('title')}
+					dataCy="title-input"
 				/>
 				<Input
 					label="Description"
@@ -94,6 +95,7 @@ const AddForm = () => {
 					error={errors.description}
 					touched={touched.description}
 					field={getFieldProps('description')}
+					dataCy="description-input"
 				/>
 				<Select
 					id="category"
@@ -102,6 +104,7 @@ const AddForm = () => {
 					touched={touched.category}
 					text="Choose Category"
 					options={selectCategoryOptions}
+					dataCy="category-select"
 				/>
 				<Select
 					id="importance"
@@ -110,12 +113,18 @@ const AddForm = () => {
 					touched={touched.importance}
 					text="Choose Importance"
 					options={selectImportanceOptions}
+					dataCy="importance-select"
 				/>
 
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button className={classes.submit} type="submit" disabled={!!isError}>
+					<Button
+						className={classes.submit}
+						type="submit"
+						disabled={!!isError}
+						dataCy="submit-task"
+					>
 						Add Task
 					</Button>
 				)}
@@ -123,7 +132,10 @@ const AddForm = () => {
 				{reqMessage && !isLoading ? (
 					<>
 						<p>{reqMessage}</p>
-						<Link href={`/profile/${userId}/?token=${token}`}>
+						<Link
+							href={`/profile/${userId}/?token=${token}`}
+							data-cy="see-new-task"
+						>
 							Go to your profile to see new task!
 						</Link>
 					</>

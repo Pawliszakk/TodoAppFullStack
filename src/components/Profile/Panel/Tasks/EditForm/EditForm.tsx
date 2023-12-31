@@ -117,6 +117,7 @@ const EditForm: React.FC<EditFormProps> = ({
 					error={errors.title}
 					touched={touched.title}
 					field={getFieldProps('title')}
+					dataCy="title-input"
 				/>
 				<Input
 					label="Description"
@@ -126,6 +127,7 @@ const EditForm: React.FC<EditFormProps> = ({
 					error={errors.description}
 					touched={touched.description}
 					field={getFieldProps('description')}
+					dataCy="description-input"
 				/>
 				<Select
 					id="category"
@@ -134,6 +136,7 @@ const EditForm: React.FC<EditFormProps> = ({
 					touched={touched.category}
 					text="Choose Category"
 					options={selectCategoryOptions}
+					dataCy="category-select"
 				/>
 				<Select
 					id="importance"
@@ -142,12 +145,13 @@ const EditForm: React.FC<EditFormProps> = ({
 					touched={touched.importance}
 					text="Choose Importance"
 					options={selectImportanceOptions}
+					dataCy="importance-select"
 				/>
 
 				{isLoading ? (
 					<Spinner />
 				) : (
-					<Button type="submit" disabled={!!isError}>
+					<Button type="submit" disabled={!!isError} dataCy="edit-submit">
 						Edit Task
 					</Button>
 				)}

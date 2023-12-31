@@ -9,8 +9,8 @@ const AddTaskButton = () => {
 	return (
 		<Portal>
 			<motion.div
-				whileHover={{ scale: 0.8 }}
-				whileTap={{ scale: 0.5 }}
+				// whileHover={{ scale: 0.8 }}
+				// whileTap={{ scale: 0.5 }}
 				style={{
 					position: 'fixed',
 					bottom: '10%',
@@ -18,8 +18,13 @@ const AddTaskButton = () => {
 					zIndex: 500,
 				}}
 				data-testid="add-task"
+				data-cy="add-task-button"
+
 			>
-				<Link href="/add-task" className={classes.button}>
+				<Link
+					href="/add-task"
+					className={classes.button}
+				>
 					<BsFillPlusCircleFill />
 					<span>Add Task</span>
 				</Link>

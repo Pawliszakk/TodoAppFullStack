@@ -53,3 +53,23 @@ Cypress.Commands.add('seed', () => {
 		database: Cypress.env('DB_NAME'),
 	});
 });
+
+Cypress.Commands.add('addTask', () => {
+	cy.get('[data-cy="add-task-button"]').click();
+
+	cy.get('[data-cy="title-input"]').click();
+	cy.get('[data-cy="title-input"]').type('Test title');
+
+	cy.get('[data-cy="description-input"]').click();
+	cy.get('[data-cy="description-input"]').type('Test description');
+
+	cy.get('[data-cy="category-select"]').select('work');
+
+	cy.get('[data-cy="importance-select"]').select('2');
+
+	cy.get('[data-cy="submit-task"]').click();
+
+	cy.get('[data-cy="see-new-task"]').click();
+
+	cy.get('[data-cy="task-title"]').should('contain', 'Test title');
+});

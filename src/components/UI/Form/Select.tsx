@@ -11,6 +11,7 @@ interface SelectProps {
 	touched?: boolean;
 	options: any[];
 	text: string;
+	dataCy?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -20,13 +21,14 @@ const Select: React.FC<SelectProps> = ({
 	touched,
 	options,
 	text,
+	dataCy,
 }) => {
 	const isError = touched && error;
 
 	return (
 		<div className={classes.box}>
 			<div className={classes.select}>
-				<select id={id} {...field}>
+				<select id={id} {...field} data-cy={dataCy}>
 					<option value="">{text}</option>
 					{options.map((option) => (
 						<option key={option.value} value={option.value}>
