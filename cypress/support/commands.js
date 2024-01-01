@@ -42,12 +42,12 @@ Cypress.Commands.add('getById', (id) => {
 
 Cypress.Commands.add('login', () => {
 	cy.visit('/login');
-	cy.get('[data-cy="login-start"]').click();
-	cy.get('[data-cy="email-input"]').click();
-	cy.get('[data-cy="email-input"]').type('test@example.com');
-	cy.get('[data-cy="password-input"]').click();
-	cy.get('[data-cy="password-input"]').type('TestPassword1!');
-	cy.get('[data-cy="submit-login"]').click();
+	cy.getById('login-start').click();
+	cy.getById('email-input').click();
+	cy.getById('email-input').type('test@example.com');
+	cy.getById('password-input').click();
+	cy.getById('password-input').type('TestPassword1!');
+	cy.getById('submit-login').click();
 });
 
 Cypress.Commands.add('seed', () => {
@@ -59,21 +59,21 @@ Cypress.Commands.add('seed', () => {
 });
 
 Cypress.Commands.add('addTask', () => {
-	cy.get('[data-cy="add-task-button"]').click();
+	cy.getById('add-task-button').click();
 
-	cy.get('[data-cy="title-input"]').click();
-	cy.get('[data-cy="title-input"]').type('Test title');
+	cy.getById('title-input').click();
+	cy.getById('title-input').type('Test title');
 
-	cy.get('[data-cy="description-input"]').click();
-	cy.get('[data-cy="description-input"]').type('Test description');
+	cy.getById('description-input').click();
+	cy.getById('description-input').type('Test description');
 
-	cy.get('[data-cy="category-select"]').select('work');
+	cy.getById('category-select').select('work');
 
-	cy.get('[data-cy="importance-select"]').select('2');
+	cy.getById('importance-select').select('2');
 
-	cy.get('[data-cy="submit-task"]').click();
+	cy.getById('submit-task').click();
 
-	cy.get('[data-cy="see-new-task"]').click();
+	cy.getById('see-new-task').click();
 
-	cy.get('[data-cy="task-title"]').should('contain', 'Test title');
+	cy.getById('task-title').should('contain', 'Test title');
 });

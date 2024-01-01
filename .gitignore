@@ -5,6 +5,7 @@ cypress.env.json
 /.pnp
 .pnp.js
 
+/cypress/screenshots
 # testing
 /coverage
 
