@@ -76,7 +76,7 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 	return (
 		<FormBox>
 			<Toaster position="top-center" richColors />
-			<SectionTitle>Sign Up</SectionTitle>
+			<SectionTitle dataCy="signup-title">Sign Up</SectionTitle>
 			<p>Create an account for free</p>
 			<form onSubmit={handleSubmit} data-testid="signup-form">
 				<Input
@@ -129,7 +129,11 @@ const Signup: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			<p>
 				Already a user?{' '}
-				<span onClick={() => onFormChange(2)} data-testid="login-span">
+				<span
+					onClick={() => onFormChange(2)}
+					data-testid="login-span"
+					data-cy="login-span"
+				>
 					Login
 				</span>
 			</p>
