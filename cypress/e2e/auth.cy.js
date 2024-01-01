@@ -2,7 +2,15 @@
 
 describe('Auth', () => {
 	beforeEach(() => {
-		cy.seed();
+		if (
+			!Cypress.mocha
+				.getRunner()
+				.suite.ctx.currentTest.title.includes(
+					'should switch between forms if span is clicked'
+				)
+		) {
+			cy.seed();
+		}
 	});
 
 	it('should login user', () => {
@@ -42,5 +50,14 @@ describe('Auth', () => {
 			'src',
 			'/assets/avatars/avatarLogout.jpg'
 		);
+	});
+
+	it('should switch between forms if span is clicked', () => {
+		cy.visit('/login');
+		cy.getById('login-start').click();
+		cy.getById('create-span').click();
+		cy.getById('signup-title').should('exist');
+		cy.getById('login-span').click();
+		cy.getById('login-title').should('exist');
 	});
 });

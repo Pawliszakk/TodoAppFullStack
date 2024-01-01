@@ -59,7 +59,7 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 		(touched.email && errors.email) || (touched.password && errors.password);
 	return (
 		<FormBox>
-			<SectionTitle>Login</SectionTitle>
+			<SectionTitle dataCy='login-title'>Login</SectionTitle>
 			<Toaster position="top-center" richColors />
 
 			<p>Welcome back! Login with your credentials</p>
@@ -100,7 +100,11 @@ const Login: React.FC<LoginProps> = ({ onFormChange }) => {
 
 			<p data-testid="create-account">
 				No account?{' '}
-				<span data-testid="create-span" onClick={() => onFormChange(1)}>
+				<span
+					data-testid="create-span"
+					data-cy="create-span"
+					onClick={() => onFormChange(1)}
+				>
 					create one
 				</span>
 			</p>
