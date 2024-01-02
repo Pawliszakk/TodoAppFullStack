@@ -60,4 +60,53 @@ describe('Auth', () => {
 		cy.getById('login-span').click();
 		cy.getById('login-title').should('exist');
 	});
+
+	it('should send back error message if invalid data provided for login api', () => {
+		cy.request({
+			method: 'POST',
+			url: '/api/login',
+			body: { email: 'test@example.com', password: 'wrongPassword1!' },
+			failOnStatusCode: false,
+		}).then((res) => {
+			expect(res.status).to.eq(409);
+		});
+	});
+	it('should send back 200 status if correct login', () => {
+		cy.request({
+			method: 'POST',
+			url: '/api/login',
+			body: { email: 'test@example.com', password: 'TestPassword1!' },
+		}).then((res) => {
+			expect(res.status).to.eq(200);
+		});
+	});
+	it('should send back error message if invalid data provided for signup api', () => {
+		cy.request({
+			method: 'POST',
+			url: '/api/signup',
+			body: {
+				email: 'test2@example.com',
+				password: 'wrongPassword',
+				avatar: '/assets/avatars/avatar1.jpg',
+				name: 'test',
+			},
+			failOnStatusCode: false,
+		}).then((res) => {
+			expect(res.status).to.eq(400);
+		});
+	});
+	it('should create new user in api', () => {
+		cy.request({
+			method: 'POST',
+			url: '/api/signup',
+			body: {
+				email: 'test2@example.com',
+				password: 'testPassword1!',
+				avatar: '/assets/avatars/avatar1.jpg',
+				name: 'test name',
+			},
+		}).then((res) => {
+			expect(res.status).to.eq(201);
+		});
+	});
 });
