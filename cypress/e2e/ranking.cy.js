@@ -40,4 +40,13 @@ describe('ranking', () => {
 		cy.getById('ranking-link').click({ force: true });
 		cy.getById('user-tile').should('have.length', 0);
 	});
+
+	it('should fetch users', () => {
+		cy.request({
+			method: 'GET',
+			url: '/api/users',
+		}).then((res) => {
+			expect(res.status).to.eq(200);
+		});
+	});
 });
